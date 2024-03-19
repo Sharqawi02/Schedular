@@ -1,3 +1,1 @@
-# Schedular
-
-# KURDISTAN!!
+# Sched
