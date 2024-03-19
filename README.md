@@ -1,3 +1,3 @@
 # Schedular
 
-# KURDISTAN NUMBER 1
+# KURDISTAN!!
