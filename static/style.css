@@ -1,0 +1,27 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header{
+    background:#f8f9fa;
+    padding:10px 25px;
+}
+ header > h2{
+    display:flex;
+    margin:0;
+    color:#3c4a56;
+    justify-content: center;
+}
+
+section{
+    display: flex;
+    width: 75%;
+    justify-content: center;
+    align-items: center;
+}
+
+section > form {
+    display: flex;
+    flex-direction: column;
+}
+
