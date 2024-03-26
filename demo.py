@@ -1,3 +1,4 @@
+import psycopg2
 from bottle  import  Bottle, route, template, run, static_file, request, redirect
 from db import connect
 
@@ -7,28 +8,37 @@ app = Bottle()
 
 @app.route('/')
 def index():
-     failed_login = True
-     return  template('register.html', failed_login=failed_login)
+     return  template('register.html')
 
 @app.route('/register' , method=[ 'GET','POST'])
 def register():
-    if request.method == 'POST':
-        firstname = request.forms.get('firstname')
-        lastname = request.forms.get('Lastname')
-        email = request.forms.get('Email')
-        password = request.forms.get('Password')
+    try:
+        if request.method == 'POST':
+            firstname = request.forms.get('firstname')
+            lastname = request.forms.get('lastname')
+            email = request.forms.get('email')
+            password = request.forms.get('password')
 
-        anslut = connect()
-        cur  = anslut.cursor()
+            connection = connect()
+            cursor  = connection.cursor()
 
-        cur.execute("INSERT INTO register (forname, lastname, email, password) VALUES(%s,%s,%s)",(firstname,lastname,email,password))
-        anslut.commit()
-        print ("User added")
+            cursor.execute("""INSERT INTO register (firstname, lastname, email, password)
+                           VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
+            connection.commit()
+            print ("User added")
 
-        return redirect('/')
-    else: 
-        return template('register.html')
+            cursor.close()
 
+            return redirect('/')
+        else: 
+            return template('register.html')
+    except psycopg2.Error as e:
+        print("ERROR CONNECTING TO POSTGREsql:", e)
+    finally:
+        if 'cursor' in locals():  # Kontrollera om 'cur' är definierad i det lokala namnrymden
+            cursor.close()
+        if 'connection' in locals():  # Kontrollera om 'anslut' är definierad i det lokala namnrymden
+            connection.close()
 
 
 

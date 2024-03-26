@@ -11,12 +11,10 @@ def connect():
 #     return conn
 
     connection = psycopg2.connect(
-        host = 'pgserver.mau.se',
-        port = '5432',
-        user = 'ao7325',
-        password = 'Ia@barca2023'
-    )
+        host = "pgserver.mau.se",
+        port = "5432",
+        user = "am2607",
+        password = "l15s2krs"            
+        )
 
-    curser = connection.cursor()
-
-    return curser
+    return connection
