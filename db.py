@@ -17,6 +17,4 @@ def connect():
         password = 'Ia@barca2023'
     )
 
-    curser = connection.cursor()
-
-    return curser
+    return connection
