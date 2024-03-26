@@ -1,27 +1,70 @@
-body{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+body {
+    background-color: white;
+    position: relative; 
+    font-family: Helvetica , sans-serif ;
 }
 
-header{
-    background:#f8f9fa;
-    padding:10px 25px;
-}
- header > h2{
-    display:flex;
-    margin:0;
-    color:#3c4a56;
-    justify-content: center;
-}
-
-section{
+#wrapper {
     display: flex;
-    width: 75%;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row; 
+    
 }
 
-section > form {
-    display: flex;
-    flex-direction: column;
+#headerdiv {
+    flex-grow: 1; 
+    height: 500px;
+    margin-left: 70px;
+
 }
 
+#sectiondiv {
+    width: 400px;
+    height: 300px;
+    background-color: aqua;
+    border-radius: 30px;
+    padding: 30px;
+    margin-top: 150px ;
+    margin-right: 120px;
+
+}
+
+#footerdiv {
+    width: 100px;
+}
+
+img { 
+    width: 350px;
+    height:350px;
+    padding: 100px;
+    margin-top: 50px;
+    margin-left: 0px;
+}
+
+h1 { 
+    font-size: xx-large;
+}
+
+#reg { 
+    border: solid black;
+    border-radius: 10px;
+    padding: 5px;
+    max-width: 200px;
+    text-align: center;
+}
+
+#skap { 
+    border: solid black;
+    border-radius: 10px;
+    padding: 5px;
+    max-width: 200px;
+    text-align: center;
+}
+
+#alternativ { 
+    margin-left: 90px;
+    margin-top: 30px;
+}
+
+#eller { 
+    margin-left: 90px;
+}
