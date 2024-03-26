@@ -19,7 +19,7 @@ def register():
         password = request.forms.get('Password')
 
         anslut = connect()
-        cur  = anslut.cursor()
+        cur  = anslut.cursor() 
 
         cur.execute("INSERT INTO register (forname, lastname, email, password) VALUES(%s,%s,%s)",(firstname,lastname,email,password))
         anslut.commit()
