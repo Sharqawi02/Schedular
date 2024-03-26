@@ -27,8 +27,6 @@ def register():
             connection.commit()
             print ("User added")
 
-            cursor.close()
-
             return redirect('/')
         else: 
             return template('register.html')
