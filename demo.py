@@ -1,55 +1,33 @@
-from bottle  import  Bottle, route, template, run, error, static_file, redirect, request
-import _mysql_connector
+from bottle  import  Bottle, route, template, run, static_file, request, redirect
+from db import connect
 
 
 app = Bottle()
 
+
 @app.route('/')
 def index():
      failed_login = True
-     return  template('home.html', failed_login=failed_login)
+     return  template('register.html', failed_login=failed_login)
 
-@app.route("/logIn", method="post")
-def login():
-    email = request.form.get("email")
-    password = request.form.get("password")
+@app.route('/register' , method=[ 'GET','POST'])
+def register():
+    if request.method == 'POST':
+        forname = request.form.get('Forname')
+        lastname = request.form.get('Lastname')
+        email = request.form.get('Email')
+        password = request.form.get('Password')
 
-    
-     
+        anslut = connect()
+        cur  = anslut.cursor()
 
+        cur.execute("INSERT INTO register (forname, lastname, email, password) VALUES(%s,%s,%s)",(forname,lastname,email,password))
+        anslut.commit()
+        print ("User added")
 
-
-
-
-
-    return template('home.html', failed_login=False)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@route ('error')
-def handle_error():
-     return template ("Error 404: We're working on the it")
+        return redirect('')
+    else: 
+        return template('register.html')
 
 
 
