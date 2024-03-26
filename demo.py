@@ -34,11 +34,6 @@ def register():
             return template('register.html')
     except psycopg2.Error as e:
         print("ERROR CONNECTING TO POSTGREsql:", e)
-    finally:
-        if 'cursor' in locals():
-            cursor.close()
-        if 'connection' in locals():
-            connection.close()
 
 
 
