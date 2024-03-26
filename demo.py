@@ -13,19 +13,19 @@ def index():
 @app.route('/register' , method=[ 'GET','POST'])
 def register():
     if request.method == 'POST':
-        forname = request.form.get('Forname')
-        lastname = request.form.get('Lastname')
-        email = request.form.get('Email')
-        password = request.form.get('Password')
+        firstname = request.forms.get('firstname')
+        lastname = request.forms.get('Lastname')
+        email = request.forms.get('Email')
+        password = request.forms.get('Password')
 
         anslut = connect()
         cur  = anslut.cursor()
 
-        cur.execute("INSERT INTO register (forname, lastname, email, password) VALUES(%s,%s,%s)",(forname,lastname,email,password))
+        cur.execute("INSERT INTO register (forname, lastname, email, password) VALUES(%s,%s,%s)",(firstname,lastname,email,password))
         anslut.commit()
         print ("User added")
 
-        return redirect('')
+        return redirect('/')
     else: 
         return template('register.html')
 
