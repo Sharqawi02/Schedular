@@ -23,3 +23,5 @@
     Denna filen finns för att alla ska ha liknande databaser och för att ifall det sker en ändring
     i databasen ska man kunna pusha/commita denna filen'
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Github - https://github.com/Sharqawi02/Schedular.git
