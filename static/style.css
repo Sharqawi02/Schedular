@@ -1,7 +1,7 @@
 body {
     background-color: white;
-    position: relative; 
-    font-family: Helvetica , sans-serif ;
+    position: relative;
+    font-family: "Playfair Display", serif;
 }
 
 #wrapper {
@@ -14,18 +14,22 @@ body {
     flex-grow: 1; 
     height: 500px;
     margin-left: 70px;
+}
+  
+
+#sectiondiv {
+    width: 1200px;
+    height: 500px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 30px;
+    margin-top: 100px ;
+    margin-right: 600px;
 
 }
 
-#sectiondiv {
-    width: 400px;
-    height: 300px;
-    background-color: aqua;
-    border-radius: 30px;
-    padding: 30px;
-    margin-top: 150px ;
-    margin-right: 120px;
-
+section { 
+    margin-right: 300px;
 }
 
 #footerdiv {
@@ -33,38 +37,101 @@ body {
 }
 
 img { 
-    width: 350px;
-    height:350px;
-    padding: 100px;
-    margin-top: 50px;
-    margin-left: 0px;
+    padding: 150px;
+    margin-top: 10px;
+    width: 850px;
 }
 
 h1 { 
-    font-size: xx-large;
+    font-size: 90px;
+    height: 150px;
 }
 
-#reg { 
-    border: solid black;
-    border-radius: 10px;
-    padding: 5px;
-    max-width: 200px;
-    text-align: center;
+h2 { 
+    font-size: 40px;
+    height: 20px;
+    padding-top: 40px;
 }
 
-#skap { 
+h1, h2 { 
+    margin-left: 120px;
+}
+
+.reg { 
     border: solid black;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 5px;
-    max-width: 200px;
+    max-width: 600px;
+    height: 30px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    font-size: larger;
 }
 
 #alternativ { 
-    margin-left: 90px;
+    margin-left: 67px;
     margin-top: 30px;
 }
 
 #eller { 
-    margin-left: 90px;
+    padding: 20px;
+    padding-right: 30px;
+
 }
+
+#ellersträck {
+    display: flex; 
+    margin-right: 170px;
+    margin-left: 170px;
+}
+
+
+.side-div {
+    position: relative; 
+    width: 200px;
+    margin-right: 10px; 
+    overflow: hidden;
+    color: white;
+    
+}
+
+.side-div::before {
+    content: ""; 
+    position: absolute; 
+    top: 50%; 
+    left: 0; 
+    width: 100%; 
+    height: 1px; 
+    background: radial-gradient(circle at 18.7% 37.8%, rgb(200, 200, 200) 0%, rgb(175, 194, 198) 90%); 
+}
+
+#Rubrikerna { 
+    padding-bottom: 30px;
+    margin-left: 55px;
+
+}
+
+#footerdiv {
+    position: fixed;
+    bottom: 0;
+    width: 80%;
+    color: gray;
+    font-size: 20px;
+    text-align: center;
+    z-index: 999; 
+    word-spacing: 10px;
+    margin: 20px;
+    margin-left: 180px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#policy { 
+    width: 550px;
+    text-align: center;
+    margin-left: 140px;
+}
+
+
+  
