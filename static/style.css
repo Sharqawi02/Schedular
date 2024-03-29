@@ -1,27 +1,137 @@
-body{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+body {
+    background-color: white;
+    position: relative;
+    font-family: "Playfair Display", serif;
 }
 
-header{
-    background:#f8f9fa;
-    padding:10px 25px;
-}
- header > h2{
-    display:flex;
-    margin:0;
-    color:#3c4a56;
-    justify-content: center;
-}
-
-section{
+#wrapper {
     display: flex;
-    width: 75%;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row; 
+    
 }
 
-section > form {
-    display: flex;
-    flex-direction: column;
+#headerdiv {
+    flex-grow: 1; 
+    height: 500px;
+    margin-left: 70px;
+}
+  
+
+#sectiondiv {
+    width: 1200px;
+    height: 500px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 30px;
+    margin-top: 100px ;
+    margin-right: 600px;
+
 }
 
+section { 
+    margin-right: 300px;
+}
+
+#footerdiv {
+    width: 100px;
+}
+
+img { 
+    padding: 150px;
+    margin-top: 10px;
+    width: 850px;
+}
+
+h1 { 
+    font-size: 90px;
+    height: 150px;
+}
+
+h2 { 
+    font-size: 40px;
+    height: 20px;
+    padding-top: 40px;
+}
+
+h1, h2 { 
+    margin-left: 120px;
+}
+
+.reg { 
+    border: solid black;
+    border-radius: 15px;
+    padding: 5px;
+    max-width: 600px;
+    height: 30px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    font-size: larger;
+}
+
+#alternativ { 
+    margin-left: 67px;
+    margin-top: 30px;
+}
+
+#eller { 
+    padding: 20px;
+    padding-right: 30px;
+
+}
+
+#ellersträck {
+    display: flex; 
+    margin-right: 170px;
+    margin-left: 170px;
+}
+
+
+.side-div {
+    position: relative; 
+    width: 200px;
+    margin-right: 10px; 
+    overflow: hidden;
+    color: white;
+    
+}
+
+.side-div::before {
+    content: ""; 
+    position: absolute; 
+    top: 50%; 
+    left: 0; 
+    width: 100%; 
+    height: 1px; 
+    background: radial-gradient(circle at 18.7% 37.8%, rgb(200, 200, 200) 0%, rgb(175, 194, 198) 90%); 
+}
+
+#Rubrikerna { 
+    padding-bottom: 30px;
+    margin-left: 55px;
+
+}
+
+#footerdiv {
+    position: fixed;
+    bottom: 0;
+    width: 80%;
+    color: gray;
+    font-size: 20px;
+    text-align: center;
+    z-index: 999; 
+    word-spacing: 10px;
+    margin: 20px;
+    margin-left: 180px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#policy { 
+    width: 550px;
+    text-align: center;
+    margin-left: 140px;
+}
+
+
+  
