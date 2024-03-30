@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page - Schedular</title>
-    <link href="static/style.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
 </head>
 <body>
     <div id="container">
         <!-- form for login -->
+        {% if failed_login %}
+            <h1>Fel: Försök igen</h1>
+         {% else %}
+            <h1>Login</h1>
+         {% endif %}
         <form action="/login" method="post">
             <label for="email">
                 Email:
