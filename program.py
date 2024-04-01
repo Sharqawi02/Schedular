@@ -10,7 +10,7 @@ app = Bottle()
 
 @app.route('/')
 def index():
-     return  template('firstSide.html')
+     return template('firstSide.html')
 
 
 # Registering a new user in the database
@@ -46,9 +46,6 @@ def register():
 @app.route('/login', method=['POST', 'GET'])
 def login ():
     if  request.method=='POST':
-
-        
-        
         # Connect to your postgres
         connection = connect ()
         cursor = connection.cursor()
@@ -62,7 +59,7 @@ def login ():
 
 
         if registers:
-            return redirect('/firsslide')
+            return redirect('/firstSide')
         else: 
             return  template ('login.html', error="Wrong Email or Password!")
         

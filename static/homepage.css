@@ -1,0 +1,94 @@
+body{
+  padding: 0px;
+  margin: 0px;
+}
+
+
+header {
+  display: flex;
+  margin: auto;
+  margin-bottom: 30px;
+  padding: 30px;
+  box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;}
+
+header > h1{
+  margin: auto;
+}
+
+#container{
+  display: flex;
+}
+
+main {
+  width: 300px;
+  height: 500px;
+  display: inline-block;
+  align-items: right;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  margin-right: auto;
+}
+
+aside{
+  margin-left: auto;
+  width: 300px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#tasks > .block {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left; 
+}
+
+#tasks > .block label {
+  margin-bottom: 5px;
+}
+
+/* button https://getcssscan.com/css-buttons-examples*/
+.button-13 {
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 100px;
+}
+
+.button-13:hover {
+  background-color: #f7fafa;
+}
+
+.button-13:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
+}
+/*buttton end*/
+
