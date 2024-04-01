@@ -9,12 +9,15 @@
 
     #register.hmtl:
     'Denna filen ska vara strukturen för registrerings sidan'
+
+    #firstSide.html:
+    'Denna filen ska vara strukturen för HOME PAGE N, det vill säga den första sidan man kommer åt när man startar sidan
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # PYTHON
     #db.py
     'innehåller en simpel funktion för att kunna koppla till databasen som vi användare - pgAdmin 4'
 
-    #demo.py
+    #program.py
     'Innehåller alla funktioner för applikationen'
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # DATABAS
