@@ -8,7 +8,7 @@ app = Bottle()
 
 @app.route('/')
 def index():
-     return template('firstSide.html')
+     return template('First-Side.html')
 
 
 # Registering a new user in the database
@@ -69,7 +69,7 @@ def login ():
 
 
 #denna ska INTE ändras
-@route("/static/<filename:path>")
+@app.route('/static/<filename:path>')
 def static_files(filename):
     return static_file(filename, root='./static')
 
