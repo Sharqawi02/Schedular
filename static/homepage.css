@@ -3,7 +3,6 @@ body{
   margin: 0px;
 }
 
-
 header {
   display: flex;
   margin: auto;
@@ -17,29 +16,27 @@ header > h1{
 
 #container{
   display: flex;
+  margin-top: 50px;
 }
 
 main {
   width: 300px;
   height: 500px;
   display: inline-block;
-  align-items: right;
-  margin: 20px;
-  padding: 20px;
+  margin-left: 70px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
-  margin-right: auto;
 }
 
 aside{
-  margin-left: auto;
-  width: 300px;
+  margin-left: 100px;
 }
 
 .block {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 #tasks {
@@ -92,3 +89,8 @@ aside{
 }
 /*buttton end*/
 
+#calndar{
+  width: 1000px;
+  height: 500px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

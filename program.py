@@ -6,8 +6,6 @@ from db import connect
 app = Bottle()
 
 
-
-
 @app.route('/')
 def index():
      return  template('firstSide.html')
