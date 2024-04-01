@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link href="/./static/homepage.css" rel="stylesheet">
+    <!--för Navbar-->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>Schedular</h1>
+            <nav>
+                här ska navbar vara
+            </nav>
+        </header>
+        <div id="container">
+            <main>
+                <div id="tasks">
+                    <form action="" method="get">
+                        <div class="block">
+                            <label for="tast_date">Date</label>
+                            <input type="text" name="task_date" id="task_date" required placeholder="dd/mm/yyyy">
+                        </div>
+                        <div class="block">
+                            <label for="user_task">Activity</label>
+                            <input type="text" name="user_task" id="user_task" required>
+                        </div>
+                        <div class="block">
+                            <label for="user_tast_description">Descrption</label>
+                            <textarea name="user_task_description" id="user_task_description" cols="30" rows="10"
+                                placeholder="Describe the activity..."></textarea>
+                        </div>
+                        <div class="block">
+                            <select name="task_priority" id="task_priority">
+                                <option value="high">High priority</option>
+                                <option value="medium">Medium priority</option>
+                                <option value="Low">Low priority</option>
+                            </select>
+                        </div>
+                        <!-- HTML !-->
+                        <button class="button-13" role="button">Add</button>
+                    </form>
+                </div>
+            </main>
+            <aside>
+                <div id="calndar">
+                    här ska kalndern vara
+                </div>
+            </aside>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
