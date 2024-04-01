@@ -61,27 +61,7 @@ h2 {
     margin-left: 120px;
 }
 
-<<<<<<< HEAD
-#alternativ {
-=======
-.reg { 
-    display: flex;
-    align-items: center;
-    border: solid black;
-    text-decoration: none;
-    border-radius: 15px;
-    padding: 5px;
-    max-width: 600px;
-    height: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 5px;
-    font-size: larger;
-    text-align: center;
-}
-
 #alternativ { 
->>>>>>> dfbd22e83b2e13576ed50c7bbf09287b8dd1d664
     margin-left: 67px;
     margin-top: 30px;
 }
@@ -180,4 +160,3 @@ h2 {
 .btn:hover::after {
     width: 100%;
 }
-
