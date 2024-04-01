@@ -18,7 +18,7 @@ body {
 
 
 #sectiondiv {
-    width: 1200px;
+    width: 850px;
     height: 500px;
     background-color: white;
     border-radius: 30px;
@@ -28,19 +28,14 @@ body {
 
 }
 
-section {
-    margin-right: 300px;
-}
-
 #footerdiv {
     width: 100px;
 }
 
 img {
-    padding: 150px;
+    padding: 100px;
     margin-top: 10px;
-    margin-right: 50px;
-    width: 850px;
+    width: 900px;
     border-radius: 100%;
     box-shadow: 5px 5px lightblue;
 }
@@ -54,6 +49,7 @@ h2 {
     font-size: 40px;
     height: 20px;
     padding-top: 40px;
+    padding-bottom: 20px;
 }
 
 h1,
@@ -98,11 +94,7 @@ h2 {
     background: radial-gradient(circle at 18.7% 37.8%, rgb(200, 200, 200) 0%, rgb(175, 194, 198) 90%);
 }
 
-#Rubrikerna {
-    padding-bottom: 30px;
-    margin-left: 55px;
 
-}
 
 #footerdiv {
     position: fixed;
@@ -125,20 +117,21 @@ h2 {
 }
 
 
-.btn { 
+.btn  { 
     border: solid black;
     border-radius: 15px;
     border-width: 1px;
     text-align: center;
     font-size: larger;
     box-shadow: 5px 5px lightblue;
-    width: 630px;
     overflow: hidden; 
     position: relative; 
     font-family: "Playfair Display";
     background-color: white;
-    height: 55px;
-    margin-left: 100px;
+    display: block;
+    height: 40px;
+    width: 700px;
+    margin-left: 50px;
 
 }
 
@@ -159,4 +152,10 @@ h2 {
 
 .btn:hover::after {
     width: 100%;
+}
+
+a { 
+    text-decoration: none;
+    color: black;
+    padding-top: 20px;
 }
