@@ -8,7 +8,7 @@ app = Bottle()
 
 @app.route('/')
 def index():
-     return template('First-Side.html')
+     return template('First-Site.html')
 
 
 # Registering a new user in the database
@@ -57,7 +57,7 @@ def login ():
 
 
         if registers:
-            return redirect('/firstSide')
+            return redirect('/First-Site')
         else: 
             return  template ('login.html', error="Wrong Email or Password!")
         
