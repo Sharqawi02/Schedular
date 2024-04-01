@@ -6,16 +6,16 @@ body {
 
 #wrapper {
     display: flex;
-    flex-direction: row; 
-    
+    flex-direction: row;
+
 }
 
 #headerdiv {
-    flex-grow: 1; 
+    flex-grow: 1;
     height: 500px;
     margin-left: 70px;
 }
-  
+
 
 #sectiondiv {
     width: 1200px;
@@ -23,12 +23,12 @@ body {
     background-color: white;
     border-radius: 30px;
     padding: 30px;
-    margin-top: 100px ;
+    margin-top: 100px;
     margin-right: 600px;
 
 }
 
-section { 
+section {
     margin-right: 300px;
 }
 
@@ -36,78 +36,69 @@ section {
     width: 100px;
 }
 
-img { 
+img {
     padding: 150px;
     margin-top: 10px;
+    margin-right: 50px;
     width: 850px;
+    border-radius: 100%;
+    box-shadow: 5px 5px lightblue;
 }
 
-h1 { 
+h1 {
     font-size: 90px;
     height: 150px;
 }
 
-h2 { 
+h2 {
     font-size: 40px;
     height: 20px;
     padding-top: 40px;
 }
 
-h1, h2 { 
+h1,
+h2 {
     margin-left: 120px;
 }
 
-.reg { 
-    border: solid black;
-    border-radius: 15px;
-    padding: 5px;
-    max-width: 600px;
-    height: 30px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 5px;
-    font-size: larger;
-}
-
-#alternativ { 
+#alternativ {
     margin-left: 67px;
     margin-top: 30px;
 }
 
-#eller { 
+#eller {
     padding: 20px;
     padding-right: 30px;
 
 }
 
 #ellersträck {
-    display: flex; 
+    display: flex;
     margin-right: 170px;
     margin-left: 170px;
 }
 
 
 .side-div {
-    position: relative; 
+    position: relative;
     width: 200px;
-    margin-right: 10px; 
+    margin-right: 10px;
     overflow: hidden;
     color: white;
-    
+
 }
 
 .side-div::before {
-    content: ""; 
-    position: absolute; 
-    top: 50%; 
-    left: 0; 
-    width: 100%; 
-    height: 1px; 
-    background: radial-gradient(circle at 18.7% 37.8%, rgb(200, 200, 200) 0%, rgb(175, 194, 198) 90%); 
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: radial-gradient(circle at 18.7% 37.8%, rgb(200, 200, 200) 0%, rgb(175, 194, 198) 90%);
 }
 
-#Rubrikerna { 
+#Rubrikerna {
     padding-bottom: 30px;
     margin-left: 55px;
 
@@ -120,18 +111,53 @@ h1, h2 {
     color: gray;
     font-size: 20px;
     text-align: center;
-    z-index: 999; 
+    z-index: 999;
     word-spacing: 10px;
     margin: 20px;
     margin-left: 180px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#policy { 
+#policy {
     width: 550px;
     text-align: center;
     margin-left: 140px;
 }
 
 
-  
+.btn { 
+    border: solid black;
+    border-radius: 15px;
+    border-width: 1px;
+    text-align: center;
+    font-size: larger;
+    box-shadow: 5px 5px lightblue;
+    width: 630px;
+    overflow: hidden; 
+    position: relative; 
+    font-family: "Playfair Display";
+    background-color: white;
+    height: 55px;
+    margin-left: 100px;
+
+}
+
+.btn:hover {
+    scale: 1.1;
+}
+
+.btn::after{
+    content: '';
+    background: lightblue;
+    width: 0;
+    position: absolute;
+    inset: 0;
+    transition: width 2s cubic-bezier(0.19, 1, 0.22, 1); 
+    z-index: -1;    
+    border-radius: 15px;
+}
+
+.btn:hover::after {
+    width: 100%;
+}
+
