@@ -1,76 +1,67 @@
 body {
     background-color: white;
-    /* position: relative; */
     margin: 0;
     padding: 0;
     font-family: "Playfair Display", serif;
     box-sizing: border-box;
-    /* width: 100%; */
 
 }
 
 /* MAIN div container */
 #wrapper {
     display: flex;
-    align-self: center;
-    justify-content: space-evenly;
-    /* flex-direction: row; */
+    align-items: flex-start; 
+    justify-content: space-between; 
     padding: 0;
     margin: 0;
+    height: 100vh; 
+
 
 }
 
-#wrapper #headerdiv {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* height: 100px; */
-    padding-top: 10vh;
-    margin: 0 70px;
-}
-
-#wrapper #headerdiv header {
+img {
     border-radius: 100%;
-    /* box-shadow: inset 0 0 0 5px lightblue; <- se om mira tycker om den såhär istället */
-    box-shadow: 5px 5px lightblue;
-}
-
-#wrapper #headerdiv header img {
-    /* padding: 10px; */
-    border-radius: 100%;
-    width: 300px;
     height: auto;
+    padding-bottom: 50px;
+    padding: 50px;
+    margin-top: 10px;
+    margin-right: 50px;
+    width: 600px;
+    box-shadow: 5px 5px lightblue;
+    overflow: hidden;
 }
 
 #sectiondiv {
-    width: 70%;
-    /* width: 600px; */
-    /* height: 500px; */
-    /* background-color: peru; */
-    /* border-radius: 30px; */
+    width: 600px; 
+    height: 200px; 
+    border-radius: 30px; 
     padding: 0px;
-    /* margin-top: 50px; */
-    /* margin-right: 100px; */
+    margin-top: 50px; 
+    margin-right: 200px;
 
 }
 
-#sectiondiv section h1 {
-    inline-size: 60%;
-    font-size: 90px;
-    height: 150px;
+section { 
+    width: 80%;
+    box-sizing: border-box;
+    
 }
 
-#sectiondiv section h2 {
-    font-size: 40px;
-    height: 20px;
-    padding-top: 40px;
+.rubriker h1{
+    font-size: 70px;
+    height: auto; 
+    margin-bottom: 20px;
+    width: 450px;
+    margin-left: 70px;    
+
+
+}
+
+.rubriker h2{
     padding-bottom: 20px;
-}
+    margin-left: 70px;    
+    font-size: 40px;
 
-/* these are connected with the #sectiondiv */
-h1,
-h2 {
-    margin-left: 120px;
 }
 
 #sectiondiv section #alternativ { 
@@ -80,8 +71,7 @@ h2 {
 
 #alternativ #ellersträck {
     display: flex;
-    /* margin-right: 170px; */
-    margin-left: 140px;
+    margin-left: 11%;
 }
 
 #ellersträck .side-div {
@@ -108,33 +98,31 @@ h2 {
 }
 
 #alternativ #policy {
-    width: 550px;
+    width: 450px;
     text-align: center;
-    margin-left: 140px;
 }
 
 #alternativ a { 
     text-decoration: none;
     color: black;
-    padding-top: 20px;
+    padding-top: 10px;
+    width: 450px;
+
 }
 
 #alternativ .btn  { 
     border: solid black;
-    border-radius: 15px;
-    border-width: 1px;
+    border-width: 0.5px;
+    border-radius: 10px;
     text-align: center;
-    font-size: larger;
     box-shadow: 5px 5px lightblue;
     overflow: hidden; 
-    position: relative; 
-    font-family: "Playfair Display";
     background-color: white;
     display: block;
-    height: 40px;
-    width: 700px;
-    margin-left: 50px;
+    height: 30px;
+    font-family: "Playfair Display";
 
+    
 }
 
 #alternativ .btn:hover {
@@ -147,28 +135,24 @@ h2 {
     width: 0;
     position: absolute;
     inset: 0;
-    transition: width 2s cubic-bezier(0.19, 1, 0.22, 1); 
     z-index: -1;    
     border-radius: 15px;
 }
 
 #alternativ .btn:hover::after {
     width: 100%;
+    transition: width 2s cubic-bezier(0.19, 1, 0.22, 1); 
+
 }
 
-/* FOOTER */
 #footerdiv {
-    width: 100%;
-    /* position: fixed; */
-    /* bottom: 0; */
-    inline-size: 90%;
+    position: fixed;
+    bottom: 0;
+    width: 90%;
     color: gray;
-    font-size: 20px;
     text-align: center;
     z-index: 999;
     word-spacing: 10px;
-    margin: 0 auto;
-    padding-top: 200px;
-    /* margin-left: 180px; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 5%;
 }
