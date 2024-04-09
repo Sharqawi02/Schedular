@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page - Schedular</title>
-    <link href="static/register-login.css" rel="stylesheet">
+    <link href="static/login.css" rel="stylesheet">
 </head>
 <body>
     <div id="container">
@@ -14,6 +14,17 @@
          {% else %}
             <h1>Login</h1>
          {% endif %}
+         <div id="wrapper">
+            <div class="sec-container">
+                <div id="headerdiv">
+                    <header>
+                        <img src="/static/images/Skärmbild (58).png" alt="Logo for the project" id="logo">
+                    </header>
+                </div>
+    
+                <section id="section-container">
+                    <h1>Logga in </h1>
+        <div id="form-container">
         <form action="/login" method="post">
             <label for="email">
                 Email:
@@ -26,5 +37,17 @@
             <input type="submit" value="Login" class="button">
         </form>
     </div>
+
+
+        <!-- FOOTER -->
+        <footer id="footerdiv">
+            <p> Om Hämta Schedular-appen Hjälpcenter Användarvillkor Integritetspolicy Cookie-policy
+                Tillgänglighet Annonsinfo Blogg Arbetstillfällen Varumärkesresurser
+                Annonsering Marknadsföring Schedular för företag Utvecklare
+                Katalog Inställningar © 2024 Schedular Corp.</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/#"></script>
 </body>
 </html>
