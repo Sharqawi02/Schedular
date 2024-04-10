@@ -37,6 +37,10 @@
                             <input type="email" name="mail" id="mail" required><br>
                             <label for="lösenord">Lösenord: </label><br>
                             <input type="password" name="lösenord" id="lösenord" required><br>
+                            <p id="policy">Genom att registrera dig godkänner du <span
+                                style="color: #72A0C1;">användarvillkoren</span> och <span
+                                style="color: #72A0C1;">sekretesspolicyn</span>, däribland <span
+                                style="color: #72A0C1;">användning av cookies.</span></p>
                             <a href="/login" class="btn"> skapa konto </a>
                         </form>
                         <div class="already-have">
@@ -53,7 +57,7 @@
                     <a href="#" id="modalBtn2" class="btn"> Logga in </a>
                     <div id="minmodal2" class="modal">
                         <div class="modal-content">
-                        <span class="close">&times;</span>
+                        <span class="close2">&times;</span>
                         <form action="/login" method="post">
                             <label for="email">
                                 Email:
@@ -63,7 +67,7 @@
                                 Password:
                                 <input type="password" name="password" id="password" required>
                             </label>
-                            <input type="submit" value="Login" class="button">
+                            <a href="/login" class="btn"> Logga in </a>
                         </form>
                         <div class="already-have">
 

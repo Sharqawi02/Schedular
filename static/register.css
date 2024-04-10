@@ -126,9 +126,7 @@ input[type="password"] {
 
 /* FOOTER */
 #footerdiv {
-    width: 100%;
-    /* position: fixed; */
-    /* bottom: 0; */
+
     inline-size: 90%;
     color: gray;
     font-size: 20px;
