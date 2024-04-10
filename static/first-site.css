@@ -156,6 +156,39 @@ section {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-left: 5%;
 }
+
+#modalBtn {
+        border: solid black;
+        border-width: 0.5px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 5px 5px lightblue;
+        overflow: hidden; 
+        background-color: white;
+        display: block;
+        height: 30px;
+        font-family: "Playfair Display";
+        content: '';
+          
+}
+
+#modalBtn2 {
+    border: solid black;
+    border-width: 0.5px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 5px 5px lightblue;
+    overflow: hidden; 
+    background-color: white;
+    display: block;
+    height: 30px;
+    font-family: "Playfair Display";
+    content: '';
+      
+}
+#alternativ .btn:hover {
+    scale: 1.1;
+}
 .modal {
     display: none;
     position: fixed;
@@ -166,19 +199,18 @@ section {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
-    padding-top: 50px; /* Justera detta beroende på hur du vill placera modalen */
+    padding-top: 50px; 
 }
 
-/* Modal innehåll */
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Justera detta beroende på modalens storlek */
+    width: 35%; 
+    
 }
 
-/* Stängknapp */
 .close {
     color: #aaa;
     float: right;
@@ -191,4 +223,13 @@ section {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+#register label {
+    padding-top: 50%;
+    padding-bottom: 50%;
+}
+
+#register input {
+    padding: 5px;
 }
