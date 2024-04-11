@@ -24,14 +24,52 @@
                 </div>
 
                 <div id="alternativ">
-                    <a class="btn" href="/register">Skapa ett konto</a>
+                   <a href="#" id="modalBtn" class="btn">Skapa ett konto</a>
+                    <div id="minmodal" class="modal">
+                        <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <form id="register" action="/register">
+                            <label for="förnamn">Förnamn: </label><br>
+                            <input type="text" name="förnamn" id="förnamn" required><br>
+                            <label for="efternamn">Efternamn: </label><br>
+                            <input type="text" name="efternamn" id="efternamn" required><br>
+                            <label for="mail">Mail: </label><br>
+                            <input type="email" name="mail" id="mail" required><br>
+                            <label for="lösenord">Lösenord: </label><br>
+                            <input type="password" name="lösenord" id="lösenord" required><br>
+                            <p id="policy">Genom att registrera dig godkänner du <span
+                                style="color: #72A0C1;">användarvillkoren</span> och <span
+                                style="color: #72A0C1;">sekretesspolicyn</span>, däribland <span
+                                style="color: #72A0C1;">användning av cookies.</span></p>
+                            <a href="/login" class="btn"> Skapa konto </a>
+                        </form>
+                        <div class="already-have">
+                            <p>Har du redan ett konto hos Schedular? <a href="/login">Logga in!</a></p>
+                        </div>
+                        </div>
+                    </div>
                     <div id="ellersträck">
                         <div class="side-div">____________________</div>
                         <p id="eller">alternativt</p>
                         <div class="side-div">____________________</div>
                     </div>
 
-                    <a class="btn" href="/login">Logga in</a>
+                    <a href="#" id="modalBtn2" class="btn"> Logga in </a>
+                    <div id="minmodal2" class="modal">
+                        <div class="modal-content">
+                        <span class="close2">&times;</span>
+                        <form action="/login" method="post">
+                            <label for="email">
+                                Email:
+                                <input type="email" name="email" id="email" required>
+                            </label>
+                            <label for="password">
+                                Password:
+                                <input type="password" name="password" id="password" required>
+                            </label>
+                            <a href="/login" class="btn" id="loginbtn"> Logga in </a>
+                        </form>
+                        <div class="already-have">
 
                     <p id="policy">Genom att registrera dig godkänner du <span
                             style="color: #72A0C1;">användarvillkoren</span> och <span
@@ -43,7 +81,7 @@
         </div>
 
     </div>
-
+    <script src="/./script.js"></script>
     <footer id="footerdiv">
         <p> Om Hämta Schedular-appen Hjälpcenter Användarvillkor Integritetspolicy Cookie-policy
             Tillgänglighet Annonsinfo Blogg Arbetstillfällen Varumärkesresurser
