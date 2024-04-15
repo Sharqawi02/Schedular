@@ -2,14 +2,15 @@ import psycopg2
 from bottle  import  Bottle, route, template, run, static_file, request, redirect
 from db import connect
 
-
 app = Bottle()
-
 
 @app.route('/')
 def index():
      return template('First-Site.html')
 
+@app.route('/homepage')
+def homepage_route():
+    return template('homepage.html')
 
 # Registering a new user in the database
 @app.route('/register' , method=[ 'GET','POST'])
@@ -29,7 +30,7 @@ def register():
             connection.commit()
             print ("User added")
 
-            return redirect('/')
+            return redirect('/homepage')
         else: 
             return template('register.html')
     except psycopg2.Error as e:
@@ -40,39 +41,30 @@ def register():
         if 'connection' in locals():
             connection.close()
 
-# login page and checking credentials from the database
 @app.route('/login', method=['POST', 'GET'])
-def login ():
-    if  request.method=='POST':
-        # Connect to your postgres
-        connection = connect ()
+def login():
+    error = None
+    if request.method == 'POST':
+        connection = connect()
         cursor = connection.cursor()
-        # Get the details from the form
         email = request.forms.get('email')
         password = request.forms.get('password')
 
-        cursor.execute("SELECT FROM register WHERE email = %s AND password = %s", (email, password))
+        cursor.execute("""SELECT * FROM register WHERE email = %s AND password = %s """,(email, password))
+        user = cursor.fetchall()
 
-        registers = cursor.fetchone()
+        if user:
+            return redirect('/homepage')
+        else:
+            error = "Ingen användare med den angivna epostadressen finns i systemet."
+            return template('First-Site.html', error=error)
 
-
-        if registers:
-            return redirect('/First-Site')
-        else: 
-            return  template ('login.html', error="Wrong Email or Password!")
-        
-
-    # If it is a GET Request then show the Login Page 
-    return  template ('login.html', error="Wrong Email or Password!")
-    
-
-
+    return template('First-Site.html', error=error)
 
 #denna ska INTE ändras
 @app.route('/static/<filename:path>')
 def static_files(filename):
     return static_file(filename, root='./static')
-
 
 if __name__ == '__main__':
     run(app, debug=True)
