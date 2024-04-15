@@ -10,15 +10,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!--för font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <div id="wrapper">
         <header>
-            <h1>Schedular</h1>
-            <nav>
-                här ska navbar vara
-            </nav>
+            <div id="översikt">
+                <div class="hamburger">
+                    <input class="checkbox" type="checkbox" />
+                    <svg fill="none" viewBox="0 0 50 50" height="50" width="50">
+                        <path class="lineTop line" stroke-linecap="round" stroke-width="4" stroke="black"
+                            d="M6 11L44 11"></path>
+                        <path stroke-linecap="round" stroke-width="4" stroke="black" d="M6 24H43" class="lineMid line">
+                        </path>
+                        <path stroke-linecap="round" stroke-width="4" stroke="black" d="M6 37H43"
+                            class="lineBottom line"></path>
+                    </svg>
+                </div>
+
+            </div>
+            <h1>Schedular/Logga</h1>
+            <nav>här ska navbar vara</nav>
         </header>
         <div id="container">
             <main>
@@ -26,31 +43,43 @@
                     <form action="" method="get">
                         <div class="block">
                             <label for="tast_date">Date</label>
-                            <input type="text" name="task_date" id="task_date" required placeholder="dd/mm/yyyy">
+                            <input type="date" name="task_date" id="task_date" required>
                         </div>
                         <div class="block">
-                            <label for="user_task">Activity</label>
+                            <label for="user_task">Activity title</label>
                             <input type="text" name="user_task" id="user_task" required>
                         </div>
-                        <div class="block">
-                            <label for="user_tast_description">Descrption</label>
-                            <textarea name="user_task_description" id="user_task_description" cols="30" rows="10"
-                                placeholder="Describe the activity..."></textarea>
-                        </div>
-                        <div class="block">
+                        <div id="list">
                             <select name="task_priority" id="task_priority">
                                 <option value="high">High priority</option>
                                 <option value="medium">Medium priority</option>
                                 <option value="Low">Low priority</option>
                             </select>
+                            <select name="task_category" id="task_category">
+                                <option value="other">Category</option>   
+                                <option value="school">School</option>
+                                <option value="gym">Gym</option>
+                                <option value="spare_time">Spare time</option>
+                            </select>
                         </div>
-                        <button class="button-13" role="button">Add</button>
+                        <div class="block">
+                            <label for="user_task_description">Description</label>
+                            <textarea name="user_task_description" id="user_task_description" cols="30" rows="10"
+                                placeholder="Describe the activity..."></textarea>
+                        </div>
+                        <div class="block">
+                            <label for="user_invite">Invite user</label>
+                            <input type="text" name="user_invite" id="user_invite">
+                        </div>
+                        <div class="block">
+                            <button class="button-13" role="button">Add</button>
+                        </div>
                     </form>
                 </div>
             </main>
             <aside>
-                <div id="calndar">
-                    här ska kalndern vara
+                <div id="calendar">
+                    här ska kalendern vara
                 </div>
             </aside>
         </div>
