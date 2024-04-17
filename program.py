@@ -43,7 +43,7 @@ def register():
 
 @app.route('/login', method=['POST', 'GET'])
 def login():
-    error = ""
+    # error = ""
     if request.method == 'POST':
         connection = connect()
         cursor = connection.cursor()
@@ -56,10 +56,12 @@ def login():
         if user:
             return redirect('/homepage')
         else:
-            error = "Ingen användare med den angivna epostadressen finns i systemet."
+            error = "Felaktigt lösenord."
             return template('First-Site.html', error=error)
 
     return template('First-Site.html', error=error)
+
+
 
 @app.route('/static/<filename:path>')
 def static_files(filename):
