@@ -42,3 +42,14 @@ window.addEventListener("click", function (event) {
         modal2.style.display = "none";
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    var errorMessage = document.getElementById("errorMessage");
+    var loginForm = document.getElementById("loginForm");
+
+    if (errorMessage.innerText === "") {
+        errorMessage.style.display = "none";
+    } else {
+        errorMessage.style.display = "block";
+    }
+});
