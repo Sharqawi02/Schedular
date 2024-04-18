@@ -1,6 +1,6 @@
-from bottle import Bottle, route, template, run, static_file, request, redirect, response
+from bottle import Bottle, route, template, run, static_file, request, redirect
 import psycopg2
-from db import connect
+from storage.db import connect
 
 app = Bottle()
 
@@ -109,7 +109,7 @@ def register():
             return redirect('/homepage')
         else: 
             return template('register.html')
-    except psycopg2.Error as e:
+    except acopg2.Error as e:
         print("ERROR CONNECTING TO POSTGREsql:", e)
     finally:
         if 'cursor' in locals():
