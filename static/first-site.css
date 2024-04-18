@@ -47,7 +47,7 @@ section {
 
 }
 
-.headlines h1 {
+.rubriker h1 {
     font-size: 70px;
     height: auto;
     margin-bottom: 20px;
@@ -57,7 +57,7 @@ section {
 
 }
 
-.headlines h2 {
+.rubriker h2 {
     padding-bottom: 20px;
     margin-left: 70px;
     font-size: 40px;
@@ -69,12 +69,12 @@ section {
     margin-top: 30px;
 }
 
-#alternativ #line {
+#alternativ #ellersträck {
     display: flex;
     margin-left: 11%;
 }
 
-#line .side-div {
+#ellersträck .side-div {
     position: relative;
     width: 200px;
     margin-right: 10px;
@@ -82,7 +82,7 @@ section {
     color: white;
 }
 
-#line .side-div::before {
+#ellersträck .side-div::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -92,7 +92,7 @@ section {
     background: radial-gradient(circle at 18.7% 37.8%, rgb(200, 200, 200) 0%, rgb(175, 194, 198) 90%);
 }
 
-#line #or {
+#ellersträck #eller {
     padding: 20px;
     padding-right: 30px;
 }
