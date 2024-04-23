@@ -67,7 +67,7 @@ aside{
   margin-left: 100px;
   margin-right: 30px;
   box-sizing: border-box;
-  border-radius: 100px;
+  border-radius: 10px;
 }
 
 aside #calendar{
