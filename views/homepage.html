@@ -15,6 +15,49 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
+    <!--för kalendern-->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+
+                // this code shows the diffrent views
+                initialView: 'timeGridWeek',
+                headerToolbar: {
+                    left: 'prev,next',
+                    center: 'title',
+                    right: 'multiMonthYear,dayGridMonth,timeGridWeek,timeGridDay' // user can switch between the two
+                },
+
+                // You can select days with selectable true
+                selectable: true,
+
+                eventSources: [
+
+                    // your event source
+                    {
+                        url: '/get_events', // use the `url` property
+                        color: '#A63A50',    // an option!
+                        textColor: 'white'  // an option!
+                    }
+
+                ],
+
+                eventClick: function (info) {
+                    paragraphs[0].innerText = 'Event Name: ' + info.event.title
+                    // change the border color just for fun
+                    info.el.style.border = '1.5px solid #2c3e50';
+                }
+
+            });
+            calendar.render();
+        });
+
+    </script>
 </head>
 
 <body>
@@ -56,7 +99,7 @@
                                 <option value="Low">Low priority</option>
                             </select>
                             <select name="task_category" id="task_category">
-                                <option value="other">Category</option>   
+                                <option value="other">Category</option>
                                 <option value="school">School</option>
                                 <option value="gym">Gym</option>
                                 <option value="spare_time">Spare time</option>
@@ -78,9 +121,7 @@
                 </div>
             </main>
             <aside>
-                <div id="calendar">
-                    här ska kalendern vara
-                </div>
+                <div id="calendar"></div>
             </aside>
         </div>
 
