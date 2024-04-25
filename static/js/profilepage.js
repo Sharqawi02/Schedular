@@ -1,29 +1,18 @@
 // FOR THE CHANGING OF THE SECTIONS
-document.addEventListener("DOMContentLoaded", function() {
-    const accountSettings = document.querySelector('.account-settings');
-    const passwordSettings = document.querySelector('.password-settings');
-    const notificationsSettings = document.querySelector('.notifications-settings');
+function showAccountInfo() {
+    document.querySelector('.account-info').style.display = 'block';
+    document.querySelector('.password-info').style.display = 'none';
+    document.querySelector('.notification-info').style.display = 'none';
+}
 
-    accountSettings.addEventListener('click', function() {
-        toggleSettings('.account-info');
-    });
+function showPasswordInfo() {
+    document.querySelector('.account-info').style.display = 'none';
+    document.querySelector('.password-info').style.display = 'block';
+    document.querySelector('.notification-info').style.display = 'none';
+}
 
-    passwordSettings.addEventListener('click', function() {
-        toggleSettings('.password-info');
-    });
-
-    notificationsSettings.addEventListener('click', function() {
-        toggleSettings('.notification-info');
-    });
-
-    function toggleSettings(activeSetting) {
-        const allSettings = document.querySelectorAll('.settings-container > .account-info, .settings-container > .password-info, .settings-container > .notification-info');
-        allSettings.forEach(function(setting) {
-            if (setting.classList.contains(activeSetting.substring(1))) {
-                setting.style.display = 'block';
-            } else {
-                setting.style.display = 'none';
-            }
-        });
-    }
-});
+function showNotificationInfo() {
+    document.querySelector('.account-info').style.display = 'none';
+    document.querySelector('.password-info').style.display = 'none';
+    document.querySelector('.notification-info').style.display = 'block';
+}

@@ -52,13 +52,13 @@
                 </div>
                 <h2>Full Name</h2>
                 <div class="settings-container">
-                    <div class="account-settings">
+                    <div class="account-settings" onclick="showAccountInfo()">
                         <p>Account</p>
                     </div>
-                    <div class="password-settings">
+                    <div class="password-settings" onclick="showPasswordInfo()">
                         <p>Password</p>
                     </div>
-                    <div class="notifications-settings">
+                    <div class="notifications-settings" onclick="showNotificationInfo()">
                         <p>Notifications</p>
                     </div>
                 </div>
@@ -121,6 +121,9 @@
         </div>
 
     </div>
+
+    <!-- Script link for JS -->
+    <script src="/static/js/profilepage.js"></script>
 
     <!-- Script kit for FontAwesome -->
     <script src="https://kit.fontawesome.com/492ceb14f6.js" crossorigin="anonymous"></script>
