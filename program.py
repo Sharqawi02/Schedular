@@ -31,13 +31,13 @@ def register():
             # If the user exists, return an error message
             error = "E-postadressen är redan registrerad."
             return template('First-Site.html', error=error)
+        else:
+            cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
+                        VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
+            connection.commit()
+            print ("User added")
 
-        cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
-                       VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
-        connection.commit()
-        print ("User added")
-
-        return redirect('/homepage')
+            return redirect('/homepage')
     else: 
         return template('First-Site.html', error=error)
 
