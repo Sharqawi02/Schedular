@@ -1,46 +1,47 @@
+from bottle import Bottle, route, template, run, static_file, request, redirect
 import psycopg2
 from bottle  import  Bottle, route, template, run, static_file, request, redirect
-from db import connect
+from storage.db import connect
 import json
 
 app = Bottle()
 
 @app.route('/')
 def index():
-     return template('First-Site.html')
+     return template('First-Site.html', error="")
 
 @app.route('/homepage')
 def homepage_route():
     return template('homepage.html')
 
-# Registering a new user in the database
 @app.route('/register' , method=[ 'GET','POST'])
 def register():
-    try:
-        if request.method == 'POST':
-            firstname = request.forms.get('firstname')
-            lastname = request.forms.get('lastname')
-            email = request.forms.get('email')
-            password = request.forms.get('password')
+    error = ""
+    if request.method == 'POST':
+        firstname = request.forms.get('firstname')
+        lastname = request.forms.get('lastname')
+        email = request.forms.get('email')
+        password = request.forms.get('password')
 
-            connection = connect()
-            cursor  = connection.cursor()
+        connection = connect()
+        cursor  = connection.cursor()
 
-            cursor.execute("""INSERT INTO register (firstname, lastname, email, password)
-                           VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
-            connection.commit()
-            print ("User added")
+        # Check if the email already exists in the database
+        cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
+        user = cursor.fetchone()
+        if user:
+            # If the user exists, return an error message
+            error = "E-postadressen är redan registrerad."
+            return template('First-site.html',error=error)
 
-            return redirect('/homepage')
-        else: 
-            return template('register.html')
-    except psycopg2.Error as e:
-        print("ERROR CONNECTING TO POSTGREsql:", e)
-    finally:
-        if 'cursor' in locals():
-            cursor.close()
-        if 'connection' in locals():
-            connection.close()
+        cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
+                       VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
+        connection.commit()
+        print ("User added")
+
+        return redirect('/homepage')
+    else: 
+        return template('First-Site.html', error=error)
 
 @app.route('/login', method=['POST', 'GET'])
 def login():
@@ -50,7 +51,7 @@ def login():
         email = request.forms.get('email')
         password = request.forms.get('password')
 
-        cursor.execute("""SELECT * FROM register WHERE email = %s AND password = %s """,(email, password))
+        cursor.execute("""SELECT * FROM users WHERE email = %s AND password = %s """,(email, password))
         user = cursor.fetchall()
 
         if user:
@@ -87,10 +88,13 @@ def create_event():
     redirect("/homepage")
 
 
-#denna ska INTE ändras
+
+
 @app.route('/static/<filename:path>')
 def static_files(filename):
     return static_file(filename, root='./static')
 
 if __name__ == '__main__':
     run(app, debug=True)
+
+

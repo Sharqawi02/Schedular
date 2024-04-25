@@ -310,3 +310,8 @@ input[type="password"] {
     margin-left: 11px;
 
 }
+
+p.error { 
+    color: red;
+    text-align: center;   
+}

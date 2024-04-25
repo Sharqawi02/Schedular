@@ -30,6 +30,9 @@
                         <div class="modal-content">
                             <span class="close">&times;</span>
                             <form action="/register" method="post" id="register">
+                                % if error:
+                                <p class="error">{{error}}</p>
+                                % end                                
                                 <label for="firstname">Förnamn: </label><br>
                                 <input type="text" name="firstname" id="förnamn" required><br>
                                 <label for="lastname">Efternamn: </label><br>
@@ -59,6 +62,9 @@
                         <div class="modal-content">
                             <span class="close2">&times;</span>
                             <form action="/login" method="post">
+                                %if error:
+                                <p  class="error">{{error}}</p>
+                                % end
                                 <label for="email">
                                     Email:
                                     <input type="email" name="email" id="email" required>
@@ -79,6 +85,8 @@
         </div>
     </div>
     <script src="/static/js/script.js"></script>
+ 
+    
     <footer id="footerdiv">
         <p> Om Hämta Schedular-appen Hjälpcenter Användarvillkor Integritetspolicy Cookie-policy
             Tillgänglighet Annonsinfo Blogg Arbetstillfällen Varumärkesresurser
