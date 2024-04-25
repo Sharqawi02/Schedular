@@ -1,12 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/profilepage.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/./static/profilepage.css">
+    <!-- Google Fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <title>Profile - Schedular</title>
 </head>
+
 <body>
-    
+    <div class="container">
+        <nav>
+            <!-- h1 tag header -->
+            <header>
+                <h1><a href="#">Schedular/Logga</a></h1>
+            </header>
+            <!-- container for search icon and profile img -->
+            <div class="icon-search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <div class="img-container">
+                    <img src="#" alt="Profile Image of User">
+                </div>
+                <!-- hamburger icon -->
+                <div class="hamburger">
+                    <input class="checkbox" type="checkbox" />
+                    <svg fill="none" viewBox="0 0 50 50" height="50" width="50">
+                        <path class="lineTop line" stroke-linecap="round" stroke-width="4" stroke="black"
+                            d="M6 11L44 11">
+                        </path>
+                        <path stroke-linecap="round" stroke-width="4" stroke="black" d="M6 24H43" class="lineMid line">
+                        </path>
+                        <path stroke-linecap="round" stroke-width="4" stroke="black" d="M6 37H43"
+                            class="lineBottom line">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- profile overview sections -->
+        <div class="profile-container">
+            <div class="section-container">
+                <div class="img-container">
+                    <img src="#" alt="Profile Image of User">
+                </div>
+                <h2>Full Name</h2>
+                <div class="settings-container">
+                    <div class="account-settings">
+                        <p>Account</p>
+                    </div>
+                    <div class="password-settings">
+                        <p>Password</p>
+                    </div>
+                    <div class="notifications-settings">
+                        <p>Notifications</p>
+                    </div>
+                </div>
+                <div class="logout-button">
+                    <a href="/"><input type="button" value="Logout"></a>
+                </div>
+            </div>
+
+            <!-- What the different sections (when clicked) will show -->
+            <div class="info-container">
+                <!-- Account Settings -->
+                <div class="account-info">
+                    <h2>Account Settings</h2>
+                    <form action="" method="post">
+                        <div class="flex-container">
+                            <label for="username">Username: </label>
+                            <input type="text" name="username" id="username" required>
+                        </div>
+                        <div class="flex-container">
+                            <label for="email">Email: </label>
+                            <input type="email" name="email" id="email" required>
+                        </div>
+                        <label for="bio">Bio (optional): </label>
+                        <textarea name="bio" id="bio" cols="80" rows="10"></textarea>
+                    </form>
+                    <div class="button-container">
+                        <input type="button" value="Update" class="UpdateBtn">
+                        <input type="button" value="Cancel" class="CancelBtn">
+                    </div>
+                </div>
+                <!-- Password Settings -->
+                <div class="password-info">
+                    <h2>Password Settings</h2>
+                    <form action="" method="post">
+                        <label for="old-password">Old Password: </label>
+                        <input type="password" name="old-password" id="old-password" required>
+                        <label for="new-password">New Password: </label>
+                        <input type="password" name="new-password" id="new-password" required>
+                        <label for="confirm-password">Confirm Password: </label>
+                        <input type="password" name="confirm-password" id="confirm-password" required>
+                        <div class="button-container">
+                            <input type="button" value="Update" class="UpdateBtn">
+                            <input type="button" value="Cancel" class="CancelBtn">
+                        </div>
+                    </form>
+                </div>
+                <!-- Notification Settings (OPTIONAL) -->
+                <div class="notification-info">
+                    <h2>Notification Settings</h2>
+                    <form action="" method="post">
+                        <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit. Phasellus nec velit enim.</p>
+                        <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit. Phasellus nec velit enim.</p>
+                        <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit. Phasellus nec velit enim.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script kit for FontAwesome -->
+    <script src="https://kit.fontawesome.com/492ceb14f6.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

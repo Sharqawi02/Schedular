@@ -1,0 +1,301 @@
+/* PROBLEM: I can't seem to fix the interactivity using JS to change between the section */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display', sans-serif;
+    box-sizing: border-box;
+}
+
+/* STYLING for the main div container */
+.container {
+    padding: 0;
+}
+
+/* STYLING for the nav */
+nav {
+    background-color: #ADD8E6;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav header h1 {
+    font-size: 35px;
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    color: #000000;
+}
+
+nav header h1 a {
+    text-decoration: none;
+    color: #000000;
+}
+
+/* STYLING for the nav ends here */
+
+/* STYLING for icon-search-container */
+nav .icon-search-container {
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+nav .icon-search-container .fa-solid {
+    font-size: 40px;
+    cursor: pointer;
+    padding-right: 20px;
+}
+
+nav .icon-search-container .img-container {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 100%;
+    background-color: #000000;
+}
+
+nav .icon-search-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+nav .icon-search-container .hamburger {
+    height: 50px;
+    width: 50px;
+    transform: 0.2s;
+    position: relative;
+    padding-left: 20px;
+}
+
+nav .icon-search-container .hamburger .checkbox {
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+nav .icon-search-container .line {
+    transition: 0.5s;
+    stroke-width: 6px;
+    stroke: black;
+}
+
+nav .icon-search-container .lineTop {
+    stroke-dasharray: 40 40;
+    stroke-dashoffset: 25;
+}
+
+nav .icon-search-container .lineBottom {
+    stroke-dasharray: 40 40;
+    stroke-dashoffset: 60;
+}
+
+nav .icon-search-container .lineMid {
+    stroke-dasharray: 40 40;
+}
+
+nav .icon-search-container .hamburger .checkbox:checked + svg .line {
+    stroke: crimson;
+}
+
+nav .icon-search-container .hamburger .checkbox:checked + svg .lineTop {
+    stroke-dashoffset: 0;
+    transform-origin: left;
+    transform: rotateZ(45deg) translate(-7px, -5px);
+}
+
+nav .icon-search-container .hamburger .checkbox:checked + svg .lineMid {
+    stroke-dashoffset: 40;
+}
+
+nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
+    stroke-dashoffset: 0;
+    transform-origin: left;
+    transform: rotateZ(-45deg) translate(-5px, 5px);
+}
+/* STYLING for icon-search-container ends here */
+
+/* STYLING for profile container */
+.profile-container {
+    display: flex;
+}
+
+.section-container {
+    display: flex;
+    border-right: 1px solid #000000;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px; /* change this for preference */
+    height: 86vh;
+    width: 25%;
+    background-color: #ADD8E6;
+    overflow: hidden;
+}
+
+.section-container .img-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 100%;
+    background-color: #000000;
+    margin: 30px auto;
+}
+
+.section-container h2 {
+    font-size: 30px;
+    text-align: center;
+    margin: 0 auto;
+    padding-right: 8px;
+}
+
+.settings-container {
+    padding: 50px 0 30px 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* NOT THE MOST EFFECTIVE WAY TO DO THIS, SEE IF YOU CAN DO BETTER */
+.settings-container .account-settings {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+
+.settings-container .password-settings, .notifications-settings {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #000000;
+}
+/* NOT THE MOST EFFECTIVE WAY TO DO THIS, SEE IF YOU CAN DO BETTER */
+
+.settings-container .account-settings p, .password-settings p, .notifications-settings p {
+    font-size: 25px;
+    font-weight: 400;
+    margin: 0 0 0 60px;
+}
+
+.logout-button {
+    margin: 0 auto;
+    padding: 0;
+}
+.logout-button input {
+    background-color: rgb(190, 9, 9);
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    border: 1px solid #000000;
+    padding: 15px 25px;
+    border-radius: 5px;
+}
+
+.logout-button input a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.logout-button input:hover {
+    background-color: darkred;
+    transition: .5s ease-in-out;
+}
+/* STYLING for profile container ends here */
+
+/* STYLING for the info-container */
+.info-container {
+    padding: 20px 20px 10px 10px;
+    background-color: #fff;
+    color: #000000;
+}
+
+.info-container > .password-info, .notification-info { /* for the interactivity (JS) */
+    padding-bottom: 100px;
+    display: none;
+}
+
+.info-container .account-info, .password-info, .notification-info {
+    padding-left: 80px;
+}
+
+.info-container > .account-info h2, .password-info h2, .notification-info h2 {
+    font-size: 40px;
+}
+/* account-info STYLING */
+.info-container .account-info form {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+
+.info-container .account-info form .flex-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.info-container .account-info form .flex-container input {
+    border-radius: 5px;
+    border: 1px solid #000000;
+    outline: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.info-container .account-info form textarea {
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 1px solid #000000;
+    outline: none;
+    resize: vertical;
+    resize: horizontal;
+}
+
+.info-container .account-info .button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.info-container .account-info .button-container input {
+    padding: 10px 25px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.info-container .account-info .button-container input:hover {
+    filter: brightness(95%);
+    transition: .5s ease-in-out;
+}
+
+.info-container .account-info .button-container .UpdateBtn {
+    margin-right: 50px;
+    background-color: #ADD8E6;
+    cursor: pointer;
+}
+
+.info-container .account-info .button-container .CancelBtn {
+    background-color: #D9D9D9;
+    cursor: pointer;
+}
+/* account-info STYLING ends here */
+
+/* password-info STYLING */
