@@ -37,7 +37,6 @@ def register():
         cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
                        VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
         connection.commit()
-        print ("User added")
 
         return redirect('/homepage')
     else: 
