@@ -1,6 +1,5 @@
 from bottle import Bottle, route, template, run, static_file, request, redirect
 import psycopg2
-from bottle  import  Bottle, route, template, run, static_file, request, redirect
 from storage.db import connect
 import json
 
