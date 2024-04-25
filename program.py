@@ -25,14 +25,14 @@ def register():
         cursor  = connection.cursor()
 
         # Check if the email already exists in the database
-        cursor.execute("""SELECT * FROM register WHERE email = %s""", (email,))
+        cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
         user = cursor.fetchone()
         if user:
             # If the user exists, return an error message
             error = "E-postadressen är redan registrerad."
             return template('First-Site.html', error=error)
 
-        cursor.execute("""INSERT INTO register (firstname, lastname, email, password)
+        cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
                        VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
         connection.commit()
         print ("User added")
@@ -50,7 +50,7 @@ def login():
         email = request.forms.get('email')
         password = request.forms.get('password')
 
-        cursor.execute("""SELECT * FROM register WHERE email = %s AND password = %s """,(email, password))
+        cursor.execute("""SELECT * FROM users WHERE email = %s AND password = %s """,(email, password))
         user = cursor.fetchall()
 
         if user:
@@ -67,3 +67,5 @@ def static_files(filename):
 
 if __name__ == '__main__':
     run(app, debug=True)
+
+
