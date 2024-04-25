@@ -1,55 +1,55 @@
-
-// Ser till att DOM är laddat innan funktionerna börjar
+// Wait for the DOM to be loaded before executing the JavaScript code
 document.addEventListener("DOMContentLoaded", function () {
-    // Detta hämtar elementen från HTML-koden med de angivna klasser och ID. 
+    // Get modal elements
     var modal = document.querySelector("#minmodal");
     var modalBtn = document.querySelector("#modalBtn");
     var closeModal = document.querySelector(".close");
 
-    //Här har vi lagt till en event listner, alltså när användaren klickar på angiven knapp så exikveras koden. 
-    modalBtn.addEventListener("click", function () {
+    // Event listener for showing the modal
+    modalBtn.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default behavior of the anchor tag
         modal.style.display = "block";
     });
 
-    //denna funktion är även en lyssnare, och reagerar på när användaren stänger modalen. 
+    // Event listener for closing the modal
     closeModal.addEventListener("click", function () {
         modal.style.display = "none";
     });
 
-    //även denna funktion är en lyssnare så reagerar på att användarens tänger modalen, men gör så att när användaren klickar utanför så stängs den. 
+    // Event listener to close the modal when clicking outside of it
     window.addEventListener("click", function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     });
-});
 
-// Denna laddar in HTML elementen från logga in funktionen. 
-var modal2 = document.querySelector("#minmodal2");
-var modalBtn2 = document.querySelector("#modalBtn2");
-var closeModal2 = document.querySelector(".close2");
+    // Get login modal elements
+    var modal2 = document.querySelector("#minmodal2");
+    var modalBtn2 = document.querySelector("#modalBtn2");
+    var closeModal2 = document.querySelector(".close2");
 
-modalBtn2.addEventListener("click", function () {
-    modal2.style.display = "block";
-});
+    // Event listener for showing the login modal
+    modalBtn2.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default behavior of the anchor tag
+        modal2.style.display = "block";
+    });
 
-closeModal2.addEventListener("click", function () {
-    modal2.style.display = "none";
-});
-
-window.addEventListener("click", function (event) {
-    if (event.target == modal2) {
+    // Event listener for closing the login modal
+    closeModal2.addEventListener("click", function () {
         modal2.style.display = "none";
-    }
-});
+    });
 
-document.addEventListener("DOMContentLoaded", function () {
-    var errorMessage = document.getElementById("errorMessage");
-    var loginForm = document.getElementById("loginForm");
+    // Event listener to close the login modal when clicking outside of it
+    window.addEventListener("click", function (event) {
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+    });
 
-    if (errorMessage.innerText === "") {
-        errorMessage.style.display = "none";
-    } else {
-        errorMessage.style.display = "block";
+    // Check if there is an error message and display it
+    var errorMessage = document.querySelector(".error");
+    if (errorMessage && errorMessage.innerText !== "") {
+        // If there is an error message, display the modal
+        modal.style.display = "block";
     }
 });
