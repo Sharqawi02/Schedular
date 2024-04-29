@@ -61,6 +61,12 @@ def login():
 
     return template('First-Site.html', error=error)
 
+
+# route to profile page
+@app.route('/profilepage')
+def profile_page():
+    return template('profilepage.html')
+
 @app.route('/static/<filename:path>')
 def static_files(filename):
     return static_file(filename, root='./static')

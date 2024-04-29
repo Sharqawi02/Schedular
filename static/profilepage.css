@@ -1,4 +1,6 @@
+
 /* PROBLEM: I can't seem to fix the interactivity using JS to change between the section */
+
 
 body {
     margin: 0;
@@ -7,10 +9,12 @@ body {
     box-sizing: border-box;
 }
 
+
 /* STYLING for the main div container */
 .container {
     padding: 0;
 }
+
 
 /* STYLING for the nav */
 nav {
@@ -21,6 +25,7 @@ nav {
     align-items: center;
 }
 
+
 nav header h1 {
     font-size: 35px;
     padding: 0;
@@ -29,12 +34,15 @@ nav header h1 {
     color: #000000;
 }
 
+
 nav header h1 a {
     text-decoration: none;
     color: #000000;
 }
 
+
 /* STYLING for the nav ends here */
+
 
 /* STYLING for icon-search-container */
 nav .icon-search-container {
@@ -43,11 +51,13 @@ nav .icon-search-container {
     align-items: center;
 }
 
+
 nav .icon-search-container .fa-solid {
     font-size: 40px;
     cursor: pointer;
     padding-right: 20px;
 }
+
 
 nav .icon-search-container .img-container {
     width: 50px;
@@ -57,11 +67,13 @@ nav .icon-search-container .img-container {
     background-color: #000000;
 }
 
+
 nav .icon-search-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
 
 nav .icon-search-container .hamburger {
     height: 50px;
@@ -71,6 +83,7 @@ nav .icon-search-container .hamburger {
     padding-left: 20px;
 }
 
+
 nav .icon-search-container .hamburger .checkbox {
     position: absolute;
     opacity: 0;
@@ -79,29 +92,35 @@ nav .icon-search-container .hamburger .checkbox {
     cursor: pointer;
 }
 
+
 nav .icon-search-container .line {
     transition: 0.5s;
     stroke-width: 6px;
     stroke: black;
 }
 
+
 nav .icon-search-container .lineTop {
     stroke-dasharray: 40 40;
     stroke-dashoffset: 25;
 }
+
 
 nav .icon-search-container .lineBottom {
     stroke-dasharray: 40 40;
     stroke-dashoffset: 60;
 }
 
+
 nav .icon-search-container .lineMid {
     stroke-dasharray: 40 40;
 }
 
+
 nav .icon-search-container .hamburger .checkbox:checked + svg .line {
     stroke: crimson;
 }
+
 
 nav .icon-search-container .hamburger .checkbox:checked + svg .lineTop {
     stroke-dashoffset: 0;
@@ -109,9 +128,11 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineTop {
     transform: rotateZ(45deg) translate(-7px, -5px);
 }
 
+
 nav .icon-search-container .hamburger .checkbox:checked + svg .lineMid {
     stroke-dashoffset: 40;
 }
+
 
 nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     stroke-dashoffset: 0;
@@ -120,10 +141,12 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
 }
 /* STYLING for icon-search-container ends here */
 
+
 /* STYLING for profile container */
 .profile-container {
     display: flex;
 }
+
 
 .section-container {
     display: flex;
@@ -137,6 +160,7 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     overflow: hidden;
 }
 
+
 .section-container .img-container {
     width: 150px;
     height: 150px;
@@ -146,6 +170,7 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     margin: 30px auto;
 }
 
+
 .section-container h2 {
     font-size: 30px;
     text-align: center;
@@ -153,11 +178,13 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     padding-right: 8px;
 }
 
+
 .settings-container {
     padding: 50px 0 30px 0;
     margin: 0;
     width: 100%;
 }
+
 
 /* NOT THE MOST EFFECTIVE WAY TO DO THIS, SEE IF YOU CAN DO BETTER */
 .settings-container .account-settings {
@@ -170,6 +197,7 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     border-bottom: 1px solid #000000;
 }
 
+
 .settings-container .password-settings, .notifications-settings {
     padding: 15px;
     display: flex;
@@ -180,11 +208,13 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
 }
 /* NOT THE MOST EFFECTIVE WAY TO DO THIS, SEE IF YOU CAN DO BETTER */
 
+
 .settings-container .account-settings p, .password-settings p, .notifications-settings p {
     font-size: 25px;
     font-weight: 400;
     margin: 0 0 0 60px;
 }
+
 
 .logout-button {
     margin: 0 auto;
@@ -201,6 +231,7 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     border-radius: 5px;
 }
 
+
 .logout-button input a {
     text-decoration: none;
     color: #fff;
@@ -208,11 +239,13 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     font-size: 15px;
 }
 
+
 .logout-button input:hover {
     background-color: darkred;
     transition: .5s ease-in-out;
 }
 /* STYLING for profile container ends here */
+
 
 /* STYLING for the info-container */
 .info-container {
@@ -221,14 +254,17 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     color: #000000;
 }
 
+
 .info-container > .password-info, .notification-info { /* for the interactivity (JS) */
     padding-bottom: 100px;
     display: none;
 }
 
+
 .info-container .account-info, .password-info, .notification-info {
     padding-left: 80px;
 }
+
 
 .info-container > .account-info h2, .password-info h2, .notification-info h2 {
     font-size: 40px;
@@ -241,11 +277,13 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     overflow: hidden;
 }
 
+
 .info-container .account-info form .flex-container {
     display: flex;
     flex-direction: column;
     padding-bottom: 20px;
 }
+
 
 .info-container .account-info form .flex-container input {
     border-radius: 5px;
@@ -255,6 +293,7 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     margin-top: 10px;
     width: 50%;
 }
+
 
 .info-container .account-info form textarea {
     padding: 10px;
@@ -266,11 +305,13 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     resize: horizontal;
 }
 
+
 .info-container .account-info .button-container {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
+
 
 .info-container .account-info .button-container input {
     padding: 10px 25px;
@@ -281,10 +322,12 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     font-weight: 600;
 }
 
+
 .info-container .account-info .button-container input:hover {
     filter: brightness(95%);
     transition: .5s ease-in-out;
 }
+
 
 .info-container .account-info .button-container .UpdateBtn {
     margin-right: 50px;
@@ -292,10 +335,12 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     cursor: pointer;
 }
 
+
 .info-container .account-info .button-container .CancelBtn {
     background-color: #D9D9D9;
     cursor: pointer;
 }
 /* account-info STYLING ends here */
+
 
 /* password-info STYLING */
