@@ -15,8 +15,6 @@ body {
     padding: 0;
     margin: 0;
     height: 100vh;
-
-
 }
 
 img {
@@ -309,4 +307,9 @@ input[type="password"] {
 #loginbtn {
     margin-left: 11px;
 
+}
+
+p.error { 
+    color: red;
+    text-align: center;   
 }

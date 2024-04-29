@@ -1,7 +1,19 @@
-create table register(
-Id serial primary key,
-firstname varchar (100) not null,
-lastname varchar (100) not null,
-email varchar (100) not null,
-password varchar (100) not null
+----Tabel för användaren----
+create table users(
+    Id serial primary key,
+    firstname varchar (100) not null,
+    lastname varchar (100) not null,
+    email varchar (100) not null,
+    password varchar (100) not null
+);
+
+----Tabel för användarens aktiviteter----
+CREATE TABLE events(
+	event_id SERIAL PRIMARY KEY,
+	event_title VARCHAR(100) NOT NULL,
+	event_description VARCHAR(500),
+	event_date date NOT NULL,
+	event_priority VARCHAR(100) NOT NULL CHECK(event_priority IN('low', 'medium', 'high')),
+	event_category VARCHAR(100) NOT NULL CHECK(event_category IN('other','gym','school','spare_time')),
+	FOREIGN KEY (event_id) REFERENCES users(id)
 );

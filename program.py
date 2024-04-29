@@ -1,78 +1,71 @@
+from bottle import Bottle, route, template, run, static_file, request, redirect
 import psycopg2
-from bottle  import  Bottle, route, template, run, static_file, request, redirect
-from db import connect
-
+from storage.db import connect
 
 app = Bottle()
 
-
 @app.route('/')
 def index():
-     return template('First-Site.html')
+     return template('First-Site.html', error="", error1="")  # Define error1 as an empty string here
 
+@app.route('/homepage')
+def homepage_route():
+    return template('homepage.html')
 
-# Registering a new user in the database
 @app.route('/register' , method=[ 'GET','POST'])
 def register():
-    try:
-        if request.method == 'POST':
-            firstname = request.forms.get('firstname')
-            lastname = request.forms.get('lastname')
-            email = request.forms.get('email')
-            password = request.forms.get('password')
-
-            connection = connect()
-            cursor  = connection.cursor()
-
-            cursor.execute("""INSERT INTO register (firstname, lastname, email, password)
-                           VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
-            connection.commit()
-            print ("User added")
-
-            return redirect('/')
-        else: 
-            return template('register.html')
-    except psycopg2.Error as e:
-        print("ERROR CONNECTING TO POSTGREsql:", e)
-    finally:
-        if 'cursor' in locals():
-            cursor.close()
-        if 'connection' in locals():
-            connection.close()
-
-# login page and checking credentials from the database
-@app.route('/login', method=['POST', 'GET'])
-def login ():
-    if  request.method=='POST':
-        # Connect to your postgres
-        connection = connect ()
-        cursor = connection.cursor()
-        # Get the details from the form
+    error = ""
+    if request.method == 'POST':
+        firstname = request.forms.get('firstname')
+        lastname = request.forms.get('lastname')
         email = request.forms.get('email')
         password = request.forms.get('password')
 
-        cursor.execute("SELECT FROM register WHERE email = %s AND password = %s", (email, password))
+        connection = connect()
+        cursor  = connection.cursor()
 
-        registers = cursor.fetchone()
+        # Check if the email already exists in the database
+        cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
+        user = cursor.fetchone()
+        if user:
+            # If the user exists, return an error message
+            error = "E-postadressen är redan registrerad."
+            return template('First-Site.html', error=error)
+        else:
+            cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
+                        VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
+            connection.commit()
+            print ("User added")
 
+            return redirect('/homepage')
+    else: 
+        return template('First-Site.html', error=error)
 
-        if registers:
-            return redirect('/First-Site')
-        else: 
-            return  template ('login.html', error="Wrong Email or Password!")
-        
+@app.route('/login', method=['POST', 'GET'])
+def login():
+    error = ""
+    if request.method == 'POST':
+        connection = connect()
+        cursor = connection.cursor()
+        email = request.forms.get('email')
+        password = request.forms.get('password')
 
-    # If it is a GET Request then show the Login Page 
-    return  template ('login.html', error="Wrong Email or Password!")
-    
+        cursor.execute("""SELECT * FROM users WHERE email = %s AND password = %s """,(email, password))
+        user = cursor.fetchall()
 
+        if user:
+            return redirect('/homepage')
+        else:
+            error = "Felaktigt lösenord."
+            return template('First-Site.html', error=error)  # Return error1 here
 
+    return template('First-Site.html', error=error)
 
-#denna ska INTE ändras
 @app.route('/static/<filename:path>')
 def static_files(filename):
     return static_file(filename, root='./static')
 
-
 if __name__ == '__main__':
     run(app, debug=True)
+
+
