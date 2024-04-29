@@ -61,7 +61,7 @@ def login():
 
     return template('First-Site.html', error=error)
 
-
+# Den här är om man har glömt sitt lösenord
 @app.route('/forgot-password', method=['GET', 'POST'])
 def forgot_password():
    error = ""
