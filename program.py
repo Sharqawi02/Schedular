@@ -43,6 +43,7 @@ def register():
 
 @app.route('/login', method=['POST', 'GET'])
 def login():
+    error = ""
     if request.method == 'POST':
         connection = connect()
         cursor = connection.cursor()
@@ -55,9 +56,10 @@ def login():
         if user:
             return redirect('/homepage')
         else:
-            return template('First-Site.html')
-
-    return template('First-Site.html')
+            error = "E-postadressen eller lösenordet är fel."
+            return template('First-site.html',error=error)
+    else:
+        return template('First-Site.html', error=error)
 
 @app.route("/get_events", method=["GET"])
 def get_events():
