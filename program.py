@@ -102,6 +102,9 @@ def forgot_password():
 
    return template('forgot-password.html', error=error, new=None)
 
+@app.route('/profilepage')
+def profilepage():
+    return template('profilepage.html')
 
 
 @app.route('/static/<filename:path>')
