@@ -1,6 +1,7 @@
 from bottle import Bottle, route, template, run, static_file, request, redirect
 import psycopg2
 from storage.db import connect
+import json
 
 app = Bottle()
 
@@ -30,12 +31,11 @@ def register():
         if user:
             # If the user exists, return an error message
             error = "E-postadressen är redan registrerad."
-            return template('First-Site.html', error=error)
+            return template('First-site.html',error=error)
         else:
             cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
                         VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
             connection.commit()
-            print ("User added")
 
             return redirect('/homepage')
     else: 
@@ -43,7 +43,6 @@ def register():
 
 @app.route('/login', method=['POST', 'GET'])
 def login():
-    error = ""
     if request.method == 'POST':
         connection = connect()
         cursor = connection.cursor()
@@ -56,10 +55,36 @@ def login():
         if user:
             return redirect('/homepage')
         else:
-            error = "Felaktigt lösenord."
-            return template('First-Site.html', error=error)  # Return error1 here
+            return template('First-Site.html')
 
-    return template('First-Site.html', error=error)
+    return template('First-Site.html')
+
+@app.route("/get_events", method=["GET"])
+def get_events():
+    # 1. Hämta alla event från databasen
+
+    # 2. Gör om strukturen så att varje event får följande struktur
+    # {
+    #    "title": "Min titel"
+    #    "start": "2024-04-24"
+    # }
+    return json.dumps([
+        {
+            "title": "Test",
+            "start": "2024-04-24"
+        }
+    ])
+
+@app.route("/create_event", method=["POST"])
+def create_event():
+    # 1. Hämta alla värden som skickats från formuläret
+    task_date = getattr(request.forms, "task_date")
+
+    # 2. Lägg in eventet (med alla värden) i databasen
+
+    # 3. Skicka tillbaka användaren till kalendersidan
+    redirect("/homepage")
+
 
 
 @app.route('/forgot-password', method=['GET', 'POST'])

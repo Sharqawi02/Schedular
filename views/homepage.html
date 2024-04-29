@@ -15,6 +15,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
+    <!--för kalendern-->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+
 </head>
 
 <body>
@@ -40,7 +43,7 @@
         <div id="container">
             <main>
                 <div id="tasks">
-                    <form action="" method="get">
+                    <form action="/create_event" method="post">
                         <div class="block">
                             <label for="tast_date">Datum</label>
                             <input type="date" name="task_date" id="task_date" required>
@@ -78,13 +81,11 @@
                 </div>
             </main>
             <aside>
-                <div id="calendar">
-                    här ska kalendern vara
-                </div>
+                <div id="calendar"></div>
             </aside>
         </div>
-
     </div>
+    <script src="/./static/js/homepage.js"></script>
 </body>
 
 </html>
