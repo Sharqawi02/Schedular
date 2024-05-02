@@ -26,8 +26,8 @@
                         <div class="modal-content">
                             <span class="close">&times;</span>
                             <form action="/register" method="post" id="register">
-                                % if error:
-                                <p class="error">{{error}}</p>
+                                % if "email_already_registered" in error.keys():
+                                <p class="error">{{error["email_already_registered"]}}</p>
                                 % end                                
                                 <label for="firstname">Förnamn: </label><br>
                                 <input type="text" name="firstname" id="förnamn" required><br>
@@ -56,8 +56,8 @@
                         <div class="modal-content">
                             <span class="close2">&times;</span>
                             <form action="/login" method="post">
-                                %if error:
-                                <p  class="error">{{error}}</p>
+                                %if "wrong_password" in error.keys():
+                                <p  class="error">{{error["wrong_password"]}}</p>
                                 % end
                                 <label for="email">
                                     Email:

@@ -1,21 +1,25 @@
-from bottle import Bottle, route, template, run, static_file, request, redirect
+from bottle import Bottle, route, template, run, static_file, request, redirect, response
 import psycopg2
 from storage.db import connect
 import json
 
 app = Bottle()
 
+
 @app.route('/')
 def index():
-     return template('First-Site.html', error="", error1="")  # Define error1 as an empty string here
+     return template('First-Site.html', error={})
 
 @app.route('/homepage')
 def homepage_route():
-    return template('homepage.html')
+    is_user_logged_in = request.get_cookie("user_id")
+    if is_user_logged_in:
+        return template('homepage.html', is_user_logged_in=is_user_logged_in)
+    else:
+        return redirect("/")
 
 @app.route('/register' , method=[ 'GET','POST'])
 def register():
-    error = ""
     if request.method == 'POST':
         firstname = request.forms.get('firstname')
         lastname = request.forms.get('lastname')
@@ -30,8 +34,10 @@ def register():
         user = cursor.fetchone()
         if user:
             # If the user exists, return an error message
-            error = "E-postadressen är redan registrerad."
-            return template('First-site.html',error=error)
+            error_message = "E-postadressen är redan registrerad."
+            return template('First-site.html',error={
+                "email_already_registered": error_message,
+            })
         else:
             cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
                         VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
@@ -39,27 +45,30 @@ def register():
 
             return redirect('/homepage')
     else: 
-        return template('First-Site.html', error=error)
+        return template('First-site.html',error={})
 
 @app.route('/login', method=['POST', 'GET'])
 def login():
-    error = ""
     if request.method == 'POST':
         connection = connect()
         cursor = connection.cursor()
         email = request.forms.get('email')
         password = request.forms.get('password')
 
-        cursor.execute("""SELECT * FROM users WHERE email = %s AND password = %s """,(email, password))
-        user = cursor.fetchall()
+        cursor.execute("""SELECT id FROM users WHERE email = %s AND password = %s """,(email, password))
+        user_id = cursor.fetchall()
 
-        if user:
+
+        if user_id:
+            response.set_cookie("user", user_id)
             return redirect('/homepage')
         else:
-            error = "E-postadressen eller lösenordet är fel."
-            return template('First-site.html',error=error)
+            error_message = "E-postadressen eller lösenordet är fel."
+            return template('First-site.html',error={
+                "wrong_password": error_message
+            })
     else:
-        return template('First-Site.html', error=error)
+        return template('First-site.html',error={})
 
 @app.route("/get_events", method=["GET"])
 def get_events():
