@@ -58,9 +58,8 @@ def login():
         cursor.execute("""SELECT id FROM users WHERE email = %s AND password = %s """,(email, password))
         user_id = cursor.fetchall()
 
-
         if user_id:
-            response.set_cookie("user", user_id)
+            response.set_cookie("user_id", str(user_id[0]))
             return redirect('/homepage')
         else:
             error_message = "E-postadressen eller lösenordet är fel."
@@ -82,7 +81,7 @@ def get_events():
     return json.dumps([
         {
             "title": "Test",
-            "start": "2024-04-24"
+            "start": "2024-05-24"
         }
     ])
 
