@@ -43,8 +43,6 @@ def register():
                         VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
             connection.commit()
 
-            # Hämta ut ID på användaren och spara den i en cookie ( = logga in användaren automatiskt)
-
             return redirect('/homepage')
     else: 
         return template('First-site.html',error={})
@@ -61,7 +59,7 @@ def login():
         user_id = cursor.fetchall()
 
         if user_id:
-            response.set_cookie("user_id", str(user_id[0]))
+            response.set_cookie("user", user_id)
             return redirect('/homepage')
         else:
             error_message = "E-postadressen eller lösenordet är fel."
@@ -74,11 +72,6 @@ def login():
 @app.route("/get_events", method=["GET"])
 def get_events():
     # 1. Hämta alla event från databasen
-    connection = connect()
-    cursor = connection.cursor()
-
-    cursor.execute("""SELECT * FROM events JOIN users ON events.event_id = users.id""")
-    events = cursor.fetchall
 
     # 2. Gör om strukturen så att varje event får följande struktur
     # {
@@ -95,18 +88,10 @@ def get_events():
 @app.route("/create_event", method=["POST"])
 def create_event():
     # 1. Hämta alla värden som skickats från formuläret
-    connection = connect()
-    cursor = connection.cursor()
-
-    event_date = getattr(request.forms, "event_date")
-    event_title= getattr(request.forms, "event_title")
-    event_priority = getattr(request.forms, "event_priority")
-    event_category = getattr(request.forms, "event_category")
-    event_description = getattr(request.forms, "event_description")
+    task_date = getattr(request.forms, "task_date")
 
     # 2. Lägg in eventet (med alla värden) i databasen
-    cursor.execute("""INSERT INTO events (event_date, event_title, event_priority, event_category, event_description)
-                      VALUES(%s,%s,%s,%s,%s)""",(event_date, event_title, event_priority, event_category, event_description))
+
     # 3. Skicka tillbaka användaren till kalendersidan
     redirect("/homepage")
 
@@ -153,8 +138,22 @@ def forgot_password():
    return template('forgot-password.html', error=error, new=None)
 
 @app.route('/profilepage')
-def profilepage():
-    return template('profilepage.html')
+def profilepage(): 
+    connection = connect()
+    cursor = connection.cursor()
+    user_id = request.get_cookie("user_id")
+    
+    # Hämta användarens förnamn och efternamn från databasen baserat på användarens ID
+    cursor.execute("""SELECT firstname, lastname FROM users WHERE id = %s""", (user_id,))
+    user_data = cursor.fetchone()
+    
+    # Om användaren finns, skicka förnamn och efternamn till HTML-sidan, annars returnera en tom sträng
+    if user_data:
+        firstname, lastname = user_data
+    else:
+        firstname, lastname = '', ''
+    
+    return template('profilepage.html', firstname=firstname, lastname=lastname)
 
 
 @app.route('/static/<filename:path>')
