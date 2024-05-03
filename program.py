@@ -59,7 +59,7 @@ def login():
         user_id = cursor.fetchall()
 
         if user_id:
-            response.set_cookie("user", user_id)
+            response.set_cookie("user_id", str(user_id[0]))
             return redirect('/homepage')
         else:
             error_message = "E-postadressen eller lösenordet är fel."
