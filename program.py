@@ -43,6 +43,8 @@ def register():
                         VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
             connection.commit()
 
+            # Hämta ut ID på användaren och spara den i en cookie ( = logga in användaren automatiskt)
+
             return redirect('/homepage')
     else: 
         return template('First-site.html',error={})
@@ -72,6 +74,11 @@ def login():
 @app.route("/get_events", method=["GET"])
 def get_events():
     # 1. Hämta alla event från databasen
+    connection = connect()
+    cursor = connection.cursor()
+
+    cursor.execute("""SELECT * FROM events JOIN users ON events.event_id = users.id""")
+    events = cursor.fetchall
 
     # 2. Gör om strukturen så att varje event får följande struktur
     # {
@@ -88,10 +95,18 @@ def get_events():
 @app.route("/create_event", method=["POST"])
 def create_event():
     # 1. Hämta alla värden som skickats från formuläret
-    task_date = getattr(request.forms, "task_date")
+    connection = connect()
+    cursor = connection.cursor()
+
+    event_date = getattr(request.forms, "event_date")
+    event_title= getattr(request.forms, "event_title")
+    event_priority = getattr(request.forms, "event_priority")
+    event_category = getattr(request.forms, "event_category")
+    event_description = getattr(request.forms, "event_description")
 
     # 2. Lägg in eventet (med alla värden) i databasen
-
+    cursor.execute("""INSERT INTO events (event_date, event_title, event_priority, event_category, event_description)
+                      VALUES(%s,%s,%s,%s,%s)""",(event_date, event_title, event_priority, event_category, event_description))
     # 3. Skicka tillbaka användaren till kalendersidan
     redirect("/homepage")
 
