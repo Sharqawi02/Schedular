@@ -59,7 +59,7 @@ def login():
         user_id = cursor.fetchall()
 
         if user_id:
-            response.set_cookie("user", user_id)
+            response.set_cookie("user", str(user_id))
             return redirect('/homepage')
         else:
             error_message = "E-postadressen eller lösenordet är fel."
@@ -141,20 +141,25 @@ def forgot_password():
 def profilepage(): 
     connection = connect()
     cursor = connection.cursor()
-    user_id = request.get_cookie("user_id")
-    
-    # Hämta användarens förnamn och efternamn från databasen baserat på användarens ID
-    cursor.execute("""SELECT firstname, lastname FROM users WHERE id = %s""", (user_id,))
-    user_data = cursor.fetchone()
-    
-    # Om användaren finns, skicka förnamn och efternamn till HTML-sidan, annars returnera en tom sträng
-    if user_data:
-        firstname, lastname = user_data
-    else:
-        firstname, lastname = '', ''
-    
-    return template('profilepage.html', firstname=firstname, lastname=lastname)
+        
+        # Försök att hämta användarens ID från cookien
+    try:
+            user_id = int(request.get_cookie("user_id"))
+            
+            # Kontrollera om användarid:t är giltigt och hämta sedan användarens förnamn, efternamn och email från databasen
+            cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
+            user_data = cursor.fetchone()
+            
+            # Om användaruppgifterna finns, skicka förnamn, efternamn och email till HTML-sidan, annars använd tomma strängar
+            if user_data:
+                firstname, lastname, email = user_data
+            else:
+                firstname, lastname, email = '', '', ''
+    except (TypeError, ValueError):
+            # Om användarid:t inte kunde hämtas från cookien eller inte kunde omvandlas till en integer, använd tomma strängar
+            firstname, lastname, email = '', '', ''
 
+    return template('profilepage.html', firstname=firstname, lastname=lastname, email=email)
 
 @app.route('/static/<filename:path>')
 def static_files(filename):
