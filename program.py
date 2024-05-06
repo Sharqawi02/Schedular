@@ -139,19 +139,22 @@ def forgot_password():
 
 @app.route('/profilepage')
 def profilepage():
-    return template('profilepage.html')
+    is_user_logged_in = request.get_cookie("user_id")
+    if is_user_logged_in:
+        # Användare är inloggad, hämta deras uppgifter från databasen
+        connection = connect()
+        cursor = connection.cursor()
+        user_id = eval(is_user_logged_in)[0]  # Utvärdera strängen och extrahera användarens ID
+        cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
+        user_data = cursor.fetchone()  # Hämta användarens uppgifter från databasen
+        connection.close()  # Glöm inte att stänga anslutningen
 
-@app.route('/logout')
-def logout():
-    is_user_logged_in_cookie = request.get_cookie('user_id')
-
-    if is_user_logged_in_cookie:
-        # if user is logged in this will remove the 'user_id' cookie to log the user out
-        response.set_cookie('user_id', '', expires=0)
-        # redirects to the homepage
-        return redirect('/')
+        # Skicka användarens uppgifter till HTML-mallen för att visas
+        return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2])
     else:
+        # Om användaren inte är inloggad, skicka tillbaka till startsidan
         return redirect('/')
+
 
 
 @app.route('/static/<filename:path>')

@@ -75,50 +75,39 @@
             <!-- What the different sections (when clicked) will show -->
             <div class="info-container">
                 <!-- Account Settings -->
+                <!-- Account Settings -->
                 <div class="account-info">
                     <h2>Account Settings</h2>
-                    <h2>{{firstname}} {{lastname}}</h2>
-                    <p>{{email}}</p>
-                            <input type="email" name="email" id="email" required>
-                        </div>
-                        <label for="bio">Bio (optional): </label>
-                        <textarea name="bio" id="bio" cols="80" rows="10"></textarea>
-                    </form>
-                    <div class="button-container">
-                        <input type="button" value="Update" class="UpdateBtn">
-                        <input type="button" value="Cancel" class="CancelBtn">
-                    </div>
-                </div>
-                <!-- Password Settings -->
-                <div class="password-info">
-                    <h2>Password Settings</h2>
                     <form action="" method="post">
-                        <label for="old-password">Old Password: </label>
-                        <input type="password" name="old-password" id="old-password" required>
-                        <label for="new-password">New Password: </label>
-                        <input type="password" name="new-password" id="new-password" required>
-                        <label for="confirm-password">Confirm Password: </label>
-                        <input type="password" name="confirm-password" id="confirm-password" required>
+                        <label for="firstname">First Name: </label>
+                        <input type="text" name="firstname" id="firstname" value="{{firstname}}" required><br>
+                        <label for="lastname">Last Name: </label>
+                        <input type="text" name="lastname" id="lastname" value="{{lastname}}" required><br>
+                        <label for="email">Email: </label>
+                        <input type="email" name="email" id="email" value="{{email}}" required><br>
+                        <!-- Eventuella andra fält -->
                         <div class="button-container">
                             <input type="button" value="Update" class="UpdateBtn">
                             <input type="button" value="Cancel" class="CancelBtn">
                         </div>
                     </form>
                 </div>
-                <!-- Notification Settings (OPTIONAL) -->
-                <div class="notification-info">
-                    <h2>Notification Settings</h2>
-                    <form action="" method="post">
-                        <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Phasellus nec velit enim.</p>
-                        <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Phasellus nec velit enim.</p>
-                        <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Phasellus nec velit enim.</p>
-                    </form>
-                </div>
+
+            </div>
+            <!-- Notification Settings (OPTIONAL) -->
+            <div class="notification-info">
+                <h2>Notification Settings</h2>
+                <form action="" method="post">
+                    <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Phasellus nec velit enim.</p>
+                    <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Phasellus nec velit enim.</p>
+                    <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Phasellus nec velit enim.</p>
+                </form>
             </div>
         </div>
+    </div>
 
 
     </div>
