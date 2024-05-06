@@ -108,6 +108,7 @@ def create_event():
     # 2. Lägg in eventet (med alla värden) i databasen
     cursor.execute("""INSERT INTO events (event_date, event_title, event_priority, event_category, event_description)
                       VALUES(%s,%s,%s,%s,%s)""",(event_date, event_title, event_priority, event_category, event_description))
+    connection.commit()
     # 3. Skicka tillbaka användaren till kalendersidan
     redirect("/homepage")
 
