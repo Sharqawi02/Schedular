@@ -47,9 +47,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Check if there is an error message and display it
-    var errorMessage = document.querySelector(".error");
-    if (errorMessage && errorMessage.innerText !== "") {
-        // If there is an error message, display the modal
+    // var errorMessage = document.querySelector(".error");
+    // if (errorMessage && errorMessage.innerText !== "") {
+    //     // If there is an error message, display the modal
+    //     modal.style.display = "block";
+
+    //     if (errorMessage.classList.contains("register-error")) {
+    //         modal.style.display = "block";
+    //     } else if (errorMessage.classList.contains("login-error")) {
+    //         modal2.style.display = "block";
+    //     }
+    // }
+
+    var registerError = document.querySelector(".register-error");
+    var loginError = document.querySelector(".login-error");
+
+    if (registerError && registerError.innerText !== "") {
         modal.style.display = "block";
+    } else if (loginError && loginError.innerText !== "") {
+        modal2.style.display = "block";
     }
 });
