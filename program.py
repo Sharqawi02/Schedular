@@ -2,6 +2,7 @@ from bottle import Bottle, route, template, run, static_file, request, redirect,
 import psycopg2
 from storage.db import connect
 import json
+import secrets
 
 app = Bottle()
 
@@ -130,7 +131,6 @@ def forgot_password():
 
         if user:
             # Generate a new password
-            import secrets
             # new_password = secrets.token_urlsafe(10) 
 
             # Update the user's password in the database
