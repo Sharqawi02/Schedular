@@ -7,6 +7,7 @@ body {
     padding: 0;
     font-family: 'Playfair Display', sans-serif;
     box-sizing: border-box;
+    text-align: center;
 }
 
 
@@ -18,11 +19,14 @@ body {
 /* STYLING for the nav */
 /* STYLING för nav */
 nav {
-    background-color: #ADD8E6;
+    background-color: #fff;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #fff; /* Ändra bakgrundsfärg till vit */
+    border-right: 1px solid #ADD8E6; /* Ändra högerkantens färg till ljusblå */
+    box-shadow: 0px 0px 10px #ADD8E6;
 }
 
 nav header {
@@ -41,7 +45,7 @@ nav header h1 {
     font-size: 35px;
     margin: 0;
     font-weight: 500;
-    color: #000000;
+    color: #ADD8E6;
 }
 
 nav header h1 a {
@@ -102,7 +106,7 @@ nav .icon-search-container .hamburger .checkbox {
 nav .icon-search-container .line {
     transition: 0.5s;
     stroke-width: 6px;
-    stroke: black;
+    stroke: #ADD8E6;
 }
 
 
@@ -124,7 +128,7 @@ nav .icon-search-container .lineMid {
 
 
 nav .icon-search-container .hamburger .checkbox:checked + svg .line {
-    stroke: crimson;
+    stroke: #ADD8E6;
 }
 
 
@@ -162,8 +166,10 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     padding: 5px; /* change this for preference */
     height: 86vh;
     width: 25%;
-    background-color: #ADD8E6;
     overflow: hidden;
+    background-color: #fff; /* Ändra bakgrundsfärg till vit */
+    border-right: 1px solid #ADD8E6; /* Ändra högerkantens färg till ljusblå */
+    box-shadow: 0px 0px 10px #ADD8E6;
 }
 
 
@@ -172,8 +178,9 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     height: 150px;
     overflow: hidden;
     border-radius: 100%;
-    background-color: #000000;
     margin: 30px auto;
+    background-color: #fff; /* Ändra bakgrundsfärg till vit */
+    border-right: 1px solid #ADD8E6; 
 }
 
 
@@ -255,9 +262,8 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
 
 /* STYLING for the info-container */
 .info-container {
-    padding: 20px 20px 10px 10px;
+    padding: 20px 20px 10px 10px; /* Ändra bakgrundsfärg till ljusblå */
     background-color: #fff;
-    color: #000000;
 }
 
 
@@ -360,7 +366,7 @@ input[type="file"] {
     /* Stilar för input-fältet */
     /* Exempel: */
     display: flex;
-    background-color: #fff;
+    background-color: #ADD8E6;
     border: 1px solid #ccc;
     padding: 8px;
     border-radius: 5px;
@@ -370,10 +376,10 @@ input[type="file"] {
 form::after {
     content: none; /* Dölj texten */
 }
-
 .account-info {
     max-width: 400px; /* Justera maxbredden efter behov */
-    margin: 0 auto;
+    margin: 0 auto; /* Centrerar elementet inom omslutande element */
+    text-align: left; /* Återställer text-justering för innehållet */
 }
 
 .account-info h2 {
