@@ -20,14 +20,16 @@
         <nav>
             <!-- h1 tag header -->
             <header>
-                <h1><a href="/homepage">Schedular/Logga</a></h1>
+                <img src="/static/images/logo.png" alt="our logo">
             </header>
             <!-- container for search icon and profile img -->
             <div class="icon-search-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <div class="img-container">
-                    <img src="#" alt="Profile Image of User">
-                </div>
+                    <a href="/redirect_to_profilepage">
+                        <img src="#" alt="Profile Image of User">
+                    </a>
+                </div>                
                 <!-- hamburger icon -->
                 <div class="hamburger">
                     <input class="checkbox" type="checkbox" />
@@ -54,13 +56,16 @@
                 <div class="img-container">
                     <img src="#" alt="Profile Image of User">
                 </div>
+                <form>
+                    <input type="file" name="file">
+                </form>
                 <h2>{{firstname}} {{lastname}}</h2>
                 <div class="settings-container">
                     <div class="account-settings" onclick="showAccountInfo()">
-                        <p>Account</p>
+                        <p>Konto</p>
                     </div>
                     <div class="notifications-settings" onclick="showNotificationInfo()">
-                        <p>Notifications</p>
+                        <p>Inställningar</p>
                     </div>
                 </div>
                 <div class="logout-button">
@@ -74,26 +79,21 @@
                 <!-- Account Settings -->
                 <!-- Account Settings -->
                 <div class="account-info">
-                    <h2>Account Settings</h2>
+                    <h2>Konto översikt</h2>
                     <form action="" method="post">
-                        <label for="firstname">First Name: </label>
+                        <label for="firstname">Namn </label>
                         <input type="text" name="firstname" id="firstname" value="{{firstname}}" required><br>
-                        <label for="lastname">Last Name: </label>
+                        <label for="lastname"> Efternamn </label>
                         <input type="text" name="lastname" id="lastname" value="{{lastname}}" required><br>
-                        <label for="email">Email: </label>
+                        <label for="email">Email </label>
                         <input type="email" name="email" id="email" value="{{email}}" required><br>
-                        <!-- Eventuella andra fält -->
-                        <div class="button-container">
-                            <input type="button" value="Update" class="UpdateBtn">
-                            <input type="button" value="Cancel" class="CancelBtn">
-                        </div>
                     </form>
                 </div>
 
             </div>
             <!-- Notification Settings (OPTIONAL) -->
             <div class="notification-info">
-                <h2>Notification Settings</h2>
+                <h2>Inställningar</h2>
                 <form action="" method="post">
                     <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
                         consectetur adipiscing elit. Phasellus nec velit enim.</p>

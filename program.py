@@ -155,6 +155,9 @@ def profilepage():
         # Om användaren inte är inloggad, skicka tillbaka till startsidan
         return redirect('/')
 
+@app.route('/redirect_to_profilepage', method='GET')
+def redirect_to_profilepage():
+    return redirect('/profilepage')
 
 @app.route('/logout')
 def logout():

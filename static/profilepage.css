@@ -15,8 +15,8 @@ body {
     padding: 0;
 }
 
-
 /* STYLING for the nav */
+/* STYLING för nav */
 nav {
     background-color: #ADD8E6;
     padding: 20px;
@@ -25,23 +25,29 @@ nav {
     align-items: center;
 }
 
+nav header {
+    display: flex;
+    align-items: center;
+}
+
+nav header img {
+    width: 80px;
+    height: auto;
+    margin-right: 10px; /* Justera marginalen om det behövs */
+    margin-left: auto; /* Centrera bilden horisontellt */
+}
 
 nav header h1 {
     font-size: 35px;
-    padding: 0;
     margin: 0;
     font-weight: 500;
     color: #000000;
 }
 
-
 nav header h1 a {
     text-decoration: none;
     color: #000000;
 }
-
-
-/* STYLING for the nav ends here */
 
 
 /* STYLING for icon-search-container */
@@ -344,3 +350,54 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
 
 
 /* password-info STYLING */
+
+form {
+    display: flex;
+    align-items: center;
+}
+
+input[type="file"] {
+    /* Stilar för input-fältet */
+    /* Exempel: */
+    display: flex;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* För att dölja texten bredvid formuläret */
+form::after {
+    content: none; /* Dölj texten */
+}
+
+.account-info {
+    max-width: 400px; /* Justera maxbredden efter behov */
+    margin: 0 auto;
+}
+
+.account-info h2 {
+    margin-bottom: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+
+
