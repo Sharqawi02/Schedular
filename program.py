@@ -12,7 +12,7 @@ def index():
 
 @app.route('/homepage')
 def homepage_route():
-    is_user_logged_in = request.get_cookie("user_id")
+    is_user_logged_in = request.get_cookie("user")
     if is_user_logged_in:
         return template('homepage.html', is_user_logged_in=is_user_logged_in)
     else:
