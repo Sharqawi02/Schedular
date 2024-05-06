@@ -155,7 +155,17 @@ def profilepage():
         # Om användaren inte är inloggad, skicka tillbaka till startsidan
         return redirect('/')
 
+@app.route('/logout')
+def logout():
+    is_user_logged_in_cookie = request.get_cookie('user_id')
 
+    if is_user_logged_in_cookie:
+        # if user is logged in this will remove the 'user_id' cookie to log the user out
+        response.set_cookie('user_id', '', expires=0)
+        # redirects to the homepage
+        return redirect('/')
+    else:
+        return redirect('/')
 
 @app.route('/static/<filename:path>')
 def static_files(filename):
