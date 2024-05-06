@@ -64,7 +64,8 @@ def login():
         user_id = cursor.fetchall()
 
         if user_id:
-            response.set_cookie("user", str(user_id))
+            response.set_cookie("user_id", str(user_id))
+
             return redirect('/homepage')
         else:
             error_message = "E-postadressen eller lösenordet är fel."
@@ -148,12 +149,12 @@ def profilepage():
         cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
         user_data = cursor.fetchone()  # Hämta användarens uppgifter från databasen
         connection.close()  # Glöm inte att stänga anslutningen
-
-        # Skicka användarens uppgifter till HTML-mallen för att visas
+    # Skicka användarens uppgifter till HTML-mallen för att visas
         return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2])
     else:
         # Om användaren inte är inloggad, skicka tillbaka till startsidan
         return redirect('/')
+
 
 @app.route('/logout')
 def logout():
@@ -166,6 +167,7 @@ def logout():
         return redirect('/')
     else:
         return redirect('/')
+
 
 @app.route('/static/<filename:path>')
 def static_files(filename):
