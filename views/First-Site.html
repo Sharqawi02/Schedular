@@ -27,7 +27,7 @@
                             <span class="close">&times;</span>
                             <form action="/register" method="post" id="register">
                                 % if "email_already_registered" in error.keys():
-                                <p class="error">{{error["email_already_registered"]}}</p>
+                                <p class="error register-error">{{error["email_already_registered"]}}</p>
                                 % end                                
                                 <label for="firstname">Förnamn: </label><br>
                                 <input type="text" name="firstname" id="förnamn" required><br>
@@ -57,7 +57,7 @@
                             <span class="close2">&times;</span>
                             <form action="/login" method="post">
                                 %if "wrong_password" in error.keys():
-                                <p  class="error">{{error["wrong_password"]}}</p>
+                                <p  class="error login-error">{{error["wrong_password"]}}</p>
                                 % end
                                 <label for="email">
                                     Email:

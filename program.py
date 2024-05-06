@@ -42,6 +42,11 @@ def register():
             cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
                         VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
             connection.commit()
+           
+            cursor.execute("""SELECT * FROM users where firstname = %s and lastname = %s and email = %s and password = %s""", (firstname,lastname,email,password))
+            user_id = cursor.fetchone()
+  
+            response.set_cookie("user_id", str(user_id[0]))
 
             return redirect('/homepage')
     else: 
@@ -72,6 +77,10 @@ def login():
 @app.route("/get_events", method=["GET"])
 def get_events():
     # 1. Hämta alla event från databasen
+    connection = connect()
+    cursor = connection.cursor()
+
+
 
     # 2. Gör om strukturen så att varje event får följande struktur
     # {
@@ -99,67 +108,51 @@ def create_event():
 
 @app.route('/forgot-password', method=['GET', 'POST'])
 def forgot_password():
-   error = ""
-   if request.method == 'POST':
-       email = request.forms.get('email')
-       new_password = request.forms.get('new_password')
+    error = {}
+    if request.method == 'POST':
+        email = request.forms.get('email')
+        new_password = request.forms.get('new_password')
 
+        # Check if the email exists in the database
+        connection = connect()
+        cursor = connection.cursor()
 
-       # Check if the email exists in the database
-       connection = connect()
-       cursor = connection.cursor()
+        cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
+        user = cursor.fetchone()
 
+        if user:
+            # Generate a new password
+            import secrets
+            # new_password = secrets.token_urlsafe(10) 
 
-       cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
-       user = cursor.fetchone()
+            # Update the user's password in the database
+            cursor.execute("""UPDATE users SET password = %s WHERE email = %s""", (new_password, email))
+            connection.commit()
 
+            new = f"New password for {email}: {new_password}"
+            return template('First-Site.html', new=new, error=error)
+        else:
+            error["email_not_found"] = "Email not found."
+            return template('forgot-password.html', error=error, new=None)
 
-       if user:
-           # Generate a new password
-           import secrets
-           # new_password = secrets.token_urlsafe(10) 
-
-
-           # Update the user's password in the database
-           cursor.execute("""UPDATE users SET password = %s WHERE email = %s""", (new_password, email))
-           connection.commit()
-
-
-          
-           new = f"New password for {email}: {new_password}"
-
-
-           return template('First-Site.html', new=new, error=None)
-       else:
-           error = "Email not found."
-           return template('forgot-password.html', error=error, new=None)
-
-
-   return template('forgot-password.html', error=error, new=None)
+    return template('forgot-password.html', error=error, new=None)
 
 @app.route('/profilepage')
-def profilepage(): 
-    connection = connect()
-    cursor = connection.cursor()
-        
-        # Försök att hämta användarens ID från cookien
-    try:
-            user_id = int(request.get_cookie("user_id"))
-            
-            # Kontrollera om användarid:t är giltigt och hämta sedan användarens förnamn, efternamn och email från databasen
-            cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
-            user_data = cursor.fetchone()
-            
-            # Om användaruppgifterna finns, skicka förnamn, efternamn och email till HTML-sidan, annars använd tomma strängar
-            if user_data:
-                firstname, lastname, email = user_data
-            else:
-                firstname, lastname, email = '', '', ''
-    except (TypeError, ValueError):
-            # Om användarid:t inte kunde hämtas från cookien eller inte kunde omvandlas till en integer, använd tomma strängar
-            firstname, lastname, email = '', '', ''
+def profilepage():
+    return template('profilepage.html')
 
-    return template('profilepage.html', firstname=firstname, lastname=lastname, email=email)
+@app.route('/logout')
+def logout():
+    is_user_logged_in_cookie = request.get_cookie('user_id')
+
+    if is_user_logged_in_cookie:
+        # if user is logged in this will remove the 'user_id' cookie to log the user out
+        response.set_cookie('user_id', '', expires=0)
+        # redirects to the homepage
+        return redirect('/')
+    else:
+        return redirect('/')
+
 
 @app.route('/static/<filename:path>')
 def static_files(filename):
