@@ -42,9 +42,11 @@ def register():
             cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
                         VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
             connection.commit()
-
-            # Hämta ut ID på användaren och spara den i en cookie ( = logga in användaren automatiskt)
-
+           
+            cursor.execute("""SELECT * FROM users where firstname = %s and lastname = %s and email = %s and password = %s""", (firstname,lastname,email,password))
+            user_id = cursor.fetchone()
+  
+            response.set_cookie("user_id", str(user_id[0]))
             return redirect('/homepage')
     else: 
         return template('First-site.html',error={})
@@ -77,8 +79,7 @@ def get_events():
     connection = connect()
     cursor = connection.cursor()
 
-    cursor.execute("""SELECT * FROM events JOIN users ON events.event_id = users.id""")
-    events = cursor.fetchall
+
 
     # 2. Gör om strukturen så att varje event får följande struktur
     # {
@@ -155,6 +156,18 @@ def forgot_password():
 @app.route('/profilepage')
 def profilepage():
     return template('profilepage.html')
+
+@app.route('/logout')
+def logout():
+    is_user_logged_in_cookie = request.get_cookie('user_id')
+
+    if is_user_logged_in_cookie:
+        # if user is logged in this will remove the 'user_id' cookie to log the user out
+        response.set_cookie('user_id', '', expires=0)
+        # redirects to the homepage
+        return redirect('/')
+    else:
+        return redirect('/')
 
 
 @app.route('/static/<filename:path>')
