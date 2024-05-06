@@ -21,18 +21,19 @@ header > h1{
   font-size: 50px;
 }
 
-#container{
+#container  {
   display: flex;
   margin-top: 50px;
 }
 
 main {
   width: 300px;
-  height: 500px;
+  height: 580px;
   display: inline-block;
   margin-left: 70px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
+  margin-top: 2.5%;
 }
 
 #tasks > .block label {
@@ -45,21 +46,59 @@ main {
   margin: 20px;
 }
 
+.block > #event_date{
+  border-radius: 5px;
+  border: solid grey;
+  padding: 2%;
+  margin-top: 2%;
+}
+
+.block > #event_title {
+  border-radius: 5px;
+  border: solid grey;
+  padding: 2%;
+  margin-top: 2%;
+
+}
+
 .block textarea{
   max-width: 250px;
   max-height: 150px;
+  border-radius: 5px;
+  border: solid grey;
+  padding: 2%;
+  margin-top: 2%;
 }
 
 .block label{
   font-weight: bold;
+  margin-left: 1%
+}
+
+.block #user_invite {
+  border-radius: 5px;
+  border: solid grey;
+  padding: 2%;
+  margin-top: 2%;
+
 }
 
 #list{
-  padding-left: 20px;
+  padding-left: 7%;
 }
+
+#list #event_category {
+  border: solid grey
+} 
+
+#list #event_priority {
+  border: solid grey
+} 
 
 #list select{
   margin-right: 10px;
+  border-radius: 5px;
+  padding: 0.5%;
 }
 
 aside{
@@ -100,12 +139,14 @@ aside #calendar{
   padding: 0 10px 0 11px;
   position: relative;
   text-align: center;
-  text-decoration: none;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
   width: 100px;
+  margin-top: 15%;
+  margin-left: 60%;  
+
 }
 
 .button-13:hover {
