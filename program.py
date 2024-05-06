@@ -12,7 +12,7 @@ def index():
 
 @app.route('/homepage')
 def homepage_route():
-    is_user_logged_in = request.get_cookie("user")
+    is_user_logged_in = request.get_cookie("user_id")
     if is_user_logged_in:
         return template('homepage.html', is_user_logged_in=is_user_logged_in)
     else:
@@ -149,7 +149,7 @@ def profilepage():
         cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
         user_data = cursor.fetchone()  # Hämta användarens uppgifter från databasen
         connection.close()  # Glöm inte att stänga anslutningen
-    # Skicka användarens uppgifter till HTML-mallen för att visas
+# Skicka användarens uppgifter till HTML-mallen för att visas
         return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2])
     else:
         # Om användaren inte är inloggad, skicka tillbaka till startsidan
