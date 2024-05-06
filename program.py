@@ -42,7 +42,11 @@ def register():
             cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
                         VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
             connection.commit()
-
+           
+            cursor.execute("""SELECT * FROM users where firstname = %s and lastname = %s and email = %s and password = %s""", (firstname,lastname,email,password))
+            user_id = cursor.fetchone()
+  
+            response.set_cookie("user_id", str(user_id[0]))
             return redirect('/homepage')
     else: 
         return template('First-site.html',error={})
@@ -58,9 +62,8 @@ def login():
         cursor.execute("""SELECT id FROM users WHERE email = %s AND password = %s """,(email, password))
         user_id = cursor.fetchall()
 
-
         if user_id:
-            response.set_cookie("user", user_id)
+            response.set_cookie("user_id", str(user_id[0]))
             return redirect('/homepage')
         else:
             error_message = "E-postadressen eller lösenordet är fel."
@@ -73,6 +76,10 @@ def login():
 @app.route("/get_events", method=["GET"])
 def get_events():
     # 1. Hämta alla event från databasen
+    connection = connect()
+    cursor = connection.cursor()
+
+
 
     # 2. Gör om strukturen så att varje event får följande struktur
     # {
@@ -89,10 +96,18 @@ def get_events():
 @app.route("/create_event", method=["POST"])
 def create_event():
     # 1. Hämta alla värden som skickats från formuläret
-    task_date = getattr(request.forms, "task_date")
+    connection = connect()
+    cursor = connection.cursor()
+
+    event_date = getattr(request.forms, "event_date")
+    event_title= getattr(request.forms, "event_title")
+    event_priority = getattr(request.forms, "event_priority")
+    event_category = getattr(request.forms, "event_category")
+    event_description = getattr(request.forms, "event_description")
 
     # 2. Lägg in eventet (med alla värden) i databasen
-
+    cursor.execute("""INSERT INTO events (event_date, event_title, event_priority, event_category, event_description)
+                      VALUES(%s,%s,%s,%s,%s)""",(event_date, event_title, event_priority, event_category, event_description))
     # 3. Skicka tillbaka användaren till kalendersidan
     redirect("/homepage")
 
@@ -132,6 +147,18 @@ def forgot_password():
 @app.route('/profilepage')
 def profilepage():
     return template('profilepage.html')
+
+@app.route('/logout')
+def logout():
+    is_user_logged_in_cookie = request.get_cookie('user_id')
+
+    if is_user_logged_in_cookie:
+        # if user is logged in this will remove the 'user_id' cookie to log the user out
+        response.set_cookie('user_id', '', expires=0)
+        # redirects to the homepage
+        return redirect('/')
+    else:
+        return redirect('/')
 
 
 @app.route('/static/<filename:path>')

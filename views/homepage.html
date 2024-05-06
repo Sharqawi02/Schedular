@@ -45,20 +45,20 @@
                 <div id="tasks">
                     <form action="/create_event" method="post">
                         <div class="block">
-                            <label for="tast_date">Datum</label>
-                            <input type="date" name="task_date" id="task_date" required>
+                            <label for="event_date">Datum</label>
+                            <input type="date" name="event_date" id="event_date" required>
                         </div>
                         <div class="block">
-                            <label for="user_task">Aktivitets titel</label>
-                            <input type="text" name="user_task" id="user_task" required>
+                            <label for="event_title">Aktivitets titel</label>
+                            <input type="text" name="event_title" id="event_title" required>
                         </div>
                         <div id="list">
-                            <select name="task_priority" id="task_priority">
+                            <select name="event_priority" id="event_priority">
                                 <option value="high">High priority</option>
                                 <option value="medium">Medium priority</option>
                                 <option value="Low">Low priority</option>
                             </select>
-                            <select name="task_category" id="task_category">
+                            <select name="event_category" id="event_category">
                                 <option value="other">Övrigt</option>   
                                 <option value="school">Skola</option>
                                 <option value="gym">Gym</option>
@@ -66,8 +66,8 @@
                             </select>
                         </div>
                         <div class="block">
-                            <label for="user_task_description">Beskrivning</label>
-                            <textarea name="user_task_description" id="user_task_description" cols="30" rows="10"
+                            <label for="event_description">Beskrivning</label>
+                            <textarea name="event_description" id="event_description" cols="30" rows="10"
                                 placeholder="Beskriv aktiviteten..."></textarea>
                         </div>
                         <div class="block">
