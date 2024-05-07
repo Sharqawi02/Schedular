@@ -104,8 +104,14 @@ def get_events():
 
 @app.route("/create_event", method=["POST"])
 def create_event():
+    connection = connect()
+    cursor = connection.cursor()
     # 1. Hämta alla värden som skickats från formuläret
-    task_date = getattr(request.forms, "task_date")
+    event_date = getattr(request.forms, "task_date")
+    event_title = getattr(request.forms, "event_title")
+    event_priority = getattr(request.forms, "event_priority")
+    event_category = getattr(request.forms, "event_category")
+    event_description = getattr(request.forms, "event_discription")
 
     # 2. Lägg in eventet (med alla värden) i databasen
     cursor.execute("""INSERT INTO events (event_date, event_title, event_priority, event_category, event_description)
