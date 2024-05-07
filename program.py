@@ -48,6 +48,7 @@ def register():
             user_id = cursor.fetchone()
   
             response.set_cookie("user_id", str(user_id[0]))
+
             return redirect('/homepage')
     else: 
         return template('First-site.html',error={})
@@ -64,7 +65,8 @@ def login():
         user_id = cursor.fetchall()
 
         if user_id:
-            response.set_cookie("user_id", str(user_id[0]))
+            response.set_cookie("user_id", str(user_id))
+
             return redirect('/homepage')
         else:
             error_message = "E-postadressen eller lösenordet är fel."
@@ -103,14 +105,7 @@ def get_events():
 @app.route("/create_event", method=["POST"])
 def create_event():
     # 1. Hämta alla värden som skickats från formuläret
-    connection = connect()
-    cursor = connection.cursor()
-
-    event_date = getattr(request.forms, "event_date")
-    event_title= getattr(request.forms, "event_title")
-    event_priority = getattr(request.forms, "event_priority")
-    event_category = getattr(request.forms, "event_category")
-    event_description = getattr(request.forms, "event_description")
+    task_date = getattr(request.forms, "task_date")
 
     # 2. Lägg in eventet (med alla värden) i databasen
     cursor.execute("""INSERT INTO events (event_date, event_title, event_priority, event_category, event_description)
@@ -153,7 +148,24 @@ def forgot_password():
 
 @app.route('/profilepage')
 def profilepage():
-    return template('profilepage.html')
+    is_user_logged_in = request.get_cookie("user_id")
+    if is_user_logged_in:
+        # Användare är inloggad, hämta deras uppgifter från databasen
+        connection = connect()
+        cursor = connection.cursor()
+        user_id = eval(is_user_logged_in)[0]  # Utvärdera strängen och extrahera användarens ID
+        cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
+        user_data = cursor.fetchone()  # Hämta användarens uppgifter från databasen
+        connection.close()  # Glöm inte att stänga anslutningen
+# Skicka användarens uppgifter till HTML-mallen för att visas
+        return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2])
+    else:
+        # Om användaren inte är inloggad, skicka tillbaka till startsidan
+        return redirect('/')
+
+@app.route('/redirect_to_profilepage', method='GET')
+def redirect_to_profilepage():
+    return redirect('/profilepage')
 
 @app.route('/logout')
 def logout():

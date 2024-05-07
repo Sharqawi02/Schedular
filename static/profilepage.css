@@ -7,6 +7,7 @@ body {
     padding: 0;
     font-family: 'Playfair Display', sans-serif;
     box-sizing: border-box;
+    text-align: center;
 }
 
 
@@ -15,33 +16,42 @@ body {
     padding: 0;
 }
 
-
 /* STYLING for the nav */
+/* STYLING för nav */
 nav {
-    background-color: #ADD8E6;
+    background-color: #fff;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #fff; /* Ändra bakgrundsfärg till vit */
+    border-right: 1px solid #ADD8E6; /* Ändra högerkantens färg till ljusblå */
+    box-shadow: 0px 0px 10px #ADD8E6;
 }
 
+nav header {
+    display: flex;
+    align-items: center;
+}
+
+nav header img {
+    width: 80px;
+    height: auto;
+    margin-right: 10px; /* Justera marginalen om det behövs */
+    margin-left: auto; /* Centrera bilden horisontellt */
+}
 
 nav header h1 {
     font-size: 35px;
-    padding: 0;
     margin: 0;
     font-weight: 500;
-    color: #000000;
+    color: #ADD8E6;
 }
-
 
 nav header h1 a {
     text-decoration: none;
     color: #000000;
 }
-
-
-/* STYLING for the nav ends here */
 
 
 /* STYLING for icon-search-container */
@@ -96,7 +106,7 @@ nav .icon-search-container .hamburger .checkbox {
 nav .icon-search-container .line {
     transition: 0.5s;
     stroke-width: 6px;
-    stroke: black;
+    stroke: #ADD8E6;
 }
 
 
@@ -118,7 +128,7 @@ nav .icon-search-container .lineMid {
 
 
 nav .icon-search-container .hamburger .checkbox:checked + svg .line {
-    stroke: crimson;
+    stroke: #ADD8E6;
 }
 
 
@@ -149,15 +159,14 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
 
 
 .section-container {
+    border-right: solid #ADD8E6;
     display: flex;
-    border-right: 1px solid #000000;
     flex-direction: column;
     align-items: flex-start;
     padding: 5px; /* change this for preference */
     height: 86vh;
     width: 25%;
-    background-color: #ADD8E6;
-    overflow: hidden;
+    overflow: hidden; /* Ändra bakgrundsfärg till vit */ 
 }
 
 
@@ -166,8 +175,9 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     height: 150px;
     overflow: hidden;
     border-radius: 100%;
-    background-color: #000000;
     margin: 30px auto;
+    background-color: #fff; /* Ändra bakgrundsfärg till vit */
+    border-right: 1px solid #ADD8E6; 
 }
 
 
@@ -249,10 +259,10 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
 
 /* STYLING for the info-container */
 .info-container {
-    padding: 20px 20px 10px 10px;
-    background-color: #fff;
-    color: #000000;
+    padding: 20px 20px 10px 10px; /* Ändra bakgrundsfärg till ljusblå */
+
 }
+
 
 
 .info-container > .password-info, .notification-info { /* for the interactivity (JS) */
@@ -344,3 +354,51 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
 
 
 /* password-info STYLING */
+
+form {
+    display: flex;
+    align-items: center;
+}
+
+input[type="file"] {
+    /* Stilar för input-fältet */
+    /* Exempel: */
+    display: flex;
+    background-color: #ADD8E6;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* För att dölja texten bredvid formuläret */
+form::after {
+    content: none; /* Dölj texten */
+}
+.account-info {
+    max-width: 400px; /* Justera maxbredden efter behov */
+    margin: 0 auto; /* Centrerar elementet inom omslutande element */
+    text-align: left; /* Återställer text-justering för innehållet */
+}
+
+.account-info h2 {
+    margin-bottom: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+

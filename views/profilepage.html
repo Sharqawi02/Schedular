@@ -20,14 +20,16 @@
         <nav>
             <!-- h1 tag header -->
             <header>
-                <h1><a href="/homepage">Schedular/Logga</a></h1>
+                <img src="/static/images/logo.png" alt="our logo">
             </header>
             <!-- container for search icon and profile img -->
             <div class="icon-search-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <div class="img-container">
-                    <img src="#" alt="Profile Image of User">
-                </div>
+                    <a href="/redirect_to_profilepage">
+                        <img src="#" alt="Profile Image of User">
+                    </a>
+                </div>                
                 <!-- hamburger icon -->
                 <div class="hamburger">
                     <input class="checkbox" type="checkbox" />
@@ -54,16 +56,16 @@
                 <div class="img-container">
                     <img src="#" alt="Profile Image of User">
                 </div>
-                <h2>Full Name</h2>
+                <form>
+                    <input type="file" name="file">
+                </form>
+                <h2>{{firstname}} {{lastname}}</h2>
                 <div class="settings-container">
                     <div class="account-settings" onclick="showAccountInfo()">
-                        <p>Account</p>
-                    </div>
-                    <div class="password-settings" onclick="showPasswordInfo()">
-                        <p>Password</p>
+                        <p>Konto</p>
                     </div>
                     <div class="notifications-settings" onclick="showNotificationInfo()">
-                        <p>Notifications</p>
+                        <p>Inställningar</p>
                     </div>
                 </div>
                 <div class="logout-button">
@@ -75,55 +77,34 @@
             <!-- What the different sections (when clicked) will show -->
             <div class="info-container">
                 <!-- Account Settings -->
+                <!-- Account Settings -->
                 <div class="account-info">
-                    <h2>Account Settings</h2>
+                    <h2>Konto översikt</h2>
                     <form action="" method="post">
-                        <div class="flex-container">
-                            <label for="username">Username: </label>
-                            <input type="text" name="username" id="username" required>
-                        </div>
-                        <div class="flex-container">
-                            <label for="email">Email: </label>
-                            <input type="email" name="email" id="email" required>
-                        </div>
-                        <label for="bio">Bio (optional): </label>
-                        <textarea name="bio" id="bio" cols="80" rows="10"></textarea>
-                    </form>
-                    <div class="button-container">
-                        <input type="button" value="Update" class="UpdateBtn">
-                        <input type="button" value="Cancel" class="CancelBtn">
-                    </div>
-                </div>
-                <!-- Password Settings -->
-                <div class="password-info">
-                    <h2>Password Settings</h2>
-                    <form action="" method="post">
-                        <label for="old-password">Old Password: </label>
-                        <input type="password" name="old-password" id="old-password" required>
-                        <label for="new-password">New Password: </label>
-                        <input type="password" name="new-password" id="new-password" required>
-                        <label for="confirm-password">Confirm Password: </label>
-                        <input type="password" name="confirm-password" id="confirm-password" required>
-                        <div class="button-container">
-                            <input type="button" value="Update" class="UpdateBtn">
-                            <input type="button" value="Cancel" class="CancelBtn">
-                        </div>
+                        <label for="firstname">Namn </label>
+                        <input type="text" name="firstname" id="firstname" value="{{firstname}}" required><br>
+                        <label for="lastname"> Efternamn </label>
+                        <input type="text" name="lastname" id="lastname" value="{{lastname}}" required><br>
+                        <label for="email">Email </label>
+                        <input type="email" name="email" id="email" value="{{email}}" required><br>
                     </form>
                 </div>
-                <!-- Notification Settings (OPTIONAL) -->
-                <div class="notification-info">
-                    <h2>Notification Settings</h2>
-                    <form action="" method="post">
-                        <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Phasellus nec velit enim.</p>
-                        <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Phasellus nec velit enim.</p>
-                        <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Phasellus nec velit enim.</p>
-                    </form>
-                </div>
+
+            </div>
+            <!-- Notification Settings (OPTIONAL) -->
+            <div class="notification-info">
+                <h2>Inställningar</h2>
+                <form action="" method="post">
+                    <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Phasellus nec velit enim.</p>
+                    <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Phasellus nec velit enim.</p>
+                    <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Phasellus nec velit enim.</p>
+                </form>
             </div>
         </div>
+    </div>
 
 
     </div>
