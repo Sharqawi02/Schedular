@@ -90,7 +90,13 @@ def get_events():
     return json.dumps([
         {
             "title": "Test",
-            "start": "2024-04-24"
+            "start": "2024-05-12",
+            "end": "2024-05-16",
+            "extendedProps": {
+                "priority": "high",
+                "kategory": "gym"
+            },
+            "description": "Lecture"
         }
     ])
 
