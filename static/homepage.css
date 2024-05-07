@@ -15,9 +15,17 @@ header {
   background-color: #ADD8E6;
   box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
 }
- img {
+
+img  {
   width: 8%; 
   height: auto; 
+}
+
+.img-container #profilepic { 
+  border-radius: 100%;
+  width: 6%;
+  margin-left: 92%;
+  margin-top: 1%;
 }
 
 #container  {
