@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
         
             // change the border color just for fun
             info.el.style.borderColor = 'red';
-          }
+          },
+
         
 
     });

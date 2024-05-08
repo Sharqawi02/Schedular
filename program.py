@@ -111,7 +111,7 @@ def create_event():
     event_title = getattr(request.forms, "event_title")
     event_priority = getattr(request.forms, "event_priority")
     event_category = getattr(request.forms, "event_category")
-    event_description = getattr(request.forms, "event_discription")    
+    event_description = getattr(request.forms, "event_description") 
     events_start_time = getattr(request.forms, "events_start_time")
     events_end_time = getattr(request.forms, "events_end_time")
 
