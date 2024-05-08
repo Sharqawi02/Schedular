@@ -313,9 +313,11 @@ p.error {
     color: red;
     text-align: center;   
 }
+
 .forgot-password {
     display: flex;
     justify-content: flex-end;
     align-items: center;
- }
- 
+    margin-left: 10%;
+}
+
