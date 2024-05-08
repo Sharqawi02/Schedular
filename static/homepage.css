@@ -7,11 +7,13 @@ body{
   font-style: normal;
 }
 
+h1 { 
+  font-size: 40px;
+}
+
 header {
   display: flex;
   margin: auto;
-  margin-bottom: 30px;
-  padding: 20px;
   background-color: #ADD8E6;
   box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
   align-items: center;
@@ -22,12 +24,16 @@ img  {
   height: auto; 
 }
 
+.img-container { 
+  max-width: 70%;
+}
 
 .img-container #profilepic { 
   border-radius: 100%;
   width: 6%;
   margin-left: 92%;
-  margin-top: 1%;
+  margin-right: 0;
+  margin-top: 0.5;
 }
 
 #container  {
@@ -171,11 +177,17 @@ aside #calendar{
 
 
 /*Översikts knappen start*/
+
+#Wrapper > #översikt { 
+  margin-right: 20%;
+}
+
 .hamburger {
   height: 50px;
   width: 50px;
   transform: 0.2s;
   position: relative;
+
 }
 .hamburger .checkbox {
   position: absolute;
@@ -183,6 +195,7 @@ aside #calendar{
   height: 100%;
   width: 100%;
   cursor: pointer;
+  padding-right: 10%;
 }
 .line {
   transition: 0.5s;
