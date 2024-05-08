@@ -62,9 +62,10 @@ def login():
         password = request.forms.get('password')
 
         cursor.execute("""SELECT id FROM users WHERE email = %s AND password = %s """,(email, password))
-        user_id = cursor.fetchall()
+        user_id = cursor.fetchone()
 
         if user_id:
+            user_id = user_id[0]
             response.set_cookie("user_id", str(user_id))
 
             return redirect('/homepage')
@@ -81,26 +82,25 @@ def get_events():
     # 1. Hämta alla event från databasen
     connection = connect()
     cursor = connection.cursor()
+    is_user_logged_in = request.get_cookie("user_id")
+    if is_user_logged_in:
+        cursor.execute(f"SELECT * FROM events AS e JOIN users AS u ON u.id = e.user_id WHERE u.id = {is_user_logged_in} ")
+        events = cursor.fetchall()
+        print(events)
+        all_events = []
+        for event in events:
+            one_event = {
+                "title": event[1],               
+                "description":event[2],
+                "date": event[3].isoformat(),
+                "start":event[7].isoformat(),
+                "end": event[8].isoformat()
+            }
+            all_events.append(one_event)
+            print(event)
+        print(all_events)
 
-
-
-    # 2. Gör om strukturen så att varje event får följande struktur
-    # {
-    #    "title": "Min titel"
-    #    "start": "2024-04-24"
-    # }
-    return json.dumps([
-        {
-            "title": "Test",
-            "start": "2024-05-12T10:30:00",
-            "end": "2024-05-16T11:30:00",
-            "extendedProps": {
-                "priority": "high",
-                "kategory": "gym"
-            },
-            "description": "Lecture"
-        }
-    ])
+        return json.dumps(all_events)
 
 @app.route("/create_event", method=["POST"])
 def create_event():
@@ -156,10 +156,11 @@ def forgot_password():
 def profilepage():
     is_user_logged_in = request.get_cookie("user_id")
     if is_user_logged_in:
+        print (is_user_logged_in)
         # User logged in, getting their information from database
         connection = connect()
         cursor = connection.cursor()
-        user_id = eval(is_user_logged_in)[0] #extrakting user_id 
+        user_id = eval(is_user_logged_in) #extrakting user_id 
         cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
         user_data = cursor.fetchone()  # fetches the user information from database
         connection.close()  # closes the connection

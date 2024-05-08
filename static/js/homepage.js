@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         headerToolbar: {
             left: 'prev,next',
             center: 'title',
-            right: 'multiMonthYear,dayGridMonth,timeGridWeek,timeGridDay' // user can switch between the two
+            right: 'multiMonthYear,dayGridMonth,timeGridWeek,timeGridDay,listYear' // user can switch between the two
         },
 
         // You can select days with selectable true
@@ -19,17 +19,19 @@ document.addEventListener('DOMContentLoaded', function () {
             // your event source
             {
                 url: '/get_events', // use the `url` property
-                color: '#A63A50',    // an option!
-                textColor: 'white'  // an option!
+                color: '#ffdffa',    // an option!
+                textColor: 'black'  // an option!
             }
 
         ],
 
-        eventClick: function (info) {
-            paragraphs[0].innerText = 'Event Name: ' + info.event.title
+        eventClick: function(info) {
+            alert('Event: ' + info.event.title);
+            alert('Description: ' + info.event.extendedProps.description);
+        
             // change the border color just for fun
-            info.el.style.border = '1.5px solid #2c3e50';
-        },
+            info.el.style.borderColor = 'red';
+          }
         
 
     });
