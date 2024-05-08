@@ -107,15 +107,23 @@ def create_event():
     connection = connect()
     cursor = connection.cursor()
     # 1. Hämta alla värden som skickats från formuläret
-    event_date = getattr(request.forms, "task_date")
+    event_date = getattr(request.forms, "event_date")
     event_title = getattr(request.forms, "event_title")
     event_priority = getattr(request.forms, "event_priority")
     event_category = getattr(request.forms, "event_category")
-    event_description = getattr(request.forms, "event_discription")
+    event_description = getattr(request.forms, "event_discription")    
+    events_start_time = getattr(request.forms, "events_start_time")
+    events_end_time = getattr(request.forms, "events_end_time")
+
+    start = f"{event_date} {events_start_time}"
+    end = f"{event_date} {events_end_time}"
+
+    is_user_logged_in = request.get_cookie("user_id")
 
     # 2. Lägg in eventet (med alla värden) i databasen
-    cursor.execute("""INSERT INTO events (event_date, event_title, event_priority, event_category, event_description)
-                      VALUES(%s,%s,%s,%s,%s)""",(event_date, event_title, event_priority, event_category, event_description))
+    cursor.execute("""INSERT INTO events (event_date, event_title, event_priority, event_category, event_description, user_id, events_start_time, events_end_time)
+                  VALUES(%s, %s, %s, %s, %s, %s, %s, %s)""", (event_date, event_title, event_priority, event_category, event_description, is_user_logged_in, start, end))
+
     connection.commit()
     # 3. Skicka tillbaka användaren till kalendersidan
     redirect("/homepage")

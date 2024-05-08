@@ -14,13 +14,14 @@
     <title>Profile - Schedular</title>
 </head>
 
-
 <body>
     <div class="container">
         <nav>
             <!-- h1 tag header -->
             <header>
-                <img src="/static/images/logo.png" alt="our logo">
+                <a href="/redirect_to_homepage">
+                    <img src="/./static/images/logo.png" id="profilepic" alt="Profile Image of User">
+                </a>
             </header>
             <!-- container for search icon and profile img -->
             <div class="icon-search-container">
@@ -29,7 +30,7 @@
                     <a href="/redirect_to_profilepage">
                         <img src="#" alt="Profile Image of User">
                     </a>
-                </div>                
+                </div>
                 <!-- hamburger icon -->
                 <div class="hamburger">
                     <input class="checkbox" type="checkbox" />
@@ -46,9 +47,6 @@
                 </div>
             </div>
         </nav>
-
-
-
 
         <!-- profile overview sections -->
         <div class="profile-container">
@@ -72,7 +70,6 @@
                     <a href="/logout"><input type="button" value="Logout"></a>
                 </div>
             </div>
-
 
             <!-- What the different sections (when clicked) will show -->
             <div class="info-container">
@@ -106,17 +103,11 @@
         </div>
     </div>
 
-
     </div>
-
-
     <!-- Script link for JS -->
     <script src="/static/js/profilepage.js"></script>
-
-
     <!-- Script kit for FontAwesome -->
     <script src="https://kit.fontawesome.com/492ceb14f6.js" crossorigin="anonymous"></script>
 </body>
-
 
 </html>

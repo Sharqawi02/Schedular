@@ -43,12 +43,12 @@ img  {
 
 main {
   width: 300px;
-  height: 580px;
+  height: 60%;
   display: inline-block;
   margin-left: 70px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
-  margin-top: 2.5%;
+  margin-bottom: 4%;
 }
 
 #tasks > .block label {
@@ -76,7 +76,7 @@ main {
 
 }
 
-.block textarea{
+.block textarea {
   max-width: 250px;
   max-height: 150px;
   border-radius: 5px;
@@ -178,7 +178,7 @@ aside #calendar{
 
 /*Översikts knappen start*/
 
-#Wrapper > #översikt { 
+#wrapper > #översikt { 
   margin-right: 20%;
 }
 
@@ -230,3 +230,4 @@ aside #calendar{
   transform: rotateZ(-45deg) translate(-5px, 5px);
 }
 /*Översiktsknappen slut*/
+
