@@ -16,5 +16,7 @@ CREATE TABLE events(
 	event_priority VARCHAR(100) NOT NULL CHECK(event_priority IN('low', 'medium', 'high')),
 	event_category VARCHAR(100) NOT NULL CHECK(event_category IN('other','gym','school','spare_time')),
 	user_id INT NOT NULL,
+	events_start_time timestamp NOT NULL,
+	events_end_time timestamp NOT NULL
 	FOREIGN KEY (user_id) REFERENCES users(id)
 );
