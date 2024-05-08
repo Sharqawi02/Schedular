@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/first-site.css">
     <title>First-Site</title>
+    <link href="/./static/images/logga2.png" rel="icon">
+
 </head>
 <body>
     <div id="wrapper">
         <div id="headerdiv">
             <header>
-                <img src="/static/images/Skärmbild (58).png" alt="our logo">
+                <img src="/static/images/logo.png" alt="our logo">
             </header>
         </div>
         <div id="sectiondiv">
@@ -45,6 +47,7 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- Inloggningsformulär -->
                     <div id="ellersträck">
                         <div class="side-div">____________________</div>
@@ -67,9 +70,14 @@
                                     Password:
                                     <input type="password" name="password" id="password" required>
                                 </label>
-                                <button type="submit" class="btn" id="loginbtn">Logga in</button>
-                                <a href="/forgot-password" class="forgot-password">Glömt lösenord?</a>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn" id="loginbtn">Logga in</button>
+                                    <a href="/forgot-password" class="forgot-password" style="color: #0066b2;">Glömt lösenord?</a>
+                                </div>
+                            
                             </form>
+                            <!-- Inloggningsformulär tar slut-->
+
                             <div class="already-have">
                                 <p id="policy">Genom att registrera dig godkänner du <span style="color: #72A0C1;">användarvillkoren</span> och <span style="color: #72A0C1;">sekretesspolicyn</span>, däribland <span style="color: #72A0C1;">användning av cookies.</span></p>
                             </div>

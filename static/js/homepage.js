@@ -1,40 +1,48 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
-
-        // this code shows the diffrent views
+        // this code shows the different views
         initialView: 'dayGridMonth',
         headerToolbar: {
             left: 'prev,next',
             center: 'title',
-            right: 'multiMonthYear,dayGridMonth,timeGridWeek,timeGridDay,listYear' // user can switch between the two
+            right: 'multiMonthYear,dayGridMonth,timeGridWeek,timeGridDay,listYear' 
         },
-
-        // You can select days with selectable true
         selectable: true,
-
         eventSources: [
-
             // your event source
             {
-                url: '/get_events', // use the `url` property
-                color: '#ffdffa',    // an option!
-                textColor: 'black'  // an option!
+                url: '/get_events', 
+                success: function(data) {
+                    var events = data;
+                    events.forEach(function(event) {
+                        switch (event.priority) {
+                            case 'high':
+                                event.backgroundColor = '#cd5c5c'; 
+                                event.borderColor = '#cd5c5c'; 
+                                event.textColor = '#000000'; 
+                                break;
+                            case 'medium':
+                                event.backgroundColor = '#f0e130'; 
+                                event.borderColor = '#f0e130'; 
+                                event.textColor = '#000000'; 
+                                break;
+                            case 'low':
+                                event.backgroundColor = '#addfad'; 
+                                event.borderColor = '#addfad'; 
+                                event.textColor = '#000000'; 
+                                break;
+                        }
+                    });
+                    calendar.addEventSource(events);
+                }
             }
-
         ],
-
         eventClick: function(info) {
             alert('Event: ' + info.event.title);
             alert('Description: ' + info.event.extendedProps.description);
-        
-            // change the border color just for fun
-            info.el.style.borderColor = 'red';
-          }
-        
-
+            info.el.style.borderColor = 'black';
+        }
     });
     calendar.render();
 });
-

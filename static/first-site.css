@@ -306,6 +306,8 @@ input[type="password"] {
 
 #loginbtn {
     margin-left: 11px;
+    width: 50%;
+    margin-bottom: 2%;
 
 }
 
@@ -313,9 +315,14 @@ p.error {
     color: red;
     text-align: center;   
 }
-.forgot-password {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
- }
- 
+
+.form-actions {
+    display: flex; 
+    align-items: center; 
+    margin-top: 10px; 
+}
+
+.form-actions .forgot-password {
+    margin-left: 60%;
+    margin-bottom: 1%;
+}
