@@ -92,7 +92,9 @@ def get_events():
             one_event = {
                 "title": event[1],               
                 "description":event[2],
-                "date": event[3].isoformat(),
+                "date": event[3].isoformat(),                
+                "priority": event[4],  
+                "category": event[5],
                 "start":event[7].isoformat(),
                 "end": event[8].isoformat()
             }
