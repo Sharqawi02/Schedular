@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Description: ' + info.event.extendedProps.description);
         
             // change the border color just for fun
-            info.el.style.borderColor = 'red';
+            info.el.style.borderColor = 'black';
           },
 
         
