@@ -117,6 +117,8 @@ def create_event():
     events_start_time = getattr(request.forms, "events_start_time")
     events_end_time = getattr(request.forms, "events_end_time")
 
+    #python tar inte emot timestamp så detta löses genom att kombinera date och timestamp för att få fram det
+    #korrekta formatet (åååå-mm-dd-hh-mm-ss)
     start = f"{event_date} {events_start_time}"
     end = f"{event_date} {events_end_time}"
 

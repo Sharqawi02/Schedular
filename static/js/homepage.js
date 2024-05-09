@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
-        // this code shows the different views
+        // Your existing calendar configuration
         initialView: 'dayGridMonth',
         headerToolbar: {
             left: 'prev,next',
@@ -10,31 +10,38 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         selectable: true,
         eventSources: [
-            // your event source
+            // Your existing event source
             {
                 url: '/get_events', 
                 success: function(data) {
-                    var events = data;
-                    events.forEach(function(event) {
-                        switch (event.priority) {
-                            case 'high':
-                                event.backgroundColor = '#cd5c5c'; 
-                                event.borderColor = '#cd5c5c'; 
-                                event.textColor = '#000000'; 
-                                break;
-                            case 'medium':
-                                event.backgroundColor = '#f0e130'; 
-                                event.borderColor = '#f0e130'; 
-                                event.textColor = '#000000'; 
-                                break;
-                            case 'low':
-                                event.backgroundColor = '#addfad'; 
-                                event.borderColor = '#addfad'; 
-                                event.textColor = '#000000'; 
-                                break;
+                    var addedEventIds = []; // Array to store IDs of events already added to the calendar
+
+                    data.forEach(event => {
+                        if (!addedEventIds.includes(event.id)) {
+                            switch (event.priority) {
+                                case 'high':
+                                    event.backgroundColor = '#b92e34'; 
+                                    event.borderColor = '#b92e34'; 
+                                    event.textColor = '#000000';
+                                    event.color = '#000000'; // Optional: explicitly set text color
+                                    break;
+                                case 'medium':
+                                    event.backgroundColor = '#cd5c5c'; 
+                                    event.borderColor = '#cd5c5c'; 
+                                    event.textColor = '#000000';
+                                    event.color = '#000000'; // Optional: explicitly set text color
+                                    break;
+                                case 'low':
+                                    event.backgroundColor = '#77dd77'; 
+                                    event.borderColor = '#77dd77'; 
+                                    event.textColor = '#000000';
+                                    event.color = '#000000'; // Optional: explicitly set text color
+                                    break;
+                            }
+                            calendar.addEvent(event);
+                            addedEventIds.push(event.id);
                         }
                     });
-                    calendar.addEventSource(events);
                 }
             }
         ],
@@ -44,5 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
             info.el.style.borderColor = 'black';
         }
     });
-    calendar.render();
+
+    calendar.render(); // Render the calendar
 });
