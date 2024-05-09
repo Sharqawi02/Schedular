@@ -231,4 +231,96 @@ aside #calendar{
 }
 /*Översiktsknappen slut*/
 
+.event-popup {
+  position: fixed; /* Change from absolute to fixed */
+  transform: translate(-50%, -50%); /* Center it horizontally and vertically */
+  border: 1px solid black;
+  z-index: 3; /* Ensure it appears on top of other elements */
+  border-radius: 15px;
+  background-color: #fefefe;
+  box-shadow: 0 0 10px lightblue;
+  padding: 30px;
+  width: 35%;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  margin-left: 23%;
+  height: 30%;
+  margin-top: 10%;
+  
+}
 
+.event-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.event-description {
+  margin-bottom: 10px;
+}
+
+#div-for-buttons{
+  display: flex;
+  align-items: center;
+  margin-top: 20%;
+  gap: 26em;
+}
+
+#event-delete-button{
+  background-color: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 120px;
+
+  border: solid black;
+  border-width: 0.5px;
+  text-align: center;
+  box-shadow: 5px 5px lightblue;
+  overflow: hidden;
+  height: 30px;
+  font-family: "Playfair Display";
+  font-weight: bold;
+
+}
+
+#event-button{
+  background-color: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 140px;
+
+  border: solid black;
+  border-width: 0.5px;
+  text-align: center;
+  box-shadow: 5px 5px lightblue;
+  overflow: hidden;
+  height: 30px;
+  font-family: "Playfair Display";
+  font-weight: bold;
+}
