@@ -259,3 +259,68 @@ aside #calendar{
   margin-bottom: 10px;
 }
 
+#div-for-buttons{
+  display: flex;
+  align-items: center;
+  margin-top: 20%;
+  gap: 26em;
+}
+
+#event-delete-button{
+  background-color: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 120px;
+
+  border: solid black;
+  border-width: 0.5px;
+  text-align: center;
+  box-shadow: 5px 5px lightblue;
+  overflow: hidden;
+  height: 30px;
+  font-family: "Playfair Display";
+  font-weight: bold;
+
+}
+
+#event-button{
+  background-color: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 140px;
+
+  border: solid black;
+  border-width: 0.5px;
+  text-align: center;
+  box-shadow: 5px 5px lightblue;
+  overflow: hidden;
+  height: 30px;
+  font-family: "Playfair Display";
+  font-weight: bold;
+}
