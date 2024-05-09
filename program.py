@@ -6,7 +6,6 @@ import secrets
 
 app = Bottle()
 
-
 @app.route('/')
 def index():
      return template('First-Site.html', error={})
@@ -132,8 +131,6 @@ def create_event():
     # 3. Skicka tillbaka användaren till kalendersidan
     redirect("/homepage")
 
-
-
 @app.route('/forgot-password', method=['GET', 'POST'])
 def forgot_password():
     error = {}
@@ -196,7 +193,6 @@ def logout():
         return redirect('/')
     else:
         return redirect('/')
-
 
 @app.route('/static/<filename:path>')
 def static_files(filename):
