@@ -6,7 +6,6 @@ import secrets
 
 app = Bottle()
 
-
 @app.route('/')
 def index():
      return template('First-Site.html', error={})
@@ -117,6 +116,8 @@ def create_event():
     events_start_time = getattr(request.forms, "events_start_time")
     events_end_time = getattr(request.forms, "events_end_time")
 
+    #python tar inte emot timestamp så detta löses genom att kombinera date och timestamp för att få fram det
+    #korrekta formatet (åååå-mm-dd-hh-mm-ss)
     start = f"{event_date} {events_start_time}"
     end = f"{event_date} {events_end_time}"
 
@@ -129,8 +130,6 @@ def create_event():
     connection.commit()
     # 3. Skicka tillbaka användaren till kalendersidan
     redirect("/homepage")
-
-
 
 @app.route('/forgot-password', method=['GET', 'POST'])
 def forgot_password():
@@ -194,7 +193,6 @@ def logout():
         return redirect('/')
     else:
         return redirect('/')
-
 
 @app.route('/static/<filename:path>')
 def static_files(filename):
