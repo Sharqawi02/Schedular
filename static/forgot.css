@@ -44,7 +44,9 @@ section {
     box-sizing: border-box;
     border: solid lightblue;
     border-radius: 7%;
-    padding: 20px
+    padding: 20px; 
+    box-shadow: 10px 10px 161px -58px rgba(0,0,0,0.75);
+
 }
 
 h1 {
