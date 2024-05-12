@@ -11,150 +11,40 @@ body {
 
 
 /* STYLING for the main div container */
-.container {
-    padding: 0;
-}
 
-/* STYLING for the nav */
-/* STYLING för nav */
-nav {
-    background-color: #fff;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff; /* Ändra bakgrundsfärg till vit */
-    border-right: 1px solid #ADD8E6; /* Ändra högerkantens färg till ljusblå */
-    box-shadow: 0px 0px 10px #ADD8E6;
-}
-
-nav header {
-    display: flex;
-    align-items: center;
-}
-
-nav header img {
-    width: 80px;
-    height: auto;
-    margin-right: 10px; /* Justera marginalen om det behövs */
-    margin-left: auto; /* Centrera bilden horisontellt */
-}
-
-nav header h1 {
-    font-size: 35px;
-    margin: 0;
-    font-weight: 500;
-    color: #ADD8E6;
-}
-
-nav header h1 a {
-    text-decoration: none;
-    color: #000000;
-}
-
-
-/* STYLING for icon-search-container */
-nav .icon-search-container {
-    padding-right: 20px;
-    display: flex;
-    align-items: center;
-}
-
-
-nav .icon-search-container .fa-solid {
+h1 { 
     font-size: 40px;
-    cursor: pointer;
-    padding-right: 20px;
-}
-
-
-nav .icon-search-container .img-container {
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-    border-radius: 100%;
-    background-color: #000000;
-}
-
-
-nav .icon-search-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
-nav .icon-search-container .hamburger {
-    height: 50px;
-    width: 50px;
-    transform: 0.2s;
-    position: relative;
-    padding-left: 20px;
-}
-
-
-nav .icon-search-container .hamburger .checkbox {
-    position: absolute;
-    opacity: 0;
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-}
-
-
-nav .icon-search-container .line {
-    transition: 0.5s;
-    stroke-width: 6px;
-    stroke: #ADD8E6;
-}
-
-
-nav .icon-search-container .lineTop {
-    stroke-dasharray: 40 40;
-    stroke-dashoffset: 25;
-}
-
-
-nav .icon-search-container .lineBottom {
-    stroke-dasharray: 40 40;
-    stroke-dashoffset: 60;
-}
-
-
-nav .icon-search-container .lineMid {
-    stroke-dasharray: 40 40;
-}
-
-
-nav .icon-search-container .hamburger .checkbox:checked + svg .line {
-    stroke: #ADD8E6;
-}
-
-
-nav .icon-search-container .hamburger .checkbox:checked + svg .lineTop {
-    stroke-dashoffset: 0;
-    transform-origin: left;
-    transform: rotateZ(45deg) translate(-7px, -5px);
-}
-
-
-nav .icon-search-container .hamburger .checkbox:checked + svg .lineMid {
-    stroke-dashoffset: 40;
-}
-
-
-nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
-    stroke-dashoffset: 0;
-    transform-origin: left;
-    transform: rotateZ(-45deg) translate(-5px, 5px);
-}
-/* STYLING for icon-search-container ends here */
-
-
-/* STYLING for profile container */
-.profile-container {
+  }
+  
+  header {
     display: flex;
-}
+    margin: auto;
+    background-color: #ADD8E6;
+    box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
+    align-items: center;
+  }
+  
+  img  {
+    width: 8%; 
+    height: auto; 
+  }
+  
+  .img-container { 
+    max-width: 70%;
+  }
+  
+  .img-container #profilepic { 
+    border-radius: 100%;
+    width: 6%;
+    margin-left: 92%;
+    margin-right: 0;
+    margin-top: 0.5;
+  }
+  
+  #container  {
+    display: flex;
+    margin-top: 50px;
+  }
 
 
 .section-container {

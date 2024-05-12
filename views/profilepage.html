@@ -11,30 +11,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
-    <title>SCHEDULAR</title>
-
-    <link href="/./static/images/logga2.png" rel="icon">
-
+    <title>Profile - Schedular</title>
 </head>
 
+
 <body>
-    <div class="container">
-        <nav>
-            <!-- h1 tag header -->
-            <header>
-                <a href="/homepage">
-                    <img src="/./static/images/logo.png" id="profilepic" alt="Profile Image of User">
+    <div id="wrapper">
+        <header>
+
+            <img src="/static/images/logo.png" id="logo" alt="our logo">
+            <h1>SCHEDULAR</h1>
+            <div class="img-container">
+                <a href="/redirect_to_profilepage">
+                    <img src="/./static/images/profilbild.jpg" id="profilepic" alt="Profile Image of User">
                 </a>
-            </header>
-            <!-- container for search icon and profile img -->
-            <div class="icon-search-container">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <div class="img-container">
-                    <a href="/redirect_to_profilepage">
-                        <img src="#" alt="Profile Image of User">
-                    </a>
-                </div>
-                <!-- hamburger icon -->
+            </div>
+
+            <div id="översikt">
                 <div class="hamburger">
                     <input class="checkbox" type="checkbox" />
                     <svg fill="none" viewBox="0 0 50 50" height="50" width="50">
@@ -48,9 +41,10 @@
                         </path>
                     </svg>
                 </div>
-            </div>
-        </nav>
 
+            </div>
+
+        </header>
         <!-- profile overview sections -->
         <div class="profile-container">
             <div class="section-container">
@@ -73,6 +67,7 @@
                     <a href="/logout"><input type="button" value="Logout"></a>
                 </div>
             </div>
+
 
             <!-- What the different sections (when clicked) will show -->
             <div class="info-container">
@@ -106,11 +101,17 @@
         </div>
     </div>
 
+
     </div>
+
+
     <!-- Script link for JS -->
     <script src="/static/js/profilepage.js"></script>
+
+
     <!-- Script kit for FontAwesome -->
     <script src="https://kit.fontawesome.com/492ceb14f6.js" crossorigin="anonymous"></script>
 </body>
+
 
 </html>
