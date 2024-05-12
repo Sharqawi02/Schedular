@@ -68,3 +68,17 @@ document.addEventListener("DOMContentLoaded", function () {
         modal2.style.display = "block";
     }
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const checkbox = document.querySelector('.checkbox');
+    const sidebar = document.getElementById('sidebar');
+
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            sidebar.classList.add('sidebar-open');
+        } else {
+            sidebar.classList.remove('sidebar-open');
+        }
+    });
+});
