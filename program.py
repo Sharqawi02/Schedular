@@ -114,11 +114,12 @@ def get_events():
             one_event = {
                 "title": event[1],               
                 "description":event[2],
-                "date": event[3].isoformat(),                
+                "start": event[3].isoformat(),
+                "end": event[9].isoformat(),          
                 "priority": event[4],  
                 "category": event[5],
-                "start":event[7].isoformat(),
-                "end": event[8].isoformat()
+                "startTime":event[7].isoformat(),
+                "endTime": event[8].isoformat()
             }
             all_events.append(one_event)
             print(event)
@@ -135,7 +136,8 @@ def create_event():
     connection = connect()
     cursor = connection.cursor()
     # 1. Hämta alla värden som skickats från formuläret
-    event_date = getattr(request.forms, "event_date")
+    event_start_date = getattr(request.forms, "event_start_date")
+    event_end_date = getattr(request.forms, "event_end_date")
     event_title = getattr(request.forms, "event_title")
     event_priority = getattr(request.forms, "event_priority")
     event_category = getattr(request.forms, "event_category")
@@ -145,14 +147,14 @@ def create_event():
 
     #python tar inte emot timestamp så detta löses genom att kombinera date och timestamp för att få fram det
     #korrekta formatet (åååå-mm-dd-hh-mm-ss)
-    start = f"{event_date} {events_start_time}"
-    end = f"{event_date} {events_end_time}"
+    start = f"{event_start_date} {events_start_time}"
+    end = f"{event_start_date} {events_end_time}"
 
     is_user_logged_in = request.get_cookie("user_id")
 
     # 2. Lägg in eventet (med alla värden) i databasen
-    cursor.execute("""INSERT INTO events (event_date, event_title, event_priority, event_category, event_description, user_id, events_start_time, events_end_time)
-                  VALUES(%s, %s, %s, %s, %s, %s, %s, %s)""", (event_date, event_title, event_priority, event_category, event_description, is_user_logged_in, start, end))
+    cursor.execute("""INSERT INTO events (event_start_date, event_end_date, event_title, event_priority, event_category, event_description, user_id, events_start_time, events_end_time)
+                  VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)""", (event_start_date, event_end_date, event_title, event_priority, event_category, event_description, is_user_logged_in, start, end))
 
     connection.commit()
     # 3. Skicka tillbaka användaren till kalendersidan
