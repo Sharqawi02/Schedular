@@ -182,55 +182,6 @@ aside #calendar{
   margin-right: 20%;
 }
 
-.hamburger {
-  height: 50px;
-  width: 50px;
-  transform: 0.2s;
-  position: relative;
-
-}
-.hamburger .checkbox {
-  position: absolute;
-  opacity: 0;
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-  padding-right: 10%;
-}
-.line {
-  transition: 0.5s;
-  stroke-width: 6px;
-  stroke: black;
-}
-.lineTop {
-  stroke-dasharray: 40 40;
-  stroke-dashoffset: 25;
-}
-.lineBottom {
-  stroke-dasharray: 40 40;
-  stroke-dashoffset: 60;
-}
-.lineMid {
-  stroke-dasharray: 40 40;
-}
-.hamburger .checkbox:checked + svg .line {
-  stroke: crimson;
-}
-.hamburger .checkbox:checked + svg .lineTop {
-  stroke-dashoffset: 0;
-  transform-origin: left;
-  transform: rotateZ(45deg) translate(-7px, -5px);
-}
-.hamburger .checkbox:checked + svg .lineMid {
-  stroke-dashoffset: 40;
-}
-.hamburger .checkbox:checked + svg .lineBottom {
-  stroke-dashoffset: 0;
-  transform-origin: left;
-  transform: rotateZ(-45deg) translate(-5px, 5px);
-}
-/*Översiktsknappen slut*/
-
 .event-popup {
   position: fixed; /* Change from absolute to fixed */
   transform: translate(-50%, -50%); /* Center it horizontally and vertically */
@@ -250,100 +201,17 @@ aside #calendar{
   
 }
 
-.event-title {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.event-description {
-  margin-bottom: 10px;
-}
-
-#div-for-buttons{
-  display: flex;
-  align-items: center;
-  margin-top: 20%;
-  gap: 26em;
-}
-
-#event-delete-button{
-  background-color: #fff;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: black;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Amazon Ember",sans-serif;
-  font-size: 13px;
-  line-height: 29px;
-  padding: 0 10px 0 11px;
-  position: relative;
-  text-align: center;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  width: 120px;
-
-  border: solid black;
-  border-width: 0.5px;
-  text-align: center;
-  box-shadow: 5px 5px lightblue;
-  overflow: hidden;
-  height: 30px;
-  font-family: "Playfair Display";
-  font-weight: bold;
-
-}
-
-#event-button{
-  background-color: #fff;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: black;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Amazon Ember",sans-serif;
-  font-size: 13px;
-  line-height: 29px;
-  padding: 0 10px 0 11px;
-  position: relative;
-  text-align: center;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  width: 140px;
-
-  border: solid black;
-  border-width: 0.5px;
-  text-align: center;
-  box-shadow: 5px 5px lightblue;
-  overflow: hidden;
-  height: 30px;
-  font-family: "Playfair Display";
-  font-weight: bold;
-}
-/* Sidebar styling */
-#sidebar {
-  position: fixed;
-  top: 0;
-  right: -250px; /* Döljer sidebaren initialt */
-  width: 250px;
+.översikt {
   height: 100%;
-  background-color: #333;
-  transition: right 0.3s ease; /* Använder right istället för left för transition */
-  z-index: 1000;
+  width: 180px;
+  position: absolute;
+  background-color: #ADD8E6;
+  transition: 0.05s ease;
 }
 
-.sidebar-open {
-  right: 0; /* Visar sidebaren när den är öppen */
-}
-
-/* Flytta hamburgerikonen till höger */
-.hamburger {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 1001; /* Se till att hamburgarikonen visas ovanpå sidebaren */
+h2 {
+  text-align: right;
+  padding: 10px 0;
+  padding-right: 30px; 
+  pointer-events: none;
 }
