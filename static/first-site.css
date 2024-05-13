@@ -204,6 +204,8 @@ section {
     text-align: center;
     inline-size: 80%;
     font-size: 15px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 
@@ -326,3 +328,158 @@ p.error {
     margin-left: 60%;
     margin-bottom: 1%;
 }
+
+
+
+@media screen and (max-width: 800px) {
+    body{
+        font-size: 16px;
+        max-width: 800px;
+        
+    }
+
+    #wrapper{
+        flex-direction: column;
+        padding-bottom: 500px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+
+    form{
+        width: 110%;
+        margin:  20px auto;
+        display: block;
+        justify-content: center; 
+    }
+
+    img{
+        width: 200px;
+        height: auto;
+    }
+    #form-container{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: 50%;
+    }
+
+    #wrapper #secttiondiv {
+        width: 10%;
+        padding: 200px;
+    }
+
+    .rubriker h1
+    .rubriker h2{
+        font-size: 20%;
+    }
+
+    .btn{
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    #form-container{
+        width: 80%;
+        margin: 20px auto;
+    }
+
+
+    .modal {
+        padding-top: 20px; 
+    }
+
+    .modal-content {
+        width: 80%; 
+        max-width: 80%; 
+        margin: 10% auto; 
+    }
+
+    .close {
+        top: 5px; 
+        right: 5px; 
+    }
+    
+    #footerdiv{
+        text-align: center;
+        position: relative;
+    }
+    
+ }
+
+
+ @media screen and (max-width: 900px) {
+    body{
+        font-size: 16px;
+        max-width: 800px;
+        
+    }
+
+    #wrapper{
+        flex-direction: column;
+        padding-bottom: 500px;
+    }
+
+    img{
+        width: 200px;
+        height: auto;
+    }
+
+
+    #alternativ #policy{
+        width: 300px;
+        text-align: center;
+    }
+    #wrapper #secttiondiv {
+        width: 10%;
+        padding: 200px;
+    }
+
+    .rubriker h1
+    .rubriker h2{
+        font-size: 20%;
+    }
+
+    .btn{
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    #form-container{
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    .modal {
+        padding-top: 20px; 
+    }
+
+    .modal-content {
+        width: 80%; 
+        max-width: 300px; 
+        margin: 10% auto; 
+    }
+
+    .close {
+        top: 5px; 
+        right: 5px; 
+    }
+
+    #footerdiv{
+        text-align: center;
+        position: relative;
+    }
+    
+ } 

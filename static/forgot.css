@@ -88,7 +88,7 @@ input[type="password"] {
     background-color: #72A0C1;
 }
 
-/* Footer-stil som matchar första sidan */
+
 #footerdiv {
     position: fixed;
     bottom: 0;
@@ -111,4 +111,44 @@ input[type="password"] {
 
 #tillbaka_till_startsidan_länk { 
     color: #72A0C1;
+}
+
+
+@media screen and (max-width: 800px) {
+    img{
+        width: 200px;
+        height: auto;
+    }
+    input[type="email"],
+    input[type="password"] {
+        padding: 10px;
+    }
+
+    section {
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    img{
+        width: 200px;
+        height: auto;
+    }
+    section {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        padding: 10px;
+    }
+
+    .btn {
+        padding: 12px;
+        font-size: 16px;
+    }
 }
