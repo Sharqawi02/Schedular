@@ -201,13 +201,21 @@ aside #calendar{
   
 }
 
-.översikt {
+#wrapper .översikt {
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 180px;
-  position: absolute;
   background-color: #ADD8E6;
-  transition: 0.05s ease;
+  transition: transform 0.3s ease; /* Lägg till transition för smidig animering */
+  transform: translateX(-180px); /* Startposition utanför sidan */
 }
+
+.översikt.open {
+  transform: translateX(0); /* Flytta in sidan när den är öppen */
+}
+
 
 h2 {
   text-align: right;
@@ -266,5 +274,41 @@ label input {
 .toggle .top_line {
   top: 30%;
   left: 50%;
-  transform: translate();
+  transform: translate(-50%, -50%);
 }
+
+.toggle .middle_line {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.toggle .bottom_line {
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input:checked + .toggle .top_line {
+  left: 2px;
+  top: 14px;
+  width: 25px;
+  transform: rotate(45deg);
+}
+input:checked + .toggle .bottom_line {
+  left: 2px;
+  top: 14px;
+  width: 25px;
+  transform: rotate(-45deg);
+}
+input:checked + .toggle .middle_line {
+  opacity: 0;
+  transform: translateX(20px);
+}
+input:checked + .slide {
+  transform: translateX(0);
+}
+
+
+
+

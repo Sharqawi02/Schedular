@@ -89,13 +89,28 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-document.addEventListener("DOMContentLoaded", function() {
-    const hamburger = document.querySelector('.hamburger');
-    const sidebar = document.getElementById('sidebar');
-
-    hamburger.addEventListener('click', function() {
-        sidebar.classList.toggle('sidebar-open');
-    });
+// Hämta knappen och sidofältet
+document.addEventListener('DOMContentLoaded', function () {
+    // Din befintliga JavaScript-kod här
 });
+
+// Hämta knappen och sidofältet
+var toggleButton = document.querySelector('.toggle');
+var sidebar = document.querySelector('.översikt');
+
+// Lägg till en händelselyssnare för knappen
+toggleButton.addEventListener('click', function() {
+  // Kolla om sidofältet är öppet eller stängt genom att titta på dess klasslista
+  var isOpen = sidebar.classList.contains('open');
+
+  // Om sidofältet är öppet, stäng det, annars öppna det
+  if (isOpen) {
+    sidebar.classList.remove('open');
+  } else {
+    sidebar.classList.add('open');
+  }
+});
+
+
 
 
