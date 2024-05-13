@@ -6,9 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
         headerToolbar: {
             left: 'prev,next',
             center: 'title',
-            right: 'multiMonthYear,dayGridMonth,timeGridWeek,timeGridDay,listYear' 
+            right: 'multiMonthYear,dayGridMonth,timeGridWeek,timeGridDay,listYear'
         },
+        weekNumbers: true,
         selectable: true,
+        nowIndicator: true,
         eventSources: [
             // Your existing event source
             {
@@ -73,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    calendar.render(); // Render the calendar
 
     // Hide the popup initially
     var popup = document.getElementById('event-popup');
@@ -88,4 +89,6 @@ document.addEventListener('DOMContentLoaded', function () {
             popup.style.display = 'none';
         }
     });
+
+    calendar.render(); // Render the calendar
 });
