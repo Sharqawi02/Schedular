@@ -215,3 +215,56 @@ h2 {
   padding-right: 30px; 
   pointer-events: none;
 }
+ul li {
+  list-style: none;
+}
+
+ul li a {
+  font-weight: 700;
+  padding: 20px 0;
+  display: block;
+  text-transform:capitalize;
+  text-decoration: none;
+  transition: 0.2s ease-out;
+}
+
+ul li a i {
+  width: 50px;
+  text-align: center;
+
+}
+
+label input {
+  display: none;
+  visibility: hidden;
+  appearance: none;
+
+}
+
+.toggle {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 20px;
+  left: 15px;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 2px;
+  background-color: #ADD8E6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.toggle .common {
+  position: absolute;
+  height: 2px ;
+  width: 20px;
+  background-color: black;
+  border-radius: 50px;
+  transition: 0.3s ease;
+}
+
+.toggle .top_line {
+  top: 30%;
+  left: 50%;
+  transform: translate();
+}
