@@ -32,15 +32,16 @@ def register():
     Handles registration requests for new users. If the user is already registered it redirects back to the homepage.
     Handles registration requests for new users. If the user already exists an error message will be displayed on the 
     """
+    connection = connect()
+    cursor  = connection.cursor()
+
     try:
         if request.method == 'POST':
             firstname = request.forms.get('firstname')
             lastname = request.forms.get('lastname')
             email = request.forms.get('email')
             password = request.forms.get('password')
-
-            connection = connect()
-            cursor  = connection.cursor()
+            
 
             # Check if the email already exists in the database
             cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
@@ -58,10 +59,10 @@ def register():
             
                 cursor.execute("""SELECT * FROM users where firstname = %s and lastname = %s and email = %s and password = %s""", (firstname,lastname,email,password))
                 user_id = cursor.fetchone()
+
     
                 response.set_cookie("user_id", str(user_id[0]))
 
-                return redirect('/homepage')
         else: 
             return template('First-site.html',error={})
     except psycopg2.Error as e:
@@ -70,6 +71,8 @@ def register():
         if (connection):
             cursor.close()
             connection.close()
+            return redirect('/homepage')
+
         
 
 @app.route('/login', method=['POST', 'GET'])
@@ -82,10 +85,11 @@ def login():
     The function checks whether a POST request is made or not. If it's a GET request,
     then simply render the page with no errors.
     """
+    connection = connect()
+    cursor = connection.cursor()
     try:
         if request.method == 'POST':
-            connection = connect()
-            cursor = connection.cursor()
+
             email = request.forms.get('email')
             password = request.forms.get('password')
 
@@ -102,24 +106,25 @@ def login():
                 return template('First-site.html',error={
                     "wrong_password": error_message
                 })
-        else:
-            return template('First-site.html',error={})
+
     except psycopg2.Error as e:
         print("ERROR CONNECTING TO POSTGREsql:", e)
     finally:
         if (connection):
             cursor.close()
             connection.close()
+            return template('First-site.html',error={})
+
 
 @app.route("/get_events", method=["GET"])
 def get_events():
     """
     Getting all events from the database and rendering them on the calendar view.
     """
+    connection = connect()
+    cursor = connection.cursor()    
     # 1. Hämta alla event från databasen
     try:
-        connection = connect()
-        cursor = connection.cursor()
         is_user_logged_in = request.get_cookie("user_id")
         if is_user_logged_in:
             cursor.execute(f"SELECT * FROM events AS e JOIN users AS u ON u.id = e.user_id WHERE u.id = {is_user_logged_in} ")
@@ -155,9 +160,9 @@ def create_event():
     Create a new event by getting values from an HTML form, save it to the database and redirect back to the homepage.
     Creating a new event by taking input from the user, validating it and then storing it in the database.
     """
+    connection = connect()
+    cursor = connection.cursor()
     try:
-        connection = connect()
-        cursor = connection.cursor()
         # 1. Hämta alla värden som skickats från formuläret
         event_start_date = getattr(request.forms, "event_start_date")
         event_end_date = getattr(request.forms, "event_end_date")
@@ -181,13 +186,14 @@ def create_event():
 
         connection.commit()
         # 3. Skicka tillbaka användaren till kalendersidan
-        redirect("/homepage")
     except psycopg2.Error as e:
         print("ERROR CONNECTING TO POSTGREsql:", e)
     finally:
         if (connection):
             cursor.close()
             connection.close()
+            redirect("/homepage")
+
 
 @app.route('/forgot-password', method=['GET', 'POST'])
 def forgot_password():
@@ -195,6 +201,8 @@ def forgot_password():
     Handles requests to /forgot-password. If the email address provided exists in our users table, an email with a password reset link
     Handles requests to /forgot-password. If the email address provided exists in the users table, an email with a password reset
     """
+    connection = connect()
+    cursor = connection.cursor()
     try:
         error = {}
         if request.method == 'POST':
@@ -202,9 +210,6 @@ def forgot_password():
             new_password = request.forms.get('new_password')
 
             # Check if the email exists in the database
-            connection = connect()
-            cursor = connection.cursor()
-
             cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
             user = cursor.fetchone()
 
@@ -220,7 +225,6 @@ def forgot_password():
                 return template('First-Site.html', new=new, error=error)
             else:
                 error["email_not_found"] = "Email not found."
-                return template('forgot-password.html', error=error, new=None)
 
         return template('forgot-password.html', error=error, new=None)
     except psycopg2.Error as e:
@@ -229,6 +233,8 @@ def forgot_password():
         if (connection):
             cursor.close()
             connection.close()
+            return template('forgot-password.html', error=error, new=None)
+
 
 @app.route('/profilepage')
 def profilepage():
