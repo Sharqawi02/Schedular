@@ -35,6 +35,8 @@ def register():
         if user:
             # If the user exists, return an error message
             error_message = "E-postadressen är redan registrerad."
+            cursor.close()  # close cursor
+            connection.close()  # close connection
             return template('First-site.html',error={
                 "email_already_registered": error_message,
             })
@@ -47,6 +49,9 @@ def register():
             user_id = cursor.fetchone()
   
             response.set_cookie("user_id", str(user_id[0]))
+
+            cursor.close()  # close cursor
+            connection.close()  # close connection
 
             return redirect('/homepage')
     else: 
@@ -67,9 +72,14 @@ def login():
             user_id = user_id[0]
             response.set_cookie("user_id", str(user_id))
 
+            cursor.close()  # close cursor
+            connection.close()  # close connection
+
             return redirect('/homepage')
         else:
             error_message = "E-postadressen eller lösenordet är fel."
+            cursor.close()  # close cursor
+            connection.close()  # close connection
             return template('First-site.html',error={
                 "wrong_password": error_message
             })
@@ -91,7 +101,8 @@ def get_events():
             one_event = {
                 "title": event[1],               
                 "description":event[2],
-                "date": event[3].isoformat(),                
+                "startdate": event[3].isoformat(),      
+                "enddate": event[9].isoformat(),                
                 "priority": event[4],  
                 "category": event[5],
                 "start":event[7].isoformat(),
@@ -101,6 +112,9 @@ def get_events():
             print(event)
         print(all_events)
 
+        cursor.close()  # close cursor
+        connection.close()  # close connection
+
         return json.dumps(all_events)
 
 @app.route("/create_event", method=["POST"])
@@ -108,8 +122,9 @@ def create_event():
     connection = connect()
     cursor = connection.cursor()
     # 1. Hämta alla värden som skickats från formuläret
-    event_date = getattr(request.forms, "event_date")
     event_title = getattr(request.forms, "event_title")
+    event_start_date = getattr(request.forms, "event_start_date")
+    event_end_date = getattr(request.forms, "event_end_date")
     event_priority = getattr(request.forms, "event_priority")
     event_category = getattr(request.forms, "event_category")
     event_description = getattr(request.forms, "event_description") 
@@ -118,17 +133,19 @@ def create_event():
 
     #python tar inte emot timestamp så detta löses genom att kombinera date och timestamp för att få fram det
     #korrekta formatet (åååå-mm-dd-hh-mm-ss)
-    start = f"{event_date} {events_start_time}"
-    end = f"{event_date} {events_end_time}"
+    start = f"{event_start_date} {events_start_time}"
+    end = f"{event_end_date} {events_end_time}"
 
     is_user_logged_in = request.get_cookie("user_id")
 
     # 2. Lägg in eventet (med alla värden) i databasen
-    cursor.execute("""INSERT INTO events (event_date, event_title, event_priority, event_category, event_description, user_id, events_start_time, events_end_time)
-                  VALUES(%s, %s, %s, %s, %s, %s, %s, %s)""", (event_date, event_title, event_priority, event_category, event_description, is_user_logged_in, start, end))
+    cursor.execute("""INSERT INTO events (event_start_date, event_end_date, event_title, event_priority, event_category, event_description, user_id, events_start_time, events_end_time)
+                  VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)""", (event_start_date, event_end_date, event_title, event_priority, event_category, event_description, is_user_logged_in, start, end))
 
     connection.commit()
     # 3. Skicka tillbaka användaren till kalendersidan
+    cursor.close()  # close cursor
+    connection.close()  # close connection
     redirect("/homepage")
 
 @app.route('/forgot-password', method=['GET', 'POST'])
@@ -154,9 +171,13 @@ def forgot_password():
             connection.commit()
 
             new = f"New password for {email}: {new_password}"
+            cursor.close()  # close cursor
+            connection.close()  # close connection
             return template('First-Site.html', new=new, error=error)
         else:
             error["email_not_found"] = "Email not found."
+            cursor.close()  # close cursor
+            connection.close()  # close connection
             return template('forgot-password.html', error=error, new=None)
 
     return template('forgot-password.html', error=error, new=None)
@@ -172,7 +193,8 @@ def profilepage():
         user_id = eval(is_user_logged_in) #extrakting user_id 
         cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
         user_data = cursor.fetchone()  # fetches the user information from database
-        connection.close()  # closes the connection
+        cursor.close()  # close cursor
+        connection.close()  # close connection
         return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2])
     else:
         # Om användaren inte är inloggad, skicka tillbaka till startsidan
@@ -200,5 +222,3 @@ def static_files(filename):
 
 if __name__ == '__main__':
     run(app, debug=True)
-
-

@@ -58,10 +58,15 @@
                 <div id="tasks">
                     <form action="/create_event" method="post">
 
-                        <!--Event datum -->
+                          <!--Event datum -->
+                          <div class="block">
+                            <label for="event_start_date">Start datum</label>
+                            <input type="date" name="event_start_date" id="event_date" required>
+                        </div>
+
                         <div class="block">
-                            <label for="event_date">Datum</label>
-                            <input type="date" name="event_date" id="event_date" required>
+                            <label for="event_end_date">Slut datum</label>
+                            <input type="date" name="event_end_date" id="event_date" required>
                         </div>
 
                         <!--Event Titel -->
