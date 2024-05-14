@@ -3,13 +3,10 @@ import psycopg2
 from storage.db import connect
 import json
 import secrets
-
 app = Bottle()
-
 @app.route('/')
 def index():
      return template('First-Site.html', error={})
-
 @app.route('/homepage')
 def homepage_route():
     is_user_logged_in = request.get_cookie("user_id")
@@ -17,7 +14,6 @@ def homepage_route():
         return template('homepage.html', is_user_logged_in=is_user_logged_in)
     else:
         return redirect("/")
-
 @app.route('/register' , method=[ 'GET','POST'])
 def register():
     if request.method == 'POST':
@@ -25,10 +21,8 @@ def register():
         lastname = request.forms.get('lastname')
         email = request.forms.get('email')
         password = request.forms.get('password')
-
         connection = connect()
         cursor  = connection.cursor()
-
         # Check if the email already exists in the database
         cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
         user = cursor.fetchone()
@@ -47,7 +41,7 @@ def register():
            
             cursor.execute("""SELECT * FROM users where firstname = %s and lastname = %s and email = %s and password = %s""", (firstname,lastname,email,password))
             user_id = cursor.fetchone()
-  
+
             response.set_cookie("user_id", str(user_id[0]))
 
             cursor.close()  # close cursor
@@ -56,7 +50,6 @@ def register():
             return redirect('/homepage')
     else: 
         return template('First-site.html',error={})
-
 @app.route('/login', method=['POST', 'GET'])
 def login():
     if request.method == 'POST':
@@ -64,10 +57,8 @@ def login():
         cursor = connection.cursor()
         email = request.forms.get('email')
         password = request.forms.get('password')
-
         cursor.execute("""SELECT id FROM users WHERE email = %s AND password = %s """,(email, password))
         user_id = cursor.fetchone()
-
         if user_id:
             user_id = user_id[0]
             response.set_cookie("user_id", str(user_id))
@@ -85,7 +76,6 @@ def login():
             })
     else:
         return template('First-site.html',error={})
-
 @app.route("/get_events", method=["GET"])
 def get_events():
     # 1. Hämta alla event från databasen
@@ -101,6 +91,7 @@ def get_events():
             one_event = {
                 "title": event[1],               
                 "description":event[2],
+                "date": event[3].isoformat(),                
                 "startdate": event[3].isoformat(),      
                 "enddate": event[9].isoformat(),                
                 "priority": event[4],  
@@ -122,6 +113,7 @@ def create_event():
     connection = connect()
     cursor = connection.cursor()
     # 1. Hämta alla värden som skickats från formuläret
+    event_date = getattr(request.forms, "event_date")
     event_title = getattr(request.forms, "event_title")
     event_start_date = getattr(request.forms, "event_start_date")
     event_end_date = getattr(request.forms, "event_end_date")
@@ -133,12 +125,16 @@ def create_event():
 
     #python tar inte emot timestamp så detta löses genom att kombinera date och timestamp för att få fram det
     #korrekta formatet (åååå-mm-dd-hh-mm-ss)
+    start = f"{event_date} {events_start_time}"
+    end = f"{event_date} {events_end_time}"
     start = f"{event_start_date} {events_start_time}"
     end = f"{event_end_date} {events_end_time}"
 
     is_user_logged_in = request.get_cookie("user_id")
 
     # 2. Lägg in eventet (med alla värden) i databasen
+    cursor.execute("""INSERT INTO events (event_date, event_title, event_priority, event_category, event_description, user_id, events_start_time, events_end_time)
+                  VALUES(%s, %s, %s, %s, %s, %s, %s, %s)""", (event_date, event_title, event_priority, event_category, event_description, is_user_logged_in, start, end))
     cursor.execute("""INSERT INTO events (event_start_date, event_end_date, event_title, event_priority, event_category, event_description, user_id, events_start_time, events_end_time)
                   VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)""", (event_start_date, event_end_date, event_title, event_priority, event_category, event_description, is_user_logged_in, start, end))
 
@@ -154,18 +150,14 @@ def forgot_password():
     if request.method == 'POST':
         email = request.forms.get('email')
         new_password = request.forms.get('new_password')
-
         # Check if the email exists in the database
         connection = connect()
         cursor = connection.cursor()
-
         cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
         user = cursor.fetchone()
-
         if user:
             # Generate a new password
             # new_password = secrets.token_urlsafe(10) 
-
             # Update the user's password in the database
             cursor.execute("""UPDATE users SET password = %s WHERE email = %s""", (new_password, email))
             connection.commit()
@@ -181,7 +173,6 @@ def forgot_password():
             return template('forgot-password.html', error=error, new=None)
 
     return template('forgot-password.html', error=error, new=None)
-
 @app.route('/profilepage')
 def profilepage():
     is_user_logged_in = request.get_cookie("user_id")
@@ -193,21 +184,19 @@ def profilepage():
         user_id = eval(is_user_logged_in) #extrakting user_id 
         cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
         user_data = cursor.fetchone()  # fetches the user information from database
+        connection.close()  # closes the connection
         cursor.close()  # close cursor
         connection.close()  # close connection
         return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2])
     else:
         # Om användaren inte är inloggad, skicka tillbaka till startsidan
         return redirect('/')
-
 @app.route('/redirect_to_profilepage', method='GET')
 def redirect_to_profilepage():
     return redirect('/profilepage')
-
 @app.route('/logout')
 def logout():
     is_user_logged_in_cookie = request.get_cookie('user_id')
-
     if is_user_logged_in_cookie:
         # if user is logged in this will remove the 'user_id' cookie to log the user out
         response.set_cookie('user_id', '', expires=0)
@@ -215,7 +204,6 @@ def logout():
         return redirect('/')
     else:
         return redirect('/')
-
 @app.route('/static/<filename:path>')
 def static_files(filename):
     return static_file(filename, root='./static')
