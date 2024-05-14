@@ -32,37 +32,45 @@ def register():
     Handles registration requests for new users. If the user is already registered it redirects back to the homepage.
     Handles registration requests for new users. If the user already exists an error message will be displayed on the 
     """
-    if request.method == 'POST':
-        firstname = request.forms.get('firstname')
-        lastname = request.forms.get('lastname')
-        email = request.forms.get('email')
-        password = request.forms.get('password')
+    try:
+        if request.method == 'POST':
+            firstname = request.forms.get('firstname')
+            lastname = request.forms.get('lastname')
+            email = request.forms.get('email')
+            password = request.forms.get('password')
 
-        connection = connect()
-        cursor  = connection.cursor()
+            connection = connect()
+            cursor  = connection.cursor()
 
-        # Check if the email already exists in the database
-        cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
-        user = cursor.fetchone()
-        if user:
-            # If the user exists, return an error message
-            error_message = "E-postadressen är redan registrerad."
-            return template('First-site.html',error={
-                "email_already_registered": error_message,
-            })
-        else:
-            cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
-                        VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
-            connection.commit()
-           
-            cursor.execute("""SELECT * FROM users where firstname = %s and lastname = %s and email = %s and password = %s""", (firstname,lastname,email,password))
-            user_id = cursor.fetchone()
-  
-            response.set_cookie("user_id", str(user_id[0]))
+            # Check if the email already exists in the database
+            cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
+            user = cursor.fetchone()
+            if user:
+                # If the user exists, return an error message
+                error_message = "E-postadressen är redan registrerad."
+                return template('First-site.html',error={
+                    "email_already_registered": error_message,
+                })
+            else:
+                cursor.execute("""INSERT INTO users (firstname, lastname, email, password)
+                            VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password))
+                connection.commit()
+            
+                cursor.execute("""SELECT * FROM users where firstname = %s and lastname = %s and email = %s and password = %s""", (firstname,lastname,email,password))
+                user_id = cursor.fetchone()
+    
+                response.set_cookie("user_id", str(user_id[0]))
 
-            return redirect('/homepage')
-    else: 
-        return template('First-site.html',error={})
+                return redirect('/homepage')
+        else: 
+            return template('First-site.html',error={})
+    except psycopg2.Error as e:
+        print("ERROR CONNECTING TO POSTGREsql:", e)
+    finally:
+        if (connection):
+            cursor.close()
+            connection.close()
+        
 
 @app.route('/login', method=['POST', 'GET'])
 def login():
@@ -74,27 +82,34 @@ def login():
     The function checks whether a POST request is made or not. If it's a GET request,
     then simply render the page with no errors.
     """
-    if request.method == 'POST':
-        connection = connect()
-        cursor = connection.cursor()
-        email = request.forms.get('email')
-        password = request.forms.get('password')
+    try:
+        if request.method == 'POST':
+            connection = connect()
+            cursor = connection.cursor()
+            email = request.forms.get('email')
+            password = request.forms.get('password')
 
-        cursor.execute("""SELECT id FROM users WHERE email = %s AND password = %s """,(email, password))
-        user_id = cursor.fetchone()
+            cursor.execute("""SELECT id FROM users WHERE email = %s AND password = %s """,(email, password))
+            user_id = cursor.fetchone()
 
-        if user_id:
-            user_id = user_id[0]
-            response.set_cookie("user_id", str(user_id))
+            if user_id:
+                user_id = user_id[0]
+                response.set_cookie("user_id", str(user_id))
 
-            return redirect('/homepage')
+                return redirect('/homepage')
+            else:
+                error_message = "E-postadressen eller lösenordet är fel."
+                return template('First-site.html',error={
+                    "wrong_password": error_message
+                })
         else:
-            error_message = "E-postadressen eller lösenordet är fel."
-            return template('First-site.html',error={
-                "wrong_password": error_message
-            })
-    else:
-        return template('First-site.html',error={})
+            return template('First-site.html',error={})
+    except psycopg2.Error as e:
+        print("ERROR CONNECTING TO POSTGREsql:", e)
+    finally:
+        if (connection):
+            cursor.close()
+            connection.close()
 
 @app.route("/get_events", method=["GET"])
 def get_events():
@@ -102,30 +117,37 @@ def get_events():
     Getting all events from the database and rendering them on the calendar view.
     """
     # 1. Hämta alla event från databasen
-    connection = connect()
-    cursor = connection.cursor()
-    is_user_logged_in = request.get_cookie("user_id")
-    if is_user_logged_in:
-        cursor.execute(f"SELECT * FROM events AS e JOIN users AS u ON u.id = e.user_id WHERE u.id = {is_user_logged_in} ")
-        events = cursor.fetchall()
-        print(events)
-        all_events = []
-        for event in events:
-            one_event = {
-                "title": event[1],               
-                "description":event[2],
-                "start": event[3].isoformat(),
-                "end": event[9].isoformat(),          
-                "priority": event[4],  
-                "category": event[5],
-                "startTime":event[7].isoformat(),
-                "endTime": event[8].isoformat()
-            }
-            all_events.append(one_event)
-            print(event)
-        print(all_events)
+    try:
+        connection = connect()
+        cursor = connection.cursor()
+        is_user_logged_in = request.get_cookie("user_id")
+        if is_user_logged_in:
+            cursor.execute(f"SELECT * FROM events AS e JOIN users AS u ON u.id = e.user_id WHERE u.id = {is_user_logged_in} ")
+            events = cursor.fetchall()
+            print(events)
+            all_events = []
+            for event in events:
+                one_event = {
+                    "title": event[1],               
+                    "description":event[2],
+                    "start": event[3].isoformat(),
+                    "end": event[9].isoformat(),          
+                    "priority": event[4],  
+                    "category": event[5],
+                    "startTime":event[7].isoformat(),
+                    "endTime": event[8].isoformat()
+                }
+                all_events.append(one_event)
+                print(event)
+            print(all_events)
 
-        return json.dumps(all_events)
+            return json.dumps(all_events)
+    except psycopg2.Error as e:
+        print("ERROR CONNECTING TO POSTGREsql:", e)
+    finally:
+        if (connection):
+            cursor.close()
+            connection.close()
 
 @app.route("/create_event", method=["POST"])
 def create_event():
@@ -133,32 +155,39 @@ def create_event():
     Create a new event by getting values from an HTML form, save it to the database and redirect back to the homepage.
     Creating a new event by taking input from the user, validating it and then storing it in the database.
     """
-    connection = connect()
-    cursor = connection.cursor()
-    # 1. Hämta alla värden som skickats från formuläret
-    event_start_date = getattr(request.forms, "event_start_date")
-    event_end_date = getattr(request.forms, "event_end_date")
-    event_title = getattr(request.forms, "event_title")
-    event_priority = getattr(request.forms, "event_priority")
-    event_category = getattr(request.forms, "event_category")
-    event_description = getattr(request.forms, "event_description") 
-    events_start_time = getattr(request.forms, "events_start_time")
-    events_end_time = getattr(request.forms, "events_end_time")
+    try:
+        connection = connect()
+        cursor = connection.cursor()
+        # 1. Hämta alla värden som skickats från formuläret
+        event_start_date = getattr(request.forms, "event_start_date")
+        event_end_date = getattr(request.forms, "event_end_date")
+        event_title = getattr(request.forms, "event_title")
+        event_priority = getattr(request.forms, "event_priority")
+        event_category = getattr(request.forms, "event_category")
+        event_description = getattr(request.forms, "event_description") 
+        events_start_time = getattr(request.forms, "events_start_time")
+        events_end_time = getattr(request.forms, "events_end_time")
 
-    #python tar inte emot timestamp så detta löses genom att kombinera date och timestamp för att få fram det
-    #korrekta formatet (åååå-mm-dd-hh-mm-ss)
-    start = f"{event_start_date} {events_start_time}"
-    end = f"{event_start_date} {events_end_time}"
+        #python tar inte emot timestamp så detta löses genom att kombinera date och timestamp för att få fram det
+        #korrekta formatet (åååå-mm-dd-hh-mm-ss)
+        start_time = f"{event_start_date} {events_start_time}"
+        end_time = f"{event_start_date} {events_end_time}"
 
-    is_user_logged_in = request.get_cookie("user_id")
+        is_user_logged_in = request.get_cookie("user_id")
 
-    # 2. Lägg in eventet (med alla värden) i databasen
-    cursor.execute("""INSERT INTO events (event_start_date, event_end_date, event_title, event_priority, event_category, event_description, user_id, events_start_time, events_end_time)
-                  VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)""", (event_start_date, event_end_date, event_title, event_priority, event_category, event_description, is_user_logged_in, start, end))
+        # 2. Lägg in eventet (med alla värden) i databasen
+        cursor.execute("""INSERT INTO events (event_start_date, event_end_date, event_title, event_priority, event_category, event_description, user_id, events_start_time, events_end_time)
+                    VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)""", (event_start_date, event_end_date, event_title, event_priority, event_category, event_description, is_user_logged_in, start_time, end_time))
 
-    connection.commit()
-    # 3. Skicka tillbaka användaren till kalendersidan
-    redirect("/homepage")
+        connection.commit()
+        # 3. Skicka tillbaka användaren till kalendersidan
+        redirect("/homepage")
+    except psycopg2.Error as e:
+        print("ERROR CONNECTING TO POSTGREsql:", e)
+    finally:
+        if (connection):
+            cursor.close()
+            connection.close()
 
 @app.route('/forgot-password', method=['GET', 'POST'])
 def forgot_password():
@@ -166,53 +195,67 @@ def forgot_password():
     Handles requests to /forgot-password. If the email address provided exists in our users table, an email with a password reset link
     Handles requests to /forgot-password. If the email address provided exists in the users table, an email with a password reset
     """
-    error = {}
-    if request.method == 'POST':
-        email = request.forms.get('email')
-        new_password = request.forms.get('new_password')
+    try:
+        error = {}
+        if request.method == 'POST':
+            email = request.forms.get('email')
+            new_password = request.forms.get('new_password')
 
-        # Check if the email exists in the database
-        connection = connect()
-        cursor = connection.cursor()
+            # Check if the email exists in the database
+            connection = connect()
+            cursor = connection.cursor()
 
-        cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
-        user = cursor.fetchone()
+            cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
+            user = cursor.fetchone()
 
-        if user:
-            # Generate a new password
-            # new_password = secrets.token_urlsafe(10) 
+            if user:
+                # Generate a new password
+                # new_password = secrets.token_urlsafe(10) 
 
-            # Update the user's password in the database
-            cursor.execute("""UPDATE users SET password = %s WHERE email = %s""", (new_password, email))
-            connection.commit()
+                # Update the user's password in the database
+                cursor.execute("""UPDATE users SET password = %s WHERE email = %s""", (new_password, email))
+                connection.commit()
 
-            new = f"New password for {email}: {new_password}"
-            return template('First-Site.html', new=new, error=error)
-        else:
-            error["email_not_found"] = "Email not found."
-            return template('forgot-password.html', error=error, new=None)
+                new = f"New password for {email}: {new_password}"
+                return template('First-Site.html', new=new, error=error)
+            else:
+                error["email_not_found"] = "Email not found."
+                return template('forgot-password.html', error=error, new=None)
 
-    return template('forgot-password.html', error=error, new=None)
+        return template('forgot-password.html', error=error, new=None)
+    except psycopg2.Error as e:
+        print("ERROR CONNECTING TO POSTGREsql:", e)
+    finally:
+        if (connection):
+            cursor.close()
+            connection.close()
 
 @app.route('/profilepage')
 def profilepage():
     """
     Displays the profile page of the logged in user. If no one is logged in it redirects to homepage.
     """
-    is_user_logged_in = request.get_cookie("user_id")
-    if is_user_logged_in:
-        print (is_user_logged_in)
-        # User logged in, getting their information from database
-        connection = connect()
-        cursor = connection.cursor()
-        user_id = eval(is_user_logged_in) #extrakting user_id 
-        cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
-        user_data = cursor.fetchone()  # fetches the user information from database
-        connection.close()  # closes the connection
-        return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2])
-    else:
-        # Om användaren inte är inloggad, skicka tillbaka till startsidan
-        return redirect('/')
+    try:
+        is_user_logged_in = request.get_cookie("user_id")
+        if is_user_logged_in:
+            print (is_user_logged_in)
+            # User logged in, getting their information from database
+            connection = connect()
+            cursor = connection.cursor()
+            user_id = eval(is_user_logged_in) #extrakting user_id 
+            cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
+            user_data = cursor.fetchone()  # fetches the user information from database
+            connection.close()  # closes the connection
+            return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2])
+        else:
+            # Om användaren inte är inloggad, skicka tillbaka till startsidan
+            return redirect('/')
+    except psycopg2.Error as e:
+        print("ERROR CONNECTING TO POSTGREsql:", e)
+    finally:
+        if (connection):
+            cursor.close()
+            connection.close()
 
 @app.route('/redirect_to_profilepage', method='GET')
 def redirect_to_profilepage():
