@@ -3,9 +3,7 @@ import psycopg2
 from storage.db import connect
 import json
 import secrets
-
 app = Bottle()
-
 @app.route('/')
 def index():
      """
@@ -13,7 +11,6 @@ def index():
      :return: The rendered homepage(First-Site) template
      """
      return template('First-Site.html', error={})
-
 @app.route('/homepage')
 def homepage_route():
     """
@@ -25,7 +22,6 @@ def homepage_route():
         return template('homepage.html', is_user_logged_in=is_user_logged_in)
     else:
         return redirect("/")
-
 @app.route('/register' , method=[ 'GET','POST'])
 def register():
     """
@@ -268,14 +264,12 @@ def redirect_to_profilepage():
     Redirects to the profile page after login or registration.
     """
     return redirect('/profilepage')
-
 @app.route('/logout')
 def logout():
     """
     Logging out a user and then redirect
     """
     is_user_logged_in_cookie = request.get_cookie('user_id')
-
     if is_user_logged_in_cookie:
         # if user is logged in this will remove the 'user_id' cookie to log the user out
         response.set_cookie('user_id', '', expires=0)
@@ -283,7 +277,6 @@ def logout():
         return redirect('/')
     else:
         return redirect('/')
-
 @app.route('/static/<filename:path>')
 def static_files(filename):
     """
