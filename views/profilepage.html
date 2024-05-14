@@ -50,9 +50,9 @@
         <div class="profile-container">
             <div class="section-container">
                 <div class="img-container">
-                    <img src="#" alt="Profile Image of User">
+                    <img src="static/images/profile_pictures/{{ profile_picture }}" alt="Profile Image of User">
                 </div>
-                <form>
+                <form action="/add/profile/picture" method="post">
                     <input type="file" name="file">
                 </form>
                 <h2>{{firstname}} {{lastname}}</h2>

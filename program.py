@@ -3,6 +3,7 @@ import psycopg2
 from storage.db import connect
 import json
 import secrets
+import os
 
 app = Bottle()
 
@@ -170,10 +171,34 @@ def profilepage():
         connection = connect()
         cursor = connection.cursor()
         user_id = eval(is_user_logged_in) #extrakting user_id 
-        cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
+        cursor.execute("""SELECT firstname, lastname, email, profile_picture FROM users WHERE id = %s""", (user_id,))
         user_data = cursor.fetchone()  # fetches the user information from database
         connection.close()  # closes the connection
-        return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2])
+        return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2], profile_picture=user_data[3])
+    else:
+        # Om användaren inte är inloggad, skicka tillbaka till startsidan
+        return redirect('/')
+    
+@app.route('/add/profile/picture')
+def profile_picture_add():
+    is_user_logged_in = request.get_cookie("user_id")
+    if is_user_logged_in:
+        image = request.files.get('file')
+        filename = image.filename
+
+        filepath = os.path.join('static/images/profile_pictures', filename)
+        if os.path.exists(filepath):
+            os.remove(filepath)
+        image.save(filepath)
+
+        connection = connect()
+        cursor = connection.cursor()
+        
+        cursor.execute("UPDATE users SET profile_picture = %s WHERE id = %s", (filename, is_user_logged_in))
+        connection.commit()
+
+        return redirect(request.get_header('Referer'))
+    
     else:
         # Om användaren inte är inloggad, skicka tillbaka till startsidan
         return redirect('/')
