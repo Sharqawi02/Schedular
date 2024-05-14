@@ -251,7 +251,6 @@ def profilepage():
             user_id = eval(is_user_logged_in) #extrakting user_id 
             cursor.execute("""SELECT firstname, lastname, email FROM users WHERE id = %s""", (user_id,))
             user_data = cursor.fetchone()  # fetches the user information from database
-            connection.close()  # closes the connection
             return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2])
         else:
             # Om användaren inte är inloggad, skicka tillbaka till startsidan
