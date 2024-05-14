@@ -97,7 +97,6 @@ def get_events():
             one_event = {
                 "title": event[1],               
                 "description":event[2],
-                "date": event[3].isoformat(),                
                 "startdate": event[3].isoformat(),      
                 "enddate": event[9].isoformat(),                
                 "priority": event[4],  
@@ -119,7 +118,6 @@ def create_event():
     connection = connect()
     cursor = connection.cursor()
     # 1. Hämta alla värden som skickats från formuläret
-    event_date = getattr(request.forms, "event_date")
     event_title = getattr(request.forms, "event_title")
     event_start_date = getattr(request.forms, "event_start_date")
     event_end_date = getattr(request.forms, "event_end_date")
