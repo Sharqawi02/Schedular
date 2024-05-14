@@ -131,8 +131,6 @@ def create_event():
     #korrekta formatet (åååå-mm-dd-hh-mm-ss)
     start = f"{event_start_date} {events_start_time}"
     end = f"{event_end_date} {events_end_time}"
-    start = f"{event_start_date} {events_start_time}"
-    end = f"{event_end_date} {events_end_time}"
 
     is_user_logged_in = request.get_cookie("user_id")
 
