@@ -173,6 +173,7 @@ def forgot_password():
             return template('forgot-password.html', error=error, new=None)
 
     return template('forgot-password.html', error=error, new=None)
+
 @app.route('/profilepage')
 def profilepage():
     is_user_logged_in = request.get_cookie("user_id")
@@ -191,9 +192,11 @@ def profilepage():
     else:
         # Om användaren inte är inloggad, skicka tillbaka till startsidan
         return redirect('/')
+    
 @app.route('/redirect_to_profilepage', method='GET')
 def redirect_to_profilepage():
     return redirect('/profilepage')
+
 @app.route('/logout')
 def logout():
     is_user_logged_in_cookie = request.get_cookie('user_id')
@@ -204,6 +207,7 @@ def logout():
         return redirect('/')
     else:
         return redirect('/')
+
 @app.route('/static/<filename:path>')
 def static_files(filename):
     return static_file(filename, root='./static')
