@@ -315,6 +315,34 @@ aside{
   font-weight: bold;
 }
 
+#översikt {
+  background-color: #ADD8E6;
+}
+
+h2 {
+  text-align: right;
+  padding: 10px 0;
+  padding-right: 30px; 
+  pointer-events: none;
+}
+ul li {
+  list-style: none;
+}
+
+ul li a {
+  font-weight: 700;
+  padding: 20px 0;
+  display: block;
+  text-transform:capitalize;
+  text-decoration: none;
+  transition: 0.2s ease-out;
+}
+
+ul li a i {
+  width: 50px;
+  text-align: center;
+
+}
 @media screen and (max-width: 800px) {
   header {
     flex-direction: column;
