@@ -321,10 +321,8 @@ aside{
 }
 
 h2 {
-  text-align: right;
-  padding: 10px 0;
-  padding-right: 30px; 
-  pointer-events: none;
+  text-align: center;
+
 }
 ul li {
   list-style: none;
@@ -337,13 +335,11 @@ ul li a {
   text-transform:capitalize;
   text-decoration: none;
   transition: 0.2s ease-out;
-}
-
-ul li a i {
-  width: 50px;
-  text-align: center;
+  color: black;
 
 }
+
+
 @media screen and (max-width: 800px) {
   header {
     flex-direction: column;
