@@ -16,3 +16,9 @@ function showNotificationInfo() {
     document.querySelector('.password-info').style.display = 'none';
     document.querySelector('.notification-info').style.display = 'block';
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('changeBtn').addEventListener('click', function () {
+        document.querySelector('input[type="file"]').click();
+    });
+});

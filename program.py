@@ -191,34 +191,35 @@ def profilepage():
     else:
         # Om användaren inte är inloggad, skicka tillbaka till startsidan
         return redirect('/')
-    
-@app.route('/add/profile/picture')
+
+
+@app.route('/add/profile/picture', method='POST')
 def profile_picture_add():
     is_user_logged_in = request.get_cookie("user_id")
     if is_user_logged_in:
         image = request.files.get('file')
-        filename = image.filename
+        if image:
+            filename = image.filename
 
-        filepath = os.path.join('static/images/profile_pictures', filename)
-        if os.path.exists(filepath):
-            os.remove(filepath)
-        image.save(filepath)
+            filepath = os.path.join('static/images/profile_pictures', filename)
+            if os.path.exists(filepath):
+                os.remove(filepath)
+            image.save(filepath)
 
-        connection = connect()
-        cursor = connection.cursor()
-        
-        cursor.execute("UPDATE users SET profile_picture = %s WHERE id = %s", (filename, is_user_logged_in))
-        connection.commit()
+            connection = connect()
+            cursor = connection.cursor()
+            cursor.execute("UPDATE users SET profile_picture = %s WHERE id = %s", (filename, is_user_logged_in))
+            connection.commit()
 
-        return redirect(request.get_header('Referer'))
-    
-        cursor.close()  # close cursor
-        connection.close()  # close connection
-        return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2])
+            cursor.close()
+            connection.close()
+
+            return redirect('/profilepage')  # Redirect to profile page after successful upload
+        else:
+            return "No file uploaded"
     else:
-        # Om användaren inte är inloggad, skicka tillbaka till startsidan
         return redirect('/')
-    
+
 @app.route('/redirect_to_profilepage', method='GET')
 def redirect_to_profilepage():
     return redirect('/profilepage')

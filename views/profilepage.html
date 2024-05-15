@@ -50,11 +50,17 @@
         <div class="profile-container">
             <div class="section-container">
                 <div class="img-container">
-                    <img src="static/images/profile_pictures/{{ profile_picture }}" alt="Profile Image of User">
+                    <a href="/redirect_to_profilepage">
+                        <div class="profile-pic-container">
+                            <img src="/./static/images/profile_pictures/{{ profile_picture }}" id="profilepic" alt="Profile Image of User">
+                        </div>
+                    </a>
+                    <form action="/add/profile/picture" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file" style="display: none;" id="fileInput">
+                        <label for="fileInput" class="upload-btn">Change</label>
+                        <input type="submit" value="Upload" style="display: none;">
+                    </form>
                 </div>
-                <form action="/add/profile/picture" method="post">
-                    <input type="file" name="file">
-                </form>
                 <h2>{{firstname}} {{lastname}}</h2>
                 <div class="settings-container">
                     <div class="account-settings" onclick="showAccountInfo()">
