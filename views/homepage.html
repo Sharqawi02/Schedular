@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SCHEDULAR</title>
+
     <link rel="stylesheet" href="/./static/homepage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
+
+    <link href="/./static/homepage.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!--för Navbar-->
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
@@ -59,74 +63,85 @@
                 <div id="tasks">
                     <form action="/create_event" method="post">
 
-                        <!--Event datum -->
-                        <div class="block">
-                            <label for="event_date">Datum</label>
-                            <input type="date" name="event_date" id="event_date" required>
-                        </div>
+    </header>
+    <div id="container">
+        <main>
+            <div id="tasks">
+                <form action="/create_event" method="post">
 
-                        <!--Event Titel -->
-                        <div class="block">
-                            <label for="event_title">Aktivitets titel</label>
-                            <input type="text" name="event_title" id="event_title" required>
-                        </div>
+                    <!--Event datum -->
+                    <div class="block">
+                        <label for="event_start_date">Start datum</label>
+                        <input type="date" name="event_start_date" id="event_date" required>
+                    </div>
 
-                        <!--Prioriterings och kategoriserings knapparna -->
-                        <div id="list">
-                            <select name="event_priority" id="event_priority">
-                                <option value="high">High priority</option>
-                                <option value="medium">Medium priority</option>
-                                <option value="low">Low priority</option>
-                            </select>
-                            <select name="event_category" id="event_category">
-                                <option value="other">Övrigt</option>
-                                <option value="school">Skola</option>
-                                <option value="gym">Gym</option>
-                                <option value="spare_time">Fritid</option>
-                            </select>
-                        </div>
+                    <div class="block">
+                        <label for="event_end_date">Slut datum</label>
+                        <input type="date" name="event_end_date" id="event_date" required>
+                    </div>
 
-                        <!--Beskrivningsfält -->
-                        <div class="block">
-                            <label for="event_description">Beskrivning</label>
-                            <textarea name="event_description" id="event_description" cols="30" rows="10"
-                                placeholder="Beskriv aktiviteten..."></textarea>
-                        </div>
+                    <!--Event Titel -->
+                    <div class="block">
+                        <label for="event_title">Aktivitets titel</label>
+                        <input type="text" name="event_title" id="event_title" required>
+                    </div>
 
-                        <!--Start time -->
-                        <div class="block">
-                            <label for="events_start_time">Start Tid</label>
-                            <input type="time" name="events_start_time" id="events_start_time">
-                        </div>
+                    <!--Prioriterings och kategoriserings knapparna -->
+                    <div id="list">
+                        <select name="event_priority" id="event_priority">
+                            <option value="high">High priority</option>
+                            <option value="medium">Medium priority</option>
+                            <option value="low">Low priority</option>
+                        </select>
+                        <select name="event_category" id="event_category">
+                            <option value="other">Övrigt</option>
+                            <option value="school">Skola</option>
+                            <option value="gym">Gym</option>
+                            <option value="spare_time">Fritid</option>
+                        </select>
+                    </div>
 
-                        <!--End time -->
-                        <div class="block">
-                            <label for="events_end_time">Slut Tid</label>
-                            <input type="time" name="events_end_time" id="events_end_time">
-                        </div>
+                    <!--Beskrivningsfält -->
+                    <div class="block">
+                        <label for="event_description">Beskrivning</label>
+                        <textarea name="event_description" id="event_description" cols="10" rows="5"
+                            placeholder="Beskriv aktiviteten..."></textarea>
+                    </div>
 
-                        <!--Lägg till button -->
-                        <div class="block">
-                            <button class="button-13" role="button">Lägg till</button>
-                        </div>
-                    </form>
-                </div>
-            </main>
-            <aside>
-                <div id="calendar"></div>
-            </aside>
-        </div>
-        <div id="event-popup" class="event-popup">
-            <div id="event-title" class="event-title"></div>
-            <div id="event-description" class="event-description"></div>
-            <div id="event-date" class="event-date"></div>
-            <div id="event-priority" class="event-priority"></div>
+                    <!--Start time -->
+                    <div class="block">
+                        <label for="events_start_time">Start Tid</label>
+                        <input type="time" name="events_start_time" id="events_start_time">
+                    </div>
 
-            <div id="div-for-buttons">
-                <button id="event-delete-button" role="button">Radera aktivitet</button>
-                <button id="event-button" role="button">Redigera aktivitet</button>
+                    <!--End time -->
+                    <div class="block">
+                        <label for="events_end_time">Slut Tid</label>
+                        <input type="time" name="events_end_time" id="events_end_time">
+                    </div>
+
+                    <!--Lägg till button -->
+                    <div class="block">
+                        <button class="button-13" role="button">Lägg till</button>
+                    </div>
+                </form>
             </div>
+        </main>
+        <aside>
+            <div id="calendar"></div>
+        </aside>
+    </div>
+    <div id="event-popup" class="event-popup">
+        <div id="event-title" class="event-title"></div>
+        <div id="event-description" class="event-description"></div>
+        <div id="event-date" class="event-date"></div>
+        <div id="event-priority" class="event-priority"></div>
+
+        <div id="div-for-buttons">
+            <button id="event-delete-button" role="button">Radera aktivitet</button>
+            <button id="event-button" role="button">Redigera aktivitet</button>
         </div>
+    </div>
     </div>
     <script src="/./static/js/homepage.js"></script>
 </body>
