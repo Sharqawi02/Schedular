@@ -57,7 +57,8 @@ document.addEventListener('DOMContentLoaded', function () {
             var popup = document.getElementById('event-popup');
             var title = document.getElementById('event-title');
             var description = document.getElementById('event-description');
-            var date = document.getElementById('event-date');
+            var startdate = document.getElementById('event-start-date');
+            var date = document.getElementById('event-end-date');
             var priority = document.getElementById('event-priority');
 
             title.textContent = 'Event: ' + info.event.title;
