@@ -240,117 +240,41 @@ aside{
   
 }
 
-#wrapper .översikt {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 180px;
-  background-color: #ADD8E6;
-  transition: transform 0.3s ease; /* Lägg till transition för smidig animering */
-  transform: translateX(-180px); /* Startposition utanför sidan */
+.event-title {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.översikt.open {
-  transform: translateX(0); /* Flytta in sidan när den är öppen */
+.event-description {
+  margin-bottom: 10px;
 }
 
-
-h2 {
-  text-align: right;
-  padding: 10px 0;
-  padding-right: 30px; 
-  pointer-events: none;
-}
-ul li {
-  list-style: none;
+#div-for-buttons{
+  display: flex;
+  align-items: center;
+  margin-top: 20%;
+  gap: 26em;
 }
 
-ul li a {
-  font-weight: 700;
-  padding: 20px 0;
-  display: block;
-  text-transform:capitalize;
-  text-decoration: none;
-  transition: 0.2s ease-out;
-}
-
-ul li a i {
-  width: 50px;
-  text-align: center;
-
-}
-
-label input {
-  display: none;
-  visibility: hidden;
-  appearance: none;
-
-}
-
-.toggle {
-  position: absolute;
-  height: 30px;
-  width: 30px;
-  top: 20px;
-  left: 15px;
-  z-index: 1;
+#event-delete-button{
+  background-color: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: black;
   cursor: pointer;
-  border-radius: 2px;
-  background-color: #ADD8E6;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 120px;
 
-.toggle .common {
-  position: absolute;
-  height: 2px ;
-  width: 20px;
-  background-color: black;
-  border-radius: 50px;
-  transition: 0.3s ease;
-}
-
-.toggle .top_line {
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.toggle .middle_line {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.toggle .bottom_line {
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-input:checked + .toggle .top_line {
-  left: 2px;
-  top: 14px;
-  width: 25px;
-  transform: rotate(45deg);
-}
-input:checked + .toggle .bottom_line {
-  left: 2px;
-  top: 14px;
-  width: 25px;
-  transform: rotate(-45deg);
-}
-input:checked + .toggle .middle_line {
-  opacity: 0;
-  transform: translateX(20px);
-}
-input:checked + .slide {
-  transform: translateX(0);
-}
-
-
-
-/*
   border: solid black;
   border-width: 0.5px;
   text-align: center;
@@ -359,7 +283,37 @@ input:checked + .slide {
   height: 30px;
   font-family: "Playfair Display";
   font-weight: bold;
-*/
+
+}
+
+#event-button{
+  background-color: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 140px;
+
+  border: solid black;
+  border-width: 0.5px;
+  text-align: center;
+  box-shadow: 5px 5px lightblue;
+  overflow: hidden;
+  height: 30px;
+  font-family: "Playfair Display";
+  font-weight: bold;
+}
 
 #översikt {
   background-color: #ADD8E6;
