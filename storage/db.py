@@ -16,5 +16,14 @@ def connect():
         user = "am2607",
         password = "l15s2krs"            
         )
-
+    
+    """
+    connection = psycopg2.connect(
+        host = "localhost",
+        port = "5432",
+        user = "postgres",
+        password = "sh010101",
+        dbname = "schedular"            
+        )
+    """
     return connection

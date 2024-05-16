@@ -13,27 +13,29 @@ h1 {
 
 header {
   display: flex;
-  margin: auto;
   background-color: #ADD8E6;
   box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
   align-items: center;
 }
 
 img  {
-  width: 8%; 
+  width: 120%; 
   height: auto; 
 }
 
+#logo-container{
+  width: 5%;
+}
+
 .img-container { 
-  max-width: 70%;
+  width: 30%;
+  display: flex;
 }
 
 .img-container #profilepic { 
   border-radius: 100%;
-  width: 6%;
-  margin-left: 92%;
-  margin-right: 0;
-  margin-top: 0.5;
+  width: 12%;
+  float: right;
 }
 
 #container  {
@@ -41,14 +43,14 @@ img  {
   margin-top: 50px;
 }
 
-main {
-  width: 300px;
-  height: 60%;
+main #tasks {
   display: inline-block;
   margin-left: 70px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
   margin-bottom: 4%;
+  width: 95%;
+  height: 99%;
 }
 
 #tasks > .block label {
@@ -177,58 +179,48 @@ aside{
 
 /*Översikts knappen start*/
 
-#wrapper > #översikt { 
-  margin-right: 20%;
-}
-
-.hamburger {
-  height: 50px;
-  width: 50px;
-  transform: 0.2s;
-  position: relative;
-
-}
-.hamburger .checkbox {
-  position: absolute;
-  opacity: 0;
+/* Sidofältets stil */
+#översikt {
+  position: fixed;
+  top: 0;
+  right: -25%; /* Startpositionen är helt till höger */
+  width: 25%;
   height: 100%;
+  background-color: #f4f4f4;
+  transition: all 0.3s ease-in-out;
+  z-index: 999;
+}
+
+#översikt.open {
+  right: 0; /* När klassen open läggs till, kommer sidofältet att glida in från höger */
+}
+
+/* Hamburger-ikons stil */
+#hamburger-icon {
+  position: fixed;
+  left: 20px;
+  z-index: 999;
+  margin-left: 94%;
+  
+}
+
+.hamburger-label:before, .hamburger-label:after, .hamburger-label span {
+  content: '';
+  position: absolute;
+  left: 0;
   width: 100%;
-  cursor: pointer;
-  padding-right: 10%;
+  height: 3px; 
+  background-color: #333; 
+  transition: transform 0.3s ease; 
 }
-.line {
-  transition: 0.5s;
-  stroke-width: 6px;
-  stroke: black;
-}
-.lineTop {
-  stroke-dasharray: 40 40;
-  stroke-dashoffset: 25;
-}
-.lineBottom {
-  stroke-dasharray: 40 40;
-  stroke-dashoffset: 60;
-}
-.lineMid {
-  stroke-dasharray: 40 40;
-}
-.hamburger .checkbox:checked + svg .line {
-  stroke: crimson;
-}
-.hamburger .checkbox:checked + svg .lineTop {
-  stroke-dashoffset: 0;
-  transform-origin: left;
-  transform: rotateZ(45deg) translate(-7px, -5px);
-}
-.hamburger .checkbox:checked + svg .lineMid {
-  stroke-dashoffset: 40;
-}
-.hamburger .checkbox:checked + svg .lineBottom {
-  stroke-dashoffset: 0;
-  transform-origin: left;
-  transform: rotateZ(-45deg) translate(-5px, 5px);
-}
+
+
 /*Översiktsknappen slut*/
+
+
+
+
+
 
 .event-popup {
   position: fixed; /* Change from absolute to fixed */
@@ -323,6 +315,33 @@ aside{
   font-family: "Playfair Display";
   font-weight: bold;
 }
+
+#översikt {
+  background-color: #ADD8E6;
+  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
+}
+
+h2 {
+  text-align: center;
+
+}
+ul li {
+  list-style: none;
+}
+
+ul li a {
+  font-weight: 700;
+  padding: 20px 0;
+  display: block;
+  text-transform:capitalize;
+  text-decoration: none;
+  transition: 0.2s ease-out;
+  color: black;
+
+}
+
+
+
 
 @media screen and (max-width: 800px) {
   header {

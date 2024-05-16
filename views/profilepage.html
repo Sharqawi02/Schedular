@@ -18,99 +18,78 @@
 </head>
 
 <body>
-    <div class="container">
-        <nav>
-            <!-- h1 tag header -->
-            <header>
-                <a href="/homepage">
-                    <img src="/./static/images/logo.png" id="profilepic" alt="Profile Image of User">
-                </a>
-            </header>
-            <!-- container for search icon and profile img -->
-            <div class="icon-search-container">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <div class="img-container">
-                    <a href="/redirect_to_profilepage">
-                        <img src="#" alt="Profile Image of User">
-                    </a>
+    <header>
+        <div id="stängataggen">
+            <a href="/homepage" id="logo"><img src="/static/images/logo.png" alt="Schedular logo"></a>
+        </div>
+
+        <h1>SCHEDULAR</h1>
+        <div class="img-container">
+            <a href="/redirect_to_profilepage">
+                <img src="/./static/images/profilbild.jpg" id="profilepic" alt="Profile Image of User">
+            </a>
+        </div>
+    </header>
+
+    <!-- profile overview sections -->
+    <div class="profile-container">
+        <div class="section-container">
+            <div class="img-container">
+                <img src="#" alt="Profile Image of User">
+            </div>
+            <form>
+                <input type="file" name="file">
+            </form>
+            <h2>{{firstname}} {{lastname}}</h2>
+            <div class="settings-container">
+                <div class="account-settings" onclick="showAccountInfo()">
+                    <p>Konto</p>
                 </div>
-                <!-- hamburger icon -->
-                <div class="hamburger">
-                    <input class="checkbox" type="checkbox" />
-                    <svg fill="none" viewBox="0 0 50 50" height="50" width="50">
-                        <path class="lineTop line" stroke-linecap="round" stroke-width="4" stroke="black"
-                            d="M6 11L44 11">
-                        </path>
-                        <path stroke-linecap="round" stroke-width="4" stroke="black" d="M6 24H43" class="lineMid line">
-                        </path>
-                        <path stroke-linecap="round" stroke-width="4" stroke="black" d="M6 37H43"
-                            class="lineBottom line">
-                        </path>
-                    </svg>
+                <div class="notifications-settings" onclick="showNotificationInfo()">
+                    <p>Inställningar</p>
                 </div>
             </div>
-        </nav>
-
-        <!-- profile overview sections -->
-        <div class="profile-container">
-            <div class="section-container">
-                <div class="img-container">
-                    <img src="#" alt="Profile Image of User">
-                </div>
-                <form>
-                    <input type="file" name="file">
-                </form>
-                <h2>{{firstname}} {{lastname}}</h2>
-                <div class="settings-container">
-                    <div class="account-settings" onclick="showAccountInfo()">
-                        <p>Konto</p>
-                    </div>
-                    <div class="notifications-settings" onclick="showNotificationInfo()">
-                        <p>Inställningar</p>
-                    </div>
-                </div>
-                <div class="logout-button">
-                    <a href="/logout"><input type="button" value="Logout"></a>
-                </div>
+            <div class="logout-button">
+                <a href="/logout"><input type="button" value="Logout"></a>
             </div>
+        </div>
 
-            <!-- What the different sections (when clicked) will show -->
-            <div class="info-container">
-                <!-- Account Settings -->
-                <!-- Account Settings -->
-                <div class="account-info">
-                    <h2>Konto översikt</h2>
-                    <form action="" method="post">
-                        <label for="firstname">Namn </label>
-                        <input type="text" name="firstname" id="firstname" value="{{firstname}}" required><br>
-                        <label for="lastname"> Efternamn </label>
-                        <input type="text" name="lastname" id="lastname" value="{{lastname}}" required><br>
-                        <label for="email">Email </label>
-                        <input type="email" name="email" id="email" value="{{email}}" required><br>
-                    </form>
-                </div>
-
-            </div>
-            <!-- Notification Settings (OPTIONAL) -->
-            <div class="notification-info">
-                <h2>Inställningar</h2>
+        <!-- What the different sections (when clicked) will show -->
+        <div class="info-container">
+            <!-- Account Settings -->
+            <!-- Account Settings -->
+            <div class="account-info">
+                <h2>Konto översikt</h2>
                 <form action="" method="post">
-                    <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Phasellus nec velit enim.</p>
-                    <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Phasellus nec velit enim.</p>
-                    <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Phasellus nec velit enim.</p>
+                    <label for="firstname">Namn </label>
+                    <input type="text" name="firstname" id="firstname" value="{{firstname}}" required><br>
+                    <label for="lastname"> Efternamn </label>
+                    <input type="text" name="lastname" id="lastname" value="{{lastname}}" required><br>
+                    <label for="email">Email </label>
+                    <input type="email" name="email" id="email" value="{{email}}" required><br>
                 </form>
             </div>
+
+        </div>
+        <!-- Notification Settings (OPTIONAL) -->
+        <div class="notification-info">
+            <h2>Inställningar</h2>
+            <form action="" method="post">
+                <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Phasellus nec velit enim.</p>
+                <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Phasellus nec velit enim.</p>
+                <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Phasellus nec velit enim.</p>
+            </form>
         </div>
     </div>
 
-    </div>
     <!-- Script link for JS -->
     <script src="/static/js/profilepage.js"></script>
     <!-- Script kit for FontAwesome -->
     <script src="https://kit.fontawesome.com/492ceb14f6.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
