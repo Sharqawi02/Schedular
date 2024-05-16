@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
         nowIndicator: true,
         dayMaxEventRows: true, // for all non-TimeGrid views
         views: {
-          timeGrid: {
-            dayMaxEventRows: 6 // adjust to 6 only for timeGridWeek/timeGridDay
-          }
+            timeGrid: {
+                dayMaxEventRows: 6 // adjust to 6 only for timeGridWeek/timeGridDay
+            }
         },
         eventSources: [
             // Your existing event source
@@ -62,7 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             title.textContent = 'Event: ' + info.event.title;
             description.textContent = 'Description: ' + info.event.extendedProps.description;
-            date.textContent = 'Date: ' + info.event.start.toLocaleDateString();
+            startdate.textContent = 'Start date: ' + info.event.start.toLocaleDateString();
+            date.textContent = 'End date: ' + info.event.end.toLocaleDateString();
             priority.textContent = 'Priority: ' + info.event.extendedProps.priority;
 
             // Show the popup
