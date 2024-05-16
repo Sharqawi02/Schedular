@@ -1,4 +1,3 @@
-
 /* PROBLEM: I can't seem to fix the interactivity using JS to change between the section */
 
 body {
@@ -15,146 +14,31 @@ body {
     padding: 0;
 }
 
-/* STYLING for the nav */
-/* STYLING för nav */
-nav {
-    background-color: #fff;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff; /* Ändra bakgrundsfärg till vit */
-    border-right: 1px solid #ADD8E6; /* Ändra högerkantens färg till ljusblå */
-    box-shadow: 0px 0px 10px #ADD8E6;
-}
-
-nav header {
-    display: flex;
-    align-items: center;
-}
-
-nav header img {
-    width: 80px;
-    height: auto;
-    margin-right: 10px; /* Justera marginalen om det behövs */
-    margin-left: auto; /* Centrera bilden horisontellt */
-}
-
-nav header h1 {
-    font-size: 35px;
-    margin: 0;
-    font-weight: 500;
-    color: #ADD8E6;
-}
-
-nav header h1 a {
-    text-decoration: none;
-    color: #000000;
-}
-
-
-/* STYLING for icon-search-container */
-nav .icon-search-container {
-    padding-right: 20px;
-    display: flex;
-    align-items: center;
-}
-
-
-nav .icon-search-container .fa-solid {
+h1 {
     font-size: 40px;
-    cursor: pointer;
-    padding-right: 20px;
 }
 
-
-nav .icon-search-container .img-container {
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-    border-radius: 100%;
-    background-color: #000000;
-}
-
-
-nav .icon-search-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
-nav .icon-search-container .hamburger {
-    height: 50px;
-    width: 50px;
-    transform: 0.2s;
-    position: relative;
-    padding-left: 20px;
-}
-
-
-nav .icon-search-container .hamburger .checkbox {
-    position: absolute;
-    opacity: 0;
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-}
-
-
-nav .icon-search-container .line {
-    transition: 0.5s;
-    stroke-width: 6px;
-    stroke: #ADD8E6;
-}
-
-
-nav .icon-search-container .lineTop {
-    stroke-dasharray: 40 40;
-    stroke-dashoffset: 25;
-}
-
-
-nav .icon-search-container .lineBottom {
-    stroke-dasharray: 40 40;
-    stroke-dashoffset: 60;
-}
-
-
-nav .icon-search-container .lineMid {
-    stroke-dasharray: 40 40;
-}
-
-
-nav .icon-search-container .hamburger .checkbox:checked + svg .line {
-    stroke: #ADD8E6;
-}
-
-
-nav .icon-search-container .hamburger .checkbox:checked + svg .lineTop {
-    stroke-dashoffset: 0;
-    transform-origin: left;
-    transform: rotateZ(45deg) translate(-7px, -5px);
-}
-
-
-nav .icon-search-container .hamburger .checkbox:checked + svg .lineMid {
-    stroke-dashoffset: 40;
-}
-
-
-nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
-    stroke-dashoffset: 0;
-    transform-origin: left;
-    transform: rotateZ(-45deg) translate(-5px, 5px);
-}
-/* STYLING for icon-search-container ends here */
-
-
-/* STYLING for profile container */
-.profile-container {
+header {
     display: flex;
+    margin: auto;
+    background-color: #ADD8E6;
+    box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
+    align-items: center;
 }
+
+img {
+    width: 40%;
+    height: auto;
+}
+
+
+.img-container #profilepic { 
+    border-radius: 100%;
+    width: 6%;
+    margin-left: 90%;
+    margin-top: 0.5;
+  }
+  
 
 
 .section-container {
@@ -162,10 +46,12 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 5px; /* change this for preference */
+    padding: 5px;
+    /* change this for preference */
     height: 86vh;
     width: 25%;
-    overflow: hidden; /* Ändra bakgrundsfärg till vit */ 
+    overflow: hidden;
+    /* Ändra bakgrundsfärg till vit */
 }
 
 
@@ -175,8 +61,9 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     overflow: hidden;
     border-radius: 100%;
     margin: 30px auto;
-    background-color: #fff; /* Ändra bakgrundsfärg till vit */
-    border-right: 1px solid #ADD8E6; 
+    background-color: #fff;
+    /* Ändra bakgrundsfärg till vit */
+    border-right: 1px solid #ADD8E6;
 }
 
 
@@ -207,7 +94,8 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
 }
 
 
-.settings-container .password-settings, .notifications-settings {
+.settings-container .password-settings,
+.notifications-settings {
     padding: 15px;
     display: flex;
     align-items: center;
@@ -215,10 +103,17 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     cursor: pointer;
     border-bottom: 1px solid #000000;
 }
+
+.profile-container {
+    display: flex;
+}
+
 /* NOT THE MOST EFFECTIVE WAY TO DO THIS, SEE IF YOU CAN DO BETTER */
 
 
-.settings-container .account-settings p, .password-settings p, .notifications-settings p {
+.settings-container .account-settings p,
+.password-settings p,
+.notifications-settings p {
     font-size: 25px;
     font-weight: 400;
     margin: 0 0 0 60px;
@@ -229,6 +124,7 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     margin: 0 auto;
     padding: 0;
 }
+
 .logout-button input {
     background-color: rgb(190, 9, 9);
     color: #fff;
@@ -253,31 +149,40 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     background-color: darkred;
     transition: .5s ease-in-out;
 }
+
 /* STYLING for profile container ends here */
 
 
 /* STYLING for the info-container */
 .info-container {
-    padding: 20px 20px 10px 10px; /* Ändra bakgrundsfärg till ljusblå */
+    padding: 20px 20px 10px 10px;
+    /* Ändra bakgrundsfärg till ljusblå */
 
 }
 
 
 
-.info-container > .password-info, .notification-info { /* for the interactivity (JS) */
+.info-container>.password-info,
+.notification-info {
+    /* for the interactivity (JS) */
     padding-bottom: 100px;
     display: none;
 }
 
 
-.info-container .account-info, .password-info, .notification-info {
+.info-container .account-info,
+.password-info,
+.notification-info {
     padding-left: 80px;
 }
 
 
-.info-container > .account-info h2, .password-info h2, .notification-info h2 {
+.info-container>.account-info h2,
+.password-info h2,
+.notification-info h2 {
     font-size: 40px;
 }
+
 /* account-info STYLING */
 .info-container .account-info form {
     display: flex;
@@ -349,6 +254,7 @@ nav .icon-search-container .hamburger .checkbox:checked + svg .lineBottom {
     background-color: #D9D9D9;
     cursor: pointer;
 }
+
 /* account-info STYLING ends here */
 
 
@@ -371,12 +277,17 @@ input[type="file"] {
 
 /* För att dölja texten bredvid formuläret */
 form::after {
-    content: none; /* Dölj texten */
+    content: none;
+    /* Dölj texten */
 }
+
 .account-info {
-    max-width: 400px; /* Justera maxbredden efter behov */
-    margin: 0 auto; /* Centrerar elementet inom omslutande element */
-    text-align: left; /* Återställer text-justering för innehållet */
+    max-width: 400px;
+    /* Justera maxbredden efter behov */
+    margin: 0 auto;
+    /* Centrerar elementet inom omslutande element */
+    text-align: left;
+    /* Återställer text-justering för innehållet */
 }
 
 .account-info h2 {
