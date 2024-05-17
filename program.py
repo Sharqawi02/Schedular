@@ -179,46 +179,43 @@ def forgot_password():
 def profilepage():
     is_user_logged_in = request.get_cookie("user_id")
     if is_user_logged_in:
-        print (is_user_logged_in)
-        # User logged in, getting their information from database
         connection = connect()
         cursor = connection.cursor()
-        user_id = eval(is_user_logged_in) #extrakting user_id 
+        user_id = eval(is_user_logged_in)
         cursor.execute("""SELECT firstname, lastname, email, profile_picture FROM users WHERE id = %s""", (user_id,))
-        user_data = cursor.fetchone()  # fetches the user information from database
-        connection.close()  # closes the connection
-        return template('profilepage.html', firstname=user_data[0], lastname=user_data[1], email=user_data[2], profile_picture=user_data[3])
+        user_data = cursor.fetchone()
+        connection.close()
+
+        if user_data:
+            firstname, lastname, email, profile_picture = user_data
+            return template('profilepage.html', firstname=firstname, lastname=lastname, email=email, profile_picture=profile_picture)
+        else:
+            # Om användaren inte hittas i databasen, returnera en felmeddelande
+            return template('profilepage.html', error="Användaren hittades inte.")
     else:
-        # Om användaren inte är inloggad, skicka tillbaka till startsidan
         return redirect('/')
 
 
-@app.route('/add/profile/picture', method='POST')
+@app.route('/add/profile/picture', method=["POST"])
 def profile_picture_add():
     is_user_logged_in = request.get_cookie("user_id")
     if is_user_logged_in:
         image = request.files.get('file')
-        if image:
-            filename = image.filename
-
-            filepath = os.path.join('static/images/profile_pictures', filename)
-            if os.path.exists(filepath):
-                os.remove(filepath)
-            image.save(filepath)
-
-            connection = connect()
-            cursor = connection.cursor()
-            cursor.execute("UPDATE users SET profile_picture = %s WHERE id = %s", (filename, is_user_logged_in))
-            connection.commit()
-
-            cursor.close()
-            connection.close()
-
-            return redirect('/profilepage')  # Redirect to profile page after successful upload
-        else:
-            return "No file uploaded"
+        filename = image.filename
+        filepath = os.path.join('static/images/profile_pictures', filename)
+        if os.path.exists(filepath):
+            os.remove(filepath)
+        image.save(filepath)
+        connection = connect()
+        cursor = connection.cursor()
+        cursor.execute("UPDATE users SET profile_picture = %s WHERE id = %s", (filename, is_user_logged_in))
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return redirect(request.get_header('Referer'))
     else:
         return redirect('/')
+
 
 @app.route('/redirect_to_profilepage', method='GET')
 def redirect_to_profilepage():
