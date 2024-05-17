@@ -19,4 +19,3 @@ function showNotificationInfo() {
 document.querySelector('.upload-btn').addEventListener('click', function() {
     document.getElementById('fileInput').click();
 });
-

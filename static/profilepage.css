@@ -1,5 +1,3 @@
-/* PROBLEM: I can't seem to fix the interactivity using JS to change between the section */
-
 body {
     margin: 0;
     padding: 0;
@@ -10,40 +8,10 @@ body {
 
 
 /* STYLING for the main div container */
+.container {
+    padding: 0;
+}
 
-h1 { 
-    font-size: 40px;
-  }
-  
-  header {
-    display: flex;
-    margin: auto;
-    background-color: #ADD8E6;
-    box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
-    align-items: center;
-  }
-  
-  img  {
-    width: 8%; 
-    height: auto; 
-  }
-  
-  .img-container { 
-    max-width: 70%;
-  }
-  
-  .img-container #profilepic { 
-    border-radius: 100%;
-    width: 6%;
-    margin-left: 92%;
-    margin-right: 0;
-    margin-top: 0.5;
-  }
-  
-  #container  {
-    display: flex;
-    margin-top: 50px;
-  }
 h1 {
     font-size: 40px;
 }
@@ -342,50 +310,4 @@ input[type="email"] {
     margin-bottom: 10px;
 }
 
-.hamburger {
-    height: 50px;
-    width: 50px;
-    transform: 0.2s;
-    position: relative;
-  
-  }
-  .hamburger .checkbox {
-    position: absolute;
-    opacity: 0;
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-    padding-right: 10%;
-  }
-  .hamburger .checkbox:checked + svg .line {
-    stroke: crimson;
-  }
-  .hamburger .checkbox:checked + svg .lineTop {
-    stroke-dashoffset: 0;
-    transform-origin: left;
-    transform: rotateZ(45deg) translate(-7px, -5px);
-  }
-  .hamburger .checkbox:checked + svg .lineMid {
-    stroke-dashoffset: 40;
-  }
-  .hamburger .checkbox:checked + svg .lineBottom {
-    stroke-dashoffset: 0;
-    transform-origin: left;
-    transform: rotateZ(-45deg) translate(-5px, 5px);
-  }
-  .line {
-    transition: 0.5s;
-    stroke-width: 6px;
-    stroke: black;
-  }
-  .lineTop {
-    stroke-dasharray: 40 40;
-    stroke-dashoffset: 25;
-  }
-  .lineBottom {
-    stroke-dasharray: 40 40;
-    stroke-dashoffset: 60;
-  }
-  .lineMid {
-    stroke-dasharray: 40 40;
-  }
+
