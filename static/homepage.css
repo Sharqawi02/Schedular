@@ -13,27 +13,29 @@ h1 {
 
 header {
   display: flex;
-  margin: auto;
   background-color: #ADD8E6;
   box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
   align-items: center;
 }
 
 img  {
-  width: 8%; 
+  width: 120%; 
   height: auto; 
 }
 
+#logo-container{
+  width: 5%;
+}
+
 .img-container { 
-  max-width: 70%;
+  width: 30%;
+  display: flex;
 }
 
 .img-container #profilepic { 
   border-radius: 100%;
-  width: 6%;
-  margin-left: 92%;
-  margin-right: 0;
-  margin-top: 0.5;
+  width: 12%;
+  float: right;
 }
 
 #container  {
@@ -196,7 +198,6 @@ aside{
 /* Hamburger-ikons stil */
 #hamburger-icon {
   position: fixed;
-  top: 4%;
   left: 20px;
   z-index: 999;
   margin-left: 94%;
@@ -314,6 +315,33 @@ aside{
   font-family: "Playfair Display";
   font-weight: bold;
 }
+
+#översikt {
+  background-color: #ADD8E6;
+  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
+}
+
+h2 {
+  text-align: center;
+
+}
+ul li {
+  list-style: none;
+}
+
+ul li a {
+  font-weight: 700;
+  padding: 20px 0;
+  display: block;
+  text-transform:capitalize;
+  text-decoration: none;
+  transition: 0.2s ease-out;
+  color: black;
+
+}
+
+
+
 
 @media screen and (max-width: 800px) {
   header {

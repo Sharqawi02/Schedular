@@ -92,7 +92,6 @@ def get_events():
     if is_user_logged_in:
         cursor.execute(f"SELECT * FROM events AS e JOIN users AS u ON u.id = e.user_id WHERE u.id = {is_user_logged_in} ")
         events = cursor.fetchall()
-        print(events)
         all_events = []
         for event in events:
             one_event = {
@@ -106,8 +105,6 @@ def get_events():
                 "end": event[8].isoformat()
             }
             all_events.append(one_event)
-            print(event)
-        print(all_events)
 
         cursor.close()  # close cursor
         connection.close()  # close connection

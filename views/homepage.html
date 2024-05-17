@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SCHEDULAR</title>
     <link href="/./static/homepage.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!--för Navbar-->
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
@@ -26,8 +27,9 @@
 <body>
     <div id="wrapper">
         <header>
-
-            <img src="/static/images/logo.png" id="logo" alt="our logo">
+            <div id="logo-container">
+                <img src="/static/images/logo.png" id="logo" alt="our logo">
+            </div>
             <h1>SCHEDULAR</h1>
             <div class="img-container">
                 <a href="/redirect_to_profilepage">
@@ -39,18 +41,22 @@
                 <input class="checkbox" type="checkbox" id="hamburger-toggle" />
                 <label class="hamburger-label" for="hamburger-toggle"></label>
             </div>
-            
+
 
             <div id="översikt">
-                <p>1</p>
-                <p>1</p>
-                <p>1</p>
+                <h2> Översikt </h2>
+                <ul>
+                    <li> <a href="#"> <i class="fa-solid fa-school"></i> Skola</a></li>
+                    <li> <a href="#"><i class="fa-solid fa-gamepad"></i> Fritid </a></li>
+                    <li> <a href="#"> <i class="fa-solid fa-dumbbell"></i> Gym </a></li>
+                    <li> <a href="#"><i class="fa-solid fa-folder"></i> Övrigt </a></li>
+                </ul>
 
             </div>
+        </header>
 
     </div>
 
-    </header>
     <div id="container">
         <main>
             <div id="tasks">
@@ -121,8 +127,10 @@
     <div id="event-popup" class="event-popup">
         <div id="event-title" class="event-title"></div>
         <div id="event-description" class="event-description"></div>
-        <div id="event-date" class="event-date"></div>
+        <div id="event-start-date" class="event-start-date"></div>
+        <div id="event-end-date" class="event-end-date"></div>
         <div id="event-priority" class="event-priority"></div>
+
 
         <div id="div-for-buttons">
             <button id="event-delete-button" role="button">Radera aktivitet</button>
