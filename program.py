@@ -139,7 +139,7 @@ def create_event():
     # 3. Skicka tillbaka användaren till kalendersidan
     cursor.close()  # close cursor
     connection.close()  # close connection
-    redirect("/homepage")
+    return redirect("/homepage")
 
 @app.route('/forgot-password', method=['GET', 'POST'])
 def forgot_password():
@@ -204,6 +204,7 @@ def logout():
         return redirect('/')
     else:
         return redirect('/')
+
 
 @app.route('/static/<filename:path>')
 def static_files(filename):
