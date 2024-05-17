@@ -9,6 +9,7 @@ body{
 
 h1 { 
   font-size: 40px;
+  margin-left: 1%;
 }
 
 header {
@@ -24,12 +25,13 @@ img  {
 }
 
 #logo-container{
-  width: 5%;
+  width: 7%;
 }
 
-.img-container { 
+.img-container  { 
   width: 30%;
   display: flex;
+  margin-left: 38%;
 }
 
 .img-container #profilepic { 
@@ -37,6 +39,8 @@ img  {
   width: 12%;
   float: right;
 }
+
+
 
 #container  {
   display: flex;
@@ -218,27 +222,13 @@ aside{
 /*Översiktsknappen slut*/
 
 
-
-
-
-
-.event-popup {
-  position: fixed; /* Change from absolute to fixed */
-  transform: translate(-50%, -50%); /* Center it horizontally and vertically */
+#event-popup {
+  position: fixed;
+  background: white;
   border: 1px solid black;
-  z-index: 3; /* Ensure it appears on top of other elements */
-  border-radius: 15px;
-  background-color: #fefefe;
-  box-shadow: 0 0 10px lightblue;
-  padding: 30px;
-  width: 35%;
-  flex-direction: column;
-  align-items: center;
-  display: flex;
-  margin-left: 23%;
-  height: 30%;
-  margin-top: 10%;
-  
+  padding: 20px;
+  z-index: 1000;
+  display: none;
 }
 
 .event-title {
