@@ -81,3 +81,32 @@ document.addEventListener('DOMContentLoaded', function () {
         popup.style.top = posY + 'px';
     }
 });
+document.addEventListener('DOMContentLoaded', function () {
+    var checkbox = document.querySelector('.checkbox');
+    var översikt = document.getElementById('översikt');
+
+    checkbox.addEventListener('change', function () {
+        if (checkbox.checked) {
+            översikt.classList.add('open');
+        } else {
+            översikt.classList.remove('open');
+        }
+    });
+
+    document.addEventListener('click', function (event) {
+        if (!översikt.contains(event.target) && event.target !== checkbox) {
+            checkbox.checked = false;
+            översikt.classList.remove('open');
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+

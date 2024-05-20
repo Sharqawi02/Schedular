@@ -9,7 +9,6 @@ body{
 
 h1 { 
   font-size: 40px;
-  margin-left: 1%;
 }
 
 header {
@@ -25,13 +24,12 @@ img  {
 }
 
 #logo-container{
-  width: 7%;
+  width: 5%;
 }
 
-.img-container  { 
+.img-container { 
   width: 30%;
   display: flex;
-  margin-left: 38%;
 }
 
 .img-container #profilepic { 
@@ -39,8 +37,6 @@ img  {
   width: 12%;
   float: right;
 }
-
-
 
 #container  {
   display: flex;
@@ -199,41 +195,59 @@ aside{
   right: 0; /* När klassen open läggs till, kommer sidofältet att glida in från höger */
 }
 
+/* Hamburger-ikons stil */
+#hamburger-icon {
+  position: fixed;
+  left: 20px;
+  z-index: 999;
+  margin-left: 94%;
+  
+}
 
+.hamburger-label:before, .hamburger-label:after, .hamburger-label span {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px; 
+  background-color: #333; 
+  transition: transform 0.3s ease; 
+}
 
 
 /*Översiktsknappen slut*/
 
 
-#event-popup {
-  position: fixed;
-  background: white;
-  border: 1px solid black;
-  padding: 2%;
-  z-index: 1000;
-  width: 45%;
-  box-shadow: 10px 10px 161px -58px rgba(0,0,0,0.75);
 
-  }
+
+
+
+.event-popup {
+  position: fixed; /* Change from absolute to fixed */
+  transform: translate(-50%, -50%); /* Center it horizontally and vertically */
+  border: 1px solid black;
+  z-index: 3; /* Ensure it appears on top of other elements */
+  border-radius: 15px;
+  background-color: #fefefe;
+  box-shadow: 0 0 10px lightblue;
+  padding: 30px;
+  width: 35%;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  margin-left: 23%;
+  height: 30%;
+  margin-top: 10%;
+  
+}
 
 .event-title {
   font-weight: bold;
-  margin-bottom: 3%;
-  text-align: center;
-  font-size: 30px;
+  margin-bottom: 5px;
 }
 
-.event-start-date { 
-  padding-bottom: 2%;
-}
-
-.event-end-date { 
-  padding-bottom: 2%;
-}
-
-.event-priority { 
-  padding-bottom: 2%;
-
+.event-description {
+  margin-bottom: 10px;
 }
 
 #div-for-buttons{
@@ -302,29 +316,87 @@ aside{
   font-weight: bold;
 }
 
+/* Style for sidebar (översikt) */
 #översikt {
-  background-color: #ADD8E6;
-  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 300px;
+  background-color: #f0f0f0;
+  z-index: 999;
+  padding: 20px;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  transform: translateX(100%);
 }
 
-h2 {
+#översikt.open {
+  transform: translateX(0);
+}
+
+
+#översikt h2 {
   text-align: center;
-
+  margin: 0;
+  padding: 20px;
+  background: #444;
 }
-ul li {
+
+#översikt ul {
   list-style: none;
+  padding: 0;
 }
 
-ul li a {
-  font-weight: 700;
-  padding: 20px 0;
-  display: block;
-  text-transform:capitalize;
+#översikt ul li {
+  padding: 10px 20px;
+}
+
+#översikt ul li a {
+  color: #fff;
   text-decoration: none;
-  transition: 0.2s ease-out;
-  color: black;
-
+  display: flex;
+  align-items: center;
 }
+
+#översikt ul li a i {
+  margin-right: 10px;
+}
+
+/* Style for hamburger icon */
+#hamburger-icon {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+.checkbox {
+  display: none;
+}
+
+.hamburger-label {
+  display: block;
+  cursor: pointer;
+}
+
+.hamburger-label::before {
+  content: "\2630"; /* Unicode character for hamburger menu */
+  font-size: 30px;
+  color: #333;
+}
+
+/* Style for popup */
+.event-popup {
+  display: none;
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
 
 
 
