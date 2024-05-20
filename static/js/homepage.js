@@ -70,6 +70,10 @@ document.addEventListener('DOMContentLoaded', function () {
         endDate.textContent = 'End Date: ' + (event.end ? event.end.toLocaleDateString() : 'N/A');
         priority.textContent = 'Priority: ' + event.extendedProps.priority;
 
+        // Needed to set event IDs on the buttons when trying to delete/edit an event.
+        document.getElementById('event-delete-button').setAttribute('data-event-id', event.id);
+        document.getElementById('event-button').setAttribute('data-event-id', event.id);
+
         popup.style.display = 'block';
         var viewportWidth = window.innerWidth;
         var viewportHeight = window.innerHeight;
@@ -80,4 +84,42 @@ document.addEventListener('DOMContentLoaded', function () {
         popup.style.left = posX + 'px';
         popup.style.top = posY + 'px';
     }
+    // Function to handle closing sidebar when clicking outside of it
+    document.addEventListener('click', function (event) {
+        var isClickInsideSidebar = översikt.contains(event.target);
+        var isClickOnCheckbox = event.target.classList.contains('checkbox');
+        if (!isClickInsideSidebar && !isClickOnCheckbox) {
+            översikt.classList.remove('open');
+        }
+    });
+
+
+//HERE NEW CODE FOR REMOVING/EDITING ACTIVITY
+    // Event listener for delete button
+document.getElementById('event-delete-button').addEventListener('click', function () {
+    var eventId = this.getAttribute('data-event-id');
+    if (confirm('Är du säker på att du vill radera denna aktivitet?')) {
+        fetch(`/delete_event/${eventId}`, {
+            method: 'POST',
+        }).then(response => {
+            if (response.ok) {
+                alert('Du har raderat aktiviteten.');
+                location.reload(); // Reload the page after deletion
+            } else {
+                alert('Kunde inte radera aktiviteten. Försök igen.');
+            }
+        });
+    }
+});
+
+// Event listener for edit button
+document.getElementById('event-button').addEventListener('click', function () {
+    var eventId = this.getAttribute('data-event-id');
+    // Redirect to the edit page for the selected event
+    window.location.href = `/edit_event/${eventId}`;
+});
+//HERE NEW CODE FOR REMOVING/EDITING ACTIVITY - ENDS HERE.
+
+
+    calendar.render(); // Render the calendar
 });

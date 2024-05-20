@@ -141,6 +141,79 @@ def create_event():
     connection.close()  # close connection
     redirect("/homepage")
 
+
+#HERE IS THE NEW CODE
+@app.route('/edit_event/<event_id>', method=['GET'])
+def display_edit_form(event_id):
+    '''The task of retrieving the current event details from the database and showing the edit form falls to the display_edit_form route (method='GET').'''
+    connection = connect()
+    cursor = connection.cursor()
+    is_user_logged_in = request.get_cookie('user_id')
+
+    cursor.execute('SELECT * FROM events WHERE id = %s AND user_id = %s', (event_id, is_user_logged_in))
+    event = cursor.fetchone()
+
+    cursor.close()
+    connection.close()
+
+    if not event:
+        redirect('/homepage')
+
+    return template('edit_event', event=event)
+
+
+@app.route('/update_event/<event_id>', method=['POST'])
+def handle_edit_form(event_id):
+    '''The form submission is processed by the handle_edit_form route (method='POST,') which also updates the event in the database.'''
+    connection = connect()
+    cursor = connection.cursor()
+    is_user_logged_in = request.get_cookie('user_id')
+
+    #fetching the edited/updated event from the HTML form
+    event_title = getattr(request.forms, "event_title")
+    event_start_date = getattr(request.forms, "event_start_date")
+    event_end_date = getattr(request.forms, "event_end_date")
+    event_priority = getattr(request.forms, "event_priority")
+    event_category = getattr(request.forms, "event_category")
+    event_description = getattr(request.forms, "event_description") 
+    events_start_time = getattr(request.forms, "events_start_time")
+    events_end_time = getattr(request.forms, "events_end_time")
+
+    start = f"{event_start_date} {events_start_time}"
+    end = f"{event_end_date} {events_end_time}"
+
+    #Update the new info event in the database
+    cursor.execute("""UPDATE events SET event_start_date=%s, event_end_date=%s, event_title=%s,
+                      event_priority=%s, event_category=%s, event_description=%s,
+                      events_start_time=%s, events_end_time=%s
+                      WHERE id=%s AND user_id=%s""",
+                      (event_start_date, event_end_date, event_title, event_priority, event_category,
+                      event_description, start, end, event_id, is_user_logged_in))
+    
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+    redirect('/homepage')
+
+
+@app.route('/delete_event/<event_id>', method=['POST'])
+def delete_event(event_id):
+    '''An event can be deleted using the delete_event route. If the user is logged in, it removes the event from the database using the event ID as a parameter.'''
+    connection = connect()
+    cursor = connection.cursor()
+    is_user_logged_in = request.get_cookie('user_id')
+
+    cursor.execute('DELETE FROM events WHERE id = %s AND user_id = %s', (event_id, is_user_logged_in))
+    connection.commit()
+
+    cursor.close()
+    connection.close()
+
+    redirect('/homepage')
+#HERE IS THE NEW CODE - ENDS HERE
+
+
 @app.route('/forgot-password', method=['GET', 'POST'])
 def forgot_password():
     error = {}

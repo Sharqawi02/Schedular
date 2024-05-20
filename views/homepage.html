@@ -115,8 +115,21 @@
         <div id="event-end-date" class="event-end-date"></div>
         <div id="event-priority" class="event-priority"></div>
         <div id="div-for-buttons">
-            <button id="event-delete-button" role="button">Radera aktivitet</button>
-            <button id="event-button" role="button">Redigera aktivitet</button>
+            <button id="event-delete-button">Radera aktivitet</button>
+            <button id="event-button">Redigera aktivitet</button>
+        </div>
+    </div>
+
+    <!-- edit modal (when pressing the button "redigera aktivitet") -->
+    <div id="event-popup" class="event-popup" style="display: none;">
+        <div id="event-title" class="event-title"></div>
+        <div id="event-description" class="event-description"></div>
+        <div id="event-start-date" class="event-start-date"></div>
+        <div id="event-end-date" class="event-end-date"></div>
+        <div id="event-priority" class="event-priority"></div>
+        <div id="div-for-buttons">
+            <button id="save-edit-button">Spara aktivitet</button>
+            <button id="cancel-button">Avbryt</button>
         </div>
     </div>
     <script src="/./static/js/homepage.js"></script>
