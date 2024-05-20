@@ -82,21 +82,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 document.addEventListener('DOMContentLoaded', function () {
-    var checkbox = document.querySelector('.checkbox');
-    var översikt = document.getElementById('översikt');
+    var checkbox = document.getElementById('hamburger-toggle');
+    var sidebar = document.getElementById('översikt');
 
     checkbox.addEventListener('change', function () {
         if (checkbox.checked) {
-            översikt.classList.add('open');
+            sidebar.style.right = '0'; // Visa sidofältet när checkboxen är markerad
         } else {
-            översikt.classList.remove('open');
+            sidebar.style.right = '-100%'; // Dölj sidofältet när checkboxen inte är markerad
         }
     });
 
+    // Dölj sidofältet när användaren klickar utanför det
     document.addEventListener('click', function (event) {
-        if (!översikt.contains(event.target) && event.target !== checkbox) {
+        if (!sidebar.contains(event.target) && event.target !== checkbox) {
             checkbox.checked = false;
-            översikt.classList.remove('open');
+            sidebar.style.right = '-100%';
         }
     });
 });

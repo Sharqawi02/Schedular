@@ -318,22 +318,19 @@ aside{
 
 /* Style for sidebar (översikt) */
 #översikt {
-  display: none;
+  color: black;
   position: fixed;
   top: 0;
-  right: 0;
+  right: -25%; /* Startpositionen är helt till höger */
+  width: 25%;
   height: 100%;
-  width: 300px;
-  background-color: #f0f0f0;
+  background-color: #ADD8E6;
+  transition: all 0.3s ease-in-out;
   z-index: 999;
-  padding: 20px;
-  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  transform: translateX(100%);
 }
 
 #översikt.open {
-  transform: translateX(0);
+  right: 0; /* När klassen open läggs till, kommer sidofältet att glida in från höger */
 }
 
 
@@ -341,10 +338,11 @@ aside{
   text-align: center;
   margin: 0;
   padding: 20px;
-  background: #444;
+  background: #ADD8E6;
 }
 
 #översikt ul {
+
   list-style: none;
   padding: 0;
 }
@@ -354,7 +352,7 @@ aside{
 }
 
 #översikt ul li a {
-  color: #fff;
+  color: black;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -365,10 +363,12 @@ aside{
 }
 
 /* Style for hamburger icon */
+
 #hamburger-icon {
-  position: absolute;
-  top: 15px;
-  right: 20px;
+  position: fixed;
+  left: 20px;
+  z-index: 999;
+  margin-left: 94%;
 }
 
 .checkbox {
