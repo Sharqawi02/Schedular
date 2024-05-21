@@ -1,339 +1,152 @@
-/* PROBLEM: I can't seem to fix the interactivity using JS to change between the section */
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Playfair Display', sans-serif;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-
-/* STYLING for the main div container */
-.container {
-    padding: 0;
-}
-
-h1 { 
-    font-size: 40px;
-    margin-left: 1%;
-  }
-  
-  header {
+.settings {
+    width: 90%;
+    height: 600px;
+    margin: 50px auto 50px auto;
     display: flex;
+    gap: 20px;
+}
+
+.settings > .line {
+    height: 100%;
+    width: 2.5px;
+    border-radius: 5px;
     background-color: #ADD8E6;
-    box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
-    align-items: center;
-  }
-  
-  img  {
-    width: 120%; 
-    height: auto; 
-  }
-  
-  #logo-container{
-    width: 7%;
-  }
-  
-  .img-container  { 
-    width: 30%;
-    display: flex;
-    margin-left: 38%;
-  }
-  
-  .img-container #profilepic { 
-    border-radius: 100%;
-    width: 12%;
-    float: right;
-  }
+}
 
-  #hamburger-icon {
-    position: fixed;
-    left: 20px;
-    z-index: 999;
-    margin-left: 94%;
-    
-  }
-  
-  .hamburger-label:before, .hamburger-label:after, .hamburger-label span {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 3px; 
-    background-color: #333; 
-    transition: transform 0.3s ease; 
-  }
-
-
-.section-container {
-    border-right: solid #ADD8E6;
+.settings > article {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 5px;
-    /* change this for preference */
-    height: 86vh;
-    width: 25%;
-    overflow: hidden;
-    /* Ändra bakgrundsfärg till vit */
-}
-
-
-.section-container .img-container {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    border-radius: 100%;
-    margin: 30px auto;
-    background-color: #fff;
-    /* Ändra bakgrundsfärg till vit */
-    border-right: 1px solid #ADD8E6;
-}
-
-
-.section-container h2 {
-    font-size: 30px;
-    text-align: center;
-    margin: 0 auto;
-    padding-right: 8px;
-}
-
-
-.settings-container {
-    padding: 50px 0 30px 0;
-    margin: 0;
-    width: 100%;
-}
-
-
-/* NOT THE MOST EFFECTIVE WAY TO DO THIS, SEE IF YOU CAN DO BETTER */
-.settings-container .account-settings {
-    padding: 15px;
-    display: flex;
     align-items: center;
-    margin-bottom: 10px;
-    cursor: pointer;
-    border-top: 1px solid #000000;
-    border-bottom: 1px solid #000000;
+    flex: 1;
+    gap: 20px;
+    margin: 50px 0px;
 }
 
+.settings > article > img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
 
-.settings-container .password-settings,
-.notifications-settings {
-    padding: 15px;
+.settings > article > form {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #000000;
+    gap: 20px;
 }
 
-.profile-container {
-    display: flex;
-}
-
-/* NOT THE MOST EFFECTIVE WAY TO DO THIS, SEE IF YOU CAN DO BETTER */
-
-
-.settings-container .account-settings p,
-.password-settings p,
-.notifications-settings p {
-    font-size: 25px;
-    font-weight: 400;
-    margin: 0 0 0 60px;
-}
-
-
-.logout-button {
-    margin: 0 auto;
-    padding: 0;
-}
-
-.logout-button input {
-    background-color: rgb(190, 9, 9);
-    color: #fff;
-    font-weight: 600;
-    font-size: 18px;
-    cursor: pointer;
-    border: 1px solid #000000;
-    padding: 15px 25px;
-    border-radius: 5px;
-}
-
-
-.logout-button input a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    font-size: 15px;
-}
-
-
-.logout-button input:hover {
-    background-color: darkred;
-    transition: .5s ease-in-out;
-}
-
-/* STYLING for profile container ends here */
-
-
-/* STYLING for the info-container */
-.info-container {
-    padding: 20px 20px 10px 10px;
-    /* Ändra bakgrundsfärg till ljusblå */
-
-}
-
-
-
-.info-container>.password-info,
-.notification-info {
-    /* for the interactivity (JS) */
-    padding-bottom: 100px;
+.settings > article > form > input[type='file'] {
     display: none;
 }
 
-
-.info-container .account-info,
-.password-info,
-.notification-info {
-    padding-left: 80px;
-}
-
-
-.info-container>.account-info h2,
-.password-info h2,
-.notification-info h2 {
-    font-size: 40px;
-}
-
-/* account-info STYLING */
-.info-container .account-info form {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 50px;
-    overflow: hidden;
-}
-
-
-.info-container .account-info form .flex-container {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 20px;
-}
-
-
-.info-container .account-info form .flex-container input {
+.settings > article > form > label {
+    padding: 7px 10px;
     border-radius: 5px;
-    border: 1px solid #000000;
-    outline: none;
-    padding: 10px 20px;
-    margin-top: 10px;
-    width: 50%;
-}
-
-
-.info-container .account-info form textarea {
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-    border: 1px solid #000000;
-    outline: none;
-    resize: vertical;
-    resize: horizontal;
-}
-
-
-.info-container .account-info .button-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-
-.info-container .account-info .button-container input {
-    padding: 10px 25px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-
-.info-container .account-info .button-container input:hover {
-    filter: brightness(95%);
-    transition: .5s ease-in-out;
-}
-
-
-.info-container .account-info .button-container .UpdateBtn {
-    margin-right: 50px;
+    color: white;
     background-color: #ADD8E6;
-    cursor: pointer;
+    transition: .5s all;
 }
 
-
-.info-container .account-info .button-container .CancelBtn {
-    background-color: #D9D9D9;
-    cursor: pointer;
+.settings > article > form > label:hover {
+    background-color: #7ccce7;
 }
 
-/* account-info STYLING ends here */
-
-
-/* password-info STYLING */
-
-form {
-    display: flex;
-    align-items: center;
-}
-
-input[type="file"] {
-    /* Stilar för input-fältet */
-    /* Exempel: */
-    display: flex;
-    background-color: #ADD8E6;
-    border: 1px solid #ccc;
-    padding: 8px;
+.settings > article > form > button {
+    padding: 7px 10px;
     border-radius: 5px;
+    color: white;
+    background-color: #ADD8E6;
+    transition: .5s all;
+    border: 0;
 }
 
-/* För att dölja texten bredvid formuläret */
-form::after {
-    content: none;
-    /* Dölj texten */
+.settings > article > form > button:hover {
+    background-color: #7ccce7;
 }
 
-.account-info {
-    max-width: 400px;
-    /* Justera maxbredden efter behov */
-    margin: 0 auto;
-    /* Centrerar elementet inom omslutande element */
-    text-align: left;
-    /* Återställer text-justering för innehållet */
-}
-
-.account-info h2 {
-    margin-bottom: 20px;
-}
-
-form {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="email"] {
+.settings > article > .line {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    height: 2.5px;
+    background-color: #ADD8E6;
 }
 
+.settings > article > a {
+    width: 80%;
+    font-size: 18px;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: .5s all;
+}
+
+.settings > article > a:hover {
+    background-color: rgb(204, 0, 0);
+}
+
+.settings > aside {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settings > aside > form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+}
+
+.settings > aside > form > label {
+    font-size: 18px;
+    letter-spacing: 1.5px;
+}
+
+.settings > aside > form > input {
+    width: 100%;
+    outline: none;
+    border: 0;
+    border-bottom: #7ccce7 2px solid;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.settings > aside > form > button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    color: white;
+    background-color: #ADD8E6;
+    transition: .5s all;
+    border: 0;
+    font-size: 16px;
+}
+
+.settings > aside > form > button:hover {
+    background-color: #7ccce7;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .settings {
+        width: 90%;
+        gap: 10px;
+        flex-direction: column;
+        height: 1000px;
+    }
+
+    .settings > .line {
+        height: 2.5px;
+        width: 100%;
+        border-radius: 5px;
+        background-color: #ADD8E6;
+    }
+
+}

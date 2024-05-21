@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SCHEDULAR</title>
     <link href="/./static/homepage.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> -->
     <!--för Navbar-->
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
@@ -22,105 +22,85 @@
 </head>
 
 <body>
-    <div id="wrapper">
-        <header>
-            <div id="logo-container">
-                <img src="/static/images/logo.png" id="logo" alt="our logo">
-            </div>
-            <h1>SCHEDULAR</h1>
-            <div class="img-container">
-                <a href="/redirect_to_profilepage">
-                    <img src="/./static/images/profilbild.jpg" id="profilepic" alt="Profile Image of User">
-                </a>
-            </div>
+        
+        % include components/header.html
 
-            <div id="hamburger-icon">
-                <input class="checkbox" type="checkbox" id="hamburger-toggle" />
-                <label class="hamburger-label" for="hamburger-toggle"></label>
-
+        <section class="calendar">
+            <div class="button_for_small_screen">
+                <label for="open_close" class="button">Lägg Till Händelse</label>
+                <input type="checkbox" name="open_close" id="open_close">
             </div>
-
-            <div id="översikt">
-                <h2> Översikt </h2>
-                <ul>
-                    <li> <a href="#"> <i class="fa-solid
-                        fa-school"></i> Skola </a></li>
-                        <li> <a href="#"> <i class="fa-solid fa-gamepad"></i> Fritid </a></li>
-                        <li> <a href="#"> <i class="fa-solid fa-dumbbell"></i> Gym </a></li>
-                        <li> <a href="#"> <i class="fa-solid fa-folder"></i> Övrigt </a></li>
-                    </ul>
-                </div>
-            </header>
-        </div>
-    
-        <div id="container">
-            <main>
-                <div id="tasks">
-                    <form action="/create_event" method="post">
-                        <!-- Event datum -->
-                        <div class="block">
-                            <label for="event_start_date">Start datum</label>
-                            <input type="date" name="event_start_date" id="event_date" required>
-                        </div>
-    
-                        <div class="block">
-                            <label for="event_end_date">Slut datum</label>
-                            <input type="date" name="event_end_date" id="event_date" required>
-                        </div>
-    
-                        <!-- Event Titel -->
-                        <div class="block">
-                            <label for="event_title">Aktivitets titel</label>
-                            <input type="text" name="event_title" id="event_title" required>
-                        </div>
-    
-                        <!-- Prioriterings och kategoriserings knapparna -->
-                        <div id="list">
-                            <select name="event_priority" id="event_priority">
-                                <option value="high">High priority</option>
-                                <option value="medium">Medium priority</option>
-                                <option value="low">Low priority</option>
-                            </select>
-                            <select name="event_category" id="event_category">
-                                <option value="other">Övrigt</option>
-                                <option value="school">Skola</option>
-                                <option value="gym">Gym</option>
-                                <option value="spare_time">Fritid</option>
-                            </select>
-                        </div>
-    
-                        <!-- Beskrivningsfält -->
-                        <div class="block">
-                            <label for="event_description">Beskrivning</label>
-                            <textarea name="event_description" id="event_description" cols="10" rows="5"
-                                placeholder="Beskriv aktiviteten..."></textarea>
-                        </div>
-    
-                        <!-- Start time -->
-                        <div class="block">
-                            <label for="events_start_time">Start Tid</label>
-                            <input type="time" name="events_start_time" id="events_start_time">
-                        </div>
-    
-                        <!-- End time -->
-                        <div class="block">
-                            <label for="events_end_time">Slut Tid</label>
-                            <input type="time" name="events_end_time" id="events_end_time">
-                        </div>
-    
-                        <!-- Lägg till button -->
-                        <div class="block">
-                            <button class="button-13" role="button">Lägg till</button>
-                        </div>
-                    </form>
-                </div>
-            </main>
             <aside>
-                <div id="calendar"></div>
+                <form action="/create_event" method="post">
+
+                    <label for="event_start_date">Start datum</label>
+                    <input type="date" name="event_start_date" id="event_date" required>
+
+                    <label for="event_end_date">Slut datum</label>
+                    <input type="date" name="event_end_date" id="event_date" required>
+
+                    <label for="event_title">Aktivitets titel</label>
+                    <input type="text" name="event_title" id="event_title" placeholder="Titel" required>
+
+                    <select name="event_priority" id="event_priority">
+                        <option value="high">High priority</option>
+                        <option value="medium">Medium priority</option>
+                        <option value="low">Low priority</option>
+                    </select>
+
+                    <select name="event_category" id="event_category">
+                        <option value="other">Övrigt</option>
+                        <option value="school">Skola</option>
+                        <option value="gym">Gym</option>
+                        <option value="spare_time">Fritid</option>
+                    </select>
+
+                    <label for="event_description">Beskrivning</label>
+                    <textarea name="event_description" id="event_description" cols="10" rows="5" placeholder="Beskriv aktiviteten..."></textarea>
+
+                    <label for="events_start_time">Start Tid</label>
+                    <input type="time" name="events_start_time" id="events_start_time">
+
+                    <label for="events_end_time">Slut Tid</label>
+                    <input type="time" name="events_end_time" id="events_end_time">
+
+                    <button type="submit">Lägg Till</button>
+                </form>
             </aside>
-        </div>
+            <article>
+                <div id="calendar"></div>
+            </article>
+        </section>
+
+        <section class="BackgroundForPopupEvents"></section>
+        <aside class="ContainerForPopupEvents">
+            <form action="/redigera/event" method="post">
+
+                <input type="text" name="event_id" id="event_id" hidden>
+
+                <button type="submit">Visa Händelse Information</button>
+            </form>
+        </aside>
+
+        <script>
+            
+            let EventPopupBackground = document.querySelector('.BackgroundForPopupEvents')
+            let EventContainer = document.querySelector('.ContainerForPopupEvents')
+
+
+
+            document.getElementById('open_close').addEventListener('change', function() {
+                var asideElement = document.querySelector('.calendar > aside');
+                if (this.checked) {
+                    asideElement.style.display = 'block';
+                } else {
+                    asideElement.style.display = 'none';
+                }
+            });
+
+        </script>
     
-        <div id="event-popup" class="event-popup">
+        <!-- <div id="event-popup" class="event-popup">
             <div id="event-title" class="event-title"></div>
             <div id="event-description" class="event-description"></div>
             <div id="event-start-date" class="event-start-date"></div>
@@ -132,7 +112,7 @@
                 <button id="event-button" role="button">Redigera aktivitet</button>
             </div>
         </div>
-    
+     -->
         <script src="/static/js/homepage.js"></script>
     </body>
     

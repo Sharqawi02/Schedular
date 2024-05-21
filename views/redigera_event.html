@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/./static/redigera_event.css" rel="stylesheet">
+    <title>redigera Event</title>
+</head>
+<body>
+    <section class="BackgroundForPopupEvents"></section>
+        <aside class="ContainerForPopupEvents">
+            <form action="/update_event/{{ event_id }}" method="post">
+
+                <label for="event_start_date">Start datum</label>
+                <input type="date" name="event_start_date" id="event_date_popup" value="{{ event_info[3] }}" required>
+
+                <label for="event_end_date">Slut datum</label>
+                <input type="date" name="event_end_date" id="event_date_popup" value="{{ event_info[9] }}" required>
+
+                <label for="event_title">Aktivitets titel</label>
+                <input type="text" name="event_title" id="event_title_popup" value="{{ event_info[1] }}" placeholder="Titel" required>
+
+                <select name="event_priority" id="event_priority_popup">
+                    <option value="high" {{ "selected" if event_info[4] == "high" else "" }}>High priority</option>
+                    <option value="medium" {{ "selected" if event_info[4] == "medium" else "" }}>Medium priority</option>
+                    <option value="low" {{ "selected" if event_info[4] == "low" else "" }}>Low priority</option>
+                </select>                
+
+                <select name="event_category" id="event_category_popup">
+                    <option value="other" {{ "selected" if event_info[5] == "other" else "" }}>Övrigt</option>
+                    <option value="school" {{ "selected" if event_info[5] == "school" else "" }}>Skola</option>
+                    <option value="gym" {{ "selected" if event_info[5] == "gym" else "" }}>Gym</option>
+                    <option value="spare_time" {{ "selected" if event_info[5] == "spare_time" else "" }}>Fritid</option>
+                </select>                
+
+                <label for="event_description">Beskrivning</label>
+                <textarea name="event_description" id="event_description_popup" cols="10" rows="5" placeholder="Beskriv aktiviteten...">{{ event_info[2] }}</textarea>
+
+                <label for="events_start_time">Start Tid</label>
+                <input type="time" name="events_start_time" value="{{ start_time }}" id="events_start_time_popup">
+
+                <label for="events_end_time">Slut Tid</label>
+                <input type="time" name="events_end_time" value="{{ end_time }}" id="events_end_time_popup">
+
+
+                <button type="submit">Ändra</button>
+            </form>
+        </aside>
+</body>
+</html>

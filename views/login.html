@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/./static/login.css" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+    <section class="login">
+        <img src="../static/images/logo.png" alt="logo">
+        <article>
+            <form action="/login" method="post">
+                <h1>Inloggning</h1>
+                % if wrong:
+                    <p class="wrong">Fel Email eller Lösenord, Försök Igen!!</p>
+                % end
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+                <label for="password">Lösenord</label>
+                <input type="password" name="password" id="password" required>
+                <button type="submit">Logga In</button>
+                <p>Genom att fortsätta godkänner du Schedulars <a href="#"> villkor för användning och försäljning.</a> Se vår <a href="#">sekretesspolicy</a>, vår <a href="#">policy för cookies</a> och vår <a href="#">policy för intressebaserade annonser.</a></p>
+            </form>
+
+            <div>
+                <div></div>
+                <p>Ny Hos Schedular?</p>
+                <div></div>
+            </div>
+
+            <a href="/register">Skapa ditt schedular Konto</a>
+
+        </article>
+    </section>
+</body>
+</html>

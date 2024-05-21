@@ -19,85 +19,34 @@
 
 <body>
    
-    <header>
-        <div id="logo-container">
-            <img src="/static/images/logo.png" id="logo" alt="our logo">
-        </div>
+    % include components/header.html
 
-        <h1>SCHEDULAR</h1>
-        
-        <div class="img-container">
-            <a href="/redirect_to_profilepage">
-                <img src="/./static/images/profilbild.jpg" id="profilepic" alt="Profile Image of User">
-            </a>
-        </div>
-
-        <div id="hamburger-icon">
-            <input class="checkbox" type="checkbox" id="hamburger-toggle" />
-            <label class="hamburger-label" for="hamburger-toggle"></label>
-        </div>
-
-
-    </header>
-
-    <!-- profile overview sections -->
-    <div class="profile-container">
-        <div class="section-container">
-            <div class="img-container">
-                <img src="#" alt="Profile Image of User">
-            </div>
-            <form>
-                <input type="file" name="file">
+    <section class="settings">
+        <article>
+            <img src="../static/images/profile_pictures/{{ UserInfo[5] }}" alt="profile Picture">
+            <h1>{{ UserInfo[1] }} {{ UserInfo[2] }}</h1>
+            <form action="/upload/profile/picture" method="post" enctype="multipart/form-data">
+                <label for="ProfilePicture">Ladda Up Bild</label>
+                <input type="file" name="ProfilePicture" id="ProfilePicture">
+                <button type="submit">Updatera</button>
             </form>
-            <h2>{{firstname}} {{lastname}}</h2>
-            <div class="settings-container">
-                <div class="account-settings" onclick="showAccountInfo()">
-                    <p>Konto</p>
-                </div>
-                <div class="notifications-settings" onclick="showNotificationInfo()">
-                    <p>Inställningar</p>
-                </div>
-            </div>
-            <div class="logout-button">
-                <a href="/logout"><input type="button" value="Logout"></a>
-            </div>
-        </div>
-
-        <!-- What the different sections (when clicked) will show -->
-        <div class="info-container">
-            <!-- Account Settings -->
-            <!-- Account Settings -->
-            <div class="account-info">
-                <h2>Konto översikt</h2>
-                <form action="" method="post">
-                    <label for="firstname">Namn </label>
-                    <input type="text" name="firstname" id="firstname" value="{{firstname}}" required><br>
-                    <label for="lastname"> Efternamn </label>
-                    <input type="text" name="lastname" id="lastname" value="{{lastname}}" required><br>
-                    <label for="email">Email </label>
-                    <input type="email" name="email" id="email" value="{{email}}" required><br>
-                </form>
-            </div>
-
-        </div>
-        <!-- Notification Settings (OPTIONAL) -->
-        <div class="notification-info">
+            <div class="line"></div>
+            <a href="/logout">Logga Ut</a>
+        </article>
+        <div class="line"></div>
+        <aside>
             <h2>Inställningar</h2>
-            <form action="" method="post">
-                <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Phasellus nec velit enim.</p>
-                <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Phasellus nec velit enim.</p>
-                <p><input type="checkbox" name="noti-checkbox" id="noti-checkbox">Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Phasellus nec velit enim.</p>
+            <form action="/update/user/info" method="post">
+                <label for="FirstName">Förnamn</label>
+                <input type="text" value="{{ UserInfo[1] }}" name="FirstName" id="FirstName">
+                <label for="LastName">Efternamn</label>
+                <input type="text" value="{{ UserInfo[2] }}" name="LastName" id="LastName">
+                <label for="Email">Email</label>
+                <input type="email" value="{{ UserInfo[3] }}" name="Email" id="Email">
+                <button type="submit">Updatera Min Information</button>
             </form>
-        </div>
-    </div>
-
-    <!-- Script link for JS -->
-    <script src="/static/js/profilepage.js"></script>
-    <!-- Script kit for FontAwesome -->
-    <script src="https://kit.fontawesome.com/492ceb14f6.js" crossorigin="anonymous"></script>
+        </aside>
+    </section>
 
 </body>
 

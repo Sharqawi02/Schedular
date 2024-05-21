@@ -1,0 +1,123 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.login > img {
+    width: 150px;
+}
+
+.login > article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login > article > form {
+    width: 400px;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login > article > form > h1 {
+    font-size: 30px;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.login > article > form > .wrong {
+    color: red;
+    letter-spacing: 1px;
+    list-style: 1.5;
+    margin: 0;
+}
+
+.login > article > form > label {
+    font-weight: bold;
+}
+
+.login > article > form > input {
+    outline: 0;
+    border: 0;
+    border-bottom: 2px solid #add8e6;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.login > article > form > button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #ADD8E6;
+    color: white;
+    letter-spacing: 1px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .5s all;
+    border: 0;
+}
+
+.login > article > form > button:hover {
+    background-color: #7acbe7;
+}
+
+.login > article > form > p {
+    color: gray;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.login > article > form > p > a {
+    color: #7acbe7;
+}
+
+.login > article > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 40px auto;
+}
+
+.login > article > div > p {
+    text-align: center;
+}
+
+.login > article > div > div {
+    height: 1px;
+    width: 30%;
+    background-color: gray;
+}
+
+.login > article > a {
+    padding: 12px 25px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: black;
+    border: 1px solid gray;
+    letter-spacing: 1px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .5s all;
+}
+
+.login > article > a:hover {
+    background-color: rgb(234, 234, 234);
+}
+
+@media only screen and (max-width: 540px) {
+
+    .login > article > form {
+        width: 100%;
+        padding: 25px;
+        box-sizing: border-box;
+    }
+    
+
+}

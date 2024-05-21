@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/./static/login.css" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+    <section class="login">
+        <img src="../static/images/logo.png" alt="logo">
+        <article>
+            <form action="/register" method="post">
+                <h1>Registrering</h1>
+                % if wrong:
+                    <p class="wrong">Email Existerar Redan I Vår Databas</p>
+                % end
+                <label for="firstname">Förnamn</label>
+                <input type="text" name="firstname" id="firstname">
+                <label for="lastname">Efternamn</label>
+                <input type="text" name="lastname" id="lastname">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+                <label for="password">Lösenord</label>
+                <input type="password" name="password" id="password" required>
+                <button type="submit">Tillverka Konto</button>
+                <p>Genom att fortsätta godkänner du Schedulars <a href="#"> villkor för användning och försäljning.</a> Se vår <a href="#">sekretesspolicy</a>, vår <a href="#">policy för cookies</a> och vår <a href="#">policy för intressebaserade annonser.</a></p>
+            </form>
+
+            <div>
+                <div></div>
+                <p>Har Redan Konto?</p>
+                <div></div>
+            </div>
+
+            <a href="/login">Logga In På Ditt Konto Här</a>
+
+        </article>
+    </section>
+</body>
+</html>
