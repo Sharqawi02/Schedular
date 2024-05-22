@@ -251,37 +251,6 @@ def radera_event(id):
         connection.close()  # close connection
 
         return redirect('/homepage')
-
-@app.route('/forgot-password', method=['GET', 'POST'])
-def forgot_password():
-    error = {}
-    if request.method == 'POST':
-        email = request.forms.get('email')
-        new_password = request.forms.get('new_password')
-        # Check if the email exists in the database
-        connection = connect()
-        cursor = connection.cursor()
-        cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
-        user = cursor.fetchone()
-        if user:
-            # Generate a new password
-            # new_password = secrets.token_urlsafe(10) 
-            # Update the user's password in the database
-            cursor.execute("""UPDATE users SET password = %s WHERE email = %s""", (new_password, email))
-            connection.commit()
-
-            new = f"New password for {email}: {new_password}"
-            cursor.close()  # close cursor
-            connection.close()  # close connection
-            return template('First-Site.html', new=new, error=error)
-        else:
-            error["email_not_found"] = "Email not found."
-            cursor.close()  # close cursor
-            connection.close()  # close connection
-            return template('forgot-password.html', error=error, new=None)
-
-    return template('forgot-password.html', error=error, new=None)
-
 # profile Routes
 
 @app.route('/upload/profile/picture', method=['GET', 'POST'])

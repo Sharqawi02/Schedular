@@ -152,6 +152,169 @@ section.calendar {
   display: none;
 }
 
+
+.HeaderForSchedular {
+  width: 100%;
+  padding: 10px 50px;
+  box-sizing: border-box;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(173, 216, 230, 0.8);
+}
+
+.HeaderForSchedular > a > img {
+  height: 85px;
+}
+
+.HeaderForSchedular > aside {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.HeaderForSchedular > aside > a > .profile {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.HeaderForSchedular > aside > .hamburger {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+
+/* buttons */
+
+.HeaderForSchedular > aside > .registera_button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #ADD8E6;
+  color: white;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .5s all;
+}
+
+.HeaderForSchedular > aside > .registera_button:hover {
+  background-color: #7acbe7;
+}
+
+.HeaderForSchedular > aside > .login_button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #ADD8E6;
+  color: white;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .5s all;
+}
+
+.HeaderForSchedular > aside > .login_button:hover {
+  background-color: #7acbe7;
+}
+
+/* popup */
+
+.BackgroundMenu {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.615);
+  display: none;
+}
+
+.BackgroundMenu.view {
+  display: block;
+}
+
+.ConatinerMenu {
+  z-index: 3;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 0%;
+  height: 100vh;
+  visibility: hidden;
+  pointer-events: none;
+  background-color: #ADD8E6;
+  padding: 0px 0px;
+  border-radius: 0px 0px 50px 50px;
+  opacity: 0;
+  transition: 1s all;
+}
+
+.ConatinerMenu.view {
+  opacity: 1;
+  width: 20%;
+  padding: 25px 0px;
+  visibility: visible;
+  pointer-events: all;
+}
+
+.ConatinerMenu > ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: .25s all;
+}
+
+.ConatinerMenu.view > ul {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+.ConatinerMenu > ul > li > a {
+  text-decoration: none;
+  font-size: 30px;
+  letter-spacing: 1.5px;
+  color: white;
+  transition: 1s all;
+}
+
+.ConatinerMenu > ul > li > a:hover {
+  font-size: 24px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .HeaderForSchedular {
+      padding: 5px 10px;
+  }
+
+  .HeaderForSchedular > aside > .profile {
+      height: 35px;
+      width: 35px;
+  }
+  
+  .HeaderForSchedular > aside > .hamburger {
+      height: 35px;
+      width: 35px;
+  }
+
+  .HeaderForSchedular > img {
+      height: 65px;
+  }
+
+}
+
+
 @media only screen and (max-width: 1300px) {
 
   .calendar {

@@ -18,9 +18,30 @@
 </head>
 
 <body>
-   
-    % include components/header.html
 
+    <header class="HeaderForSchedular">
+        <a href="/"><img src="../../static/images/logo.png" alt="logo"></a>
+        <h1>SCHEDULAR</h1>
+        <aside>
+            % if UserInfo:
+            <a href="/profilepage"><img src="../static/images/profile_pictures/{{ UserInfo[5] }}" alt="profile"
+                    class="profile"></a>
+            <img src="../../static/images/hamburger-menu-4.png" alt="hamburger menu" class="hamburger">
+            % else:
+            <a href="/register" class="registera_button">Registrera</a>
+            <a href="/login" class="login_button">Logga In</a>
+            % end
+        </aside>
+    </header>
+    <!-- popup for menu -->
+    <div class="BackgroundMenu"></div>
+    <div class="ConatinerMenu">
+        <ul>
+            <li><a href="/profilepage">Profil</a></li>
+            <li><a href="/homepage">Kalender</a></li>
+            <li><a href="">Översikt</a></li>
+        </ul>
+    </div>
     <section class="settings">
         <article>
             <img src="../static/images/profile_pictures/{{ UserInfo[5] }}" alt="profile Picture">
@@ -47,6 +68,8 @@
             </form>
         </aside>
     </section>
+
+    <script src="/static/js/script.js"></script>
 
 </body>
 
