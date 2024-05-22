@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 event.textColor = '#000000';
                                 break;
                             case 'medium':
-                                event.backgroundColor = '#cd5c5c';
-                                event.borderColor = '#cd5c5c';
+                                event.backgroundColor = '#ffef00';
+                                event.borderColor = '#ffef00';
                                 event.textColor = '#000000';
                                 break;
                             case 'low':
