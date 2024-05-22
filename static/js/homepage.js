@@ -151,7 +151,19 @@ document.addEventListener('DOMContentLoaded', function () {
 //     });
 // });
 
+let EventPopupBackground = document.querySelector('.BackgroundForPopupEvents')
+let EventContainer = document.querySelector('.ContainerForPopupEvents')
 
+
+
+document.getElementById('open_close').addEventListener('change', function() {
+    var asideElement = document.querySelector('.calendar > aside');
+    if (this.checked) {
+        asideElement.style.display = 'block';
+    } else {
+        asideElement.style.display = 'none';
+    }
+});
 
 
 

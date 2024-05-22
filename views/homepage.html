@@ -81,38 +81,6 @@
                 <button type="submit">Visa händelse information</button>
             </form>
         </aside>
-
-        <script>
-            
-            let EventPopupBackground = document.querySelector('.BackgroundForPopupEvents')
-            let EventContainer = document.querySelector('.ContainerForPopupEvents')
-
-
-
-            document.getElementById('open_close').addEventListener('change', function() {
-                var asideElement = document.querySelector('.calendar > aside');
-                if (this.checked) {
-                    asideElement.style.display = 'block';
-                } else {
-                    asideElement.style.display = 'none';
-                }
-            });
-
-        </script>
-    
-        <!-- <div id="event-popup" class="event-popup">
-            <div id="event-title" class="event-title"></div>
-            <div id="event-description" class="event-description"></div>
-            <div id="event-start-date" class="event-start-date"></div>
-            <div id="event-end-date" class="event-end-date"></div>
-            <div id="event-priority" class="event-priority"></div>
-    
-            <div id="div-for-buttons">
-                <button id="event-delete-button" role="button">Radera aktivitet</button>
-                <button id="event-button" role="button">Redigera aktivitet</button>
-            </div>
-        </div>
-     -->
         <script src="/static/js/homepage.js"></script>
     </body>
     

@@ -236,6 +236,21 @@ def redigera_event():
             return template('redigera_event', event_info=event_info, start_time=start_time, end_time=end_time, event_id=event_id)
         else:
             return redirect("/homepage")
+        
+@app.route('/radera/event/<id>', method=['GET', 'POST'])
+def radera_event(id):
+    is_user_logged_in = request.get_cookie("user_id")
+    if is_user_logged_in:
+        connection = connect()
+        cursor = connection.cursor()
+        
+        cursor.execute('delete from events where id = %s', (id,))
+        connection.commit()
+
+        cursor.close()  # close cursor
+        connection.close()  # close connection
+
+        return redirect('/homepage')
 
 @app.route('/forgot-password', method=['GET', 'POST'])
 def forgot_password():
