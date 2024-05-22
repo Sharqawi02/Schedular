@@ -15,7 +15,7 @@ def index():
     if is_user_logged_in:
         return redirect("/homepage")
     else:
-        return template('welcome.html', UserInfo=None)
+        return template('first-site.html', UserInfo=None)
     
 @app.route('/login', method=[ 'GET','POST'])
 def index():
@@ -80,6 +80,7 @@ def register():
                 hash = pbkdf2_sha256.hash(password)
                 token = f"{hash}Schedular:)"
 
+                #profile_picture är default bilden som alla kommer få i början.
                 cursor.execute("""INSERT INTO users (firstname, lastname, email, password, profile_picture, token)
                 VALUES(%s,%s,%s,%s,%s,%s)""",(firstname,lastname,email,hash, 'profilbild.jpg', token))
                 connection.commit()
@@ -90,45 +91,8 @@ def register():
                 return redirect('/login')
 
 
-
         return template('registrera.html', wrong=False)
-        # if request.method == 'POST':
-        #     firstname = request.forms.get('firstname')
-        #     lastname = request.forms.get('lastname')
-        #     email = request.forms.get('email')
-        #     password = request.forms.get('password')
-        #     connection = connect()
-        #     cursor  = connection.cursor()
-        #     # Check if the email already exists in the database
-        #     cursor.execute("""SELECT * FROM users WHERE email = %s""", (email,))
-        #     user = cursor.fetchone()
-        #     if user:
-        #         # If the user exists, return an error message
-        #         error_message = "E-postadressen är redan registrerad."
-        #         cursor.close()  # close cursor
-        #         connection.close()  # close connection
-        #         return template('First-site.html',error={
-        #             "email_already_registered": error_message,
-        #         })
-        #     else:
-        #         cursor.execute("""INSERT INTO users (firstname, lastname, email, password, profile_picture)
-        #                     VALUES(%s,%s,%s,%s)""",(firstname,lastname,email,password, 'profilbild.jpg'))
-        #         connection.commit()
-            
-        #         cursor.execute("""SELECT * FROM users where firstname = %s and lastname = %s and email = %s and password = %s""", (firstname,lastname,email,password))
-        #         user_id = cursor.fetchone()
 
-        #         response.set_cookie("user_id", str(user_id[0]))
-
-        #         cursor.close()  # close cursor
-        #         connection.close()  # close connection
-
-        #         return redirect('/homepage')
-        # else: 
-        #     return template('First-site.html',error={})
-    
-
-# Routes För Calender
 
 @app.route('/homepage')
 def homepage_route():

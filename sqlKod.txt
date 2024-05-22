@@ -5,7 +5,8 @@ create table users(
     lastname varchar (100) not null,
     email varchar (100) not null,
     password varchar (100) not null,
-	profile_picture VARCHAR (200)
+	profile_picture VARCHAR (200),
+	token VARCHAR (1000)
 );
 
 ----Tabel för användarens aktiviteter----
