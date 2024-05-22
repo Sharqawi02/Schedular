@@ -40,6 +40,7 @@ body {
     letter-spacing: 1px;
     list-style: 1.5;
     margin: 0;
+    text-align: center;
 }
 
 .login > article > form > label {
