@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +11,15 @@
 <body>
     <header class="HeaderForSchedular">
         <a href="/"><img src="../../static/images/logo.png" alt="logo"></a>
+        <h1>SCHEDULAR</h1>
         <aside>
             % if UserInfo:
-                <a href="/profilepage"><img src="../static/images/profile_pictures/{{ UserInfo[5] }}" alt="profile" class="profile"></a>
-                <img src="../../static/images/hamburger-menu-4.png" alt="hamburger menu" class="hamburger">
+            <a href="/profilepage"><img src="../static/images/profile_pictures/{{ UserInfo[5] }}" alt="profile"
+                    class="profile"></a>
+            <img src="../../static/images/hamburger-menu-4.png" alt="hamburger menu" class="hamburger">
             % else:
-                <a href="/register" class="registera_button">Registrera</a>
-                <a href="/login" class="login_button">Logga In</a>
+            <a href="/register" class="registera_button">Registrera</a>
+            <a href="/login" class="login_button">Logga In</a>
             % end
         </aside>
     </header>
@@ -36,12 +39,12 @@
     let BackgroundMenu = document.querySelector('.BackgroundMenu')
     let ConatinerMenu = document.querySelector('.ConatinerMenu')
 
-    HamburgerMenu.addEventListener('click', function() {
+    HamburgerMenu.addEventListener('click', function () {
         BackgroundMenu.classList.add('view')
         ConatinerMenu.classList.add('view')
     })
 
-    BackgroundMenu.addEventListener('click', function() {
+    BackgroundMenu.addEventListener('click', function () {
         BackgroundMenu.classList.remove('view')
         ConatinerMenu.classList.remove('view')
     })

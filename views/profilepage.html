@@ -26,9 +26,9 @@
             <img src="../static/images/profile_pictures/{{ UserInfo[5] }}" alt="profile Picture">
             <h1>{{ UserInfo[1] }} {{ UserInfo[2] }}</h1>
             <form action="/upload/profile/picture" method="post" enctype="multipart/form-data">
-                <label for="ProfilePicture">Ladda Up Bild</label>
+                <label for="ProfilePicture">Ladda upp bild</label>
                 <input type="file" name="ProfilePicture" id="ProfilePicture">
-                <button type="submit">Updatera</button>
+                <button type="submit">Uppdatera</button>
             </form>
             <div class="line"></div>
             <a href="/logout">Logga Ut</a>
@@ -43,7 +43,7 @@
                 <input type="text" value="{{ UserInfo[2] }}" name="LastName" id="LastName">
                 <label for="Email">Email</label>
                 <input type="email" value="{{ UserInfo[3] }}" name="Email" id="Email">
-                <button type="submit">Updatera Min Information</button>
+                <button type="submit">Uppdatera min information</button>
             </form>
         </aside>
     </section>

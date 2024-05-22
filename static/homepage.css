@@ -1,9 +1,19 @@
+body { 
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .calendar {
   width: 90%;
   margin: 100px auto;
   display: flex;
-  align-items: center;
   gap: 20px;
+}
+
+section.calendar { 
+  margin: 3%;
+  margin-right: 0;
+  width: 1500px;
 }
 
 .calendar > aside {
@@ -14,12 +24,12 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 400px;
+  width: 80%;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 50px;
   box-sizing: border-box;
-}
+  }
 
 .calendar > aside > form > input {
   width: 100%;
@@ -68,15 +78,13 @@
 
 .calendar > article {
   flex: 2;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  padding: 50px;
   border-radius: 15px;
   box-sizing: border-box;
 }
 
+
 #calendar {
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: 1000px;
   background-color: #fff;
   padding: 20px;
   border: 1px solid #ccc;
