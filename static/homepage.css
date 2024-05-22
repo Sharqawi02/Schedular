@@ -1,19 +1,15 @@
 body { 
   max-width: 100%;
+  margin: 0;
 }
 
 .calendar {
   width: 90%;
-  margin: 100px auto;
+  margin: 50px auto;
   display: flex;
   gap: 20px;
 }
 
-section.calendar { 
-  margin: 3%;
-  margin-right: 0;
-  width: 1400px;
-}
 
 .calendar > aside {
   flex: 1;
@@ -22,11 +18,11 @@ section.calendar {
 .calendar > aside > form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   width: 80%;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  padding: 50px;
+  padding: 30px;
   box-sizing: border-box;
   }
 
@@ -64,7 +60,7 @@ section.calendar {
   width: 100%;
   padding: 12px;
   border-radius: 5px;
-  color: white;
+  color: black;
   background-color: #ADD8E6;
   transition: .5s all;
   border: 0;
@@ -80,6 +76,7 @@ section.calendar {
   border-radius: 15px;
   box-sizing: border-box;
 }
+
 
 
 #calendar {

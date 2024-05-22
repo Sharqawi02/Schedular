@@ -1,3 +1,7 @@
+body { 
+    margin: 0;
+
+}
 .settings {
     width: 90%;
     height: 600px;

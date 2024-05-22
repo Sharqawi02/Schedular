@@ -215,6 +215,8 @@ def update_event(event_id):
     connection.close()  # close connection
     return redirect("/homepage")
 
+
+# Denna funktion hanterar översikten av events, när användaren trycker visa information av event. 
 @app.route('/redigera/event', method=['GET', 'POST'])
 def redigera_event():
     is_user_logged_in = request.get_cookie("user_id")

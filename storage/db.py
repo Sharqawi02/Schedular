@@ -30,8 +30,8 @@ def connect():
     """
     return connection
 
-
-
+#Tar användarens information, dubbelkollar så användaren och cookie token matchar varandra. 
+#Om den inte gör de så har användarne ändrat på cookie värdet, programmet loggar därmed ut dem och detta fungerar som ett säkerhetssystem
 def GetUserInfo(connection, id):
 
     connection = connect()
