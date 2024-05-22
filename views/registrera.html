@@ -13,7 +13,7 @@
             <form action="/register" method="post">
                 <h1>Registrering</h1>
                 % if wrong:
-                    <p class="wrong">Email Existerar Redan I Vår Databas</p>
+                    <p class="wrong">Email är redan registrerad</p>
                 % end
                 <label for="firstname">Förnamn</label>
                 <input type="text" name="firstname" id="firstname">
@@ -23,17 +23,17 @@
                 <input type="email" name="email" id="email" required>
                 <label for="password">Lösenord</label>
                 <input type="password" name="password" id="password" required>
-                <button type="submit">Tillverka Konto</button>
+                <button type="submit">Skapa konto</button>
                 <p>Genom att fortsätta godkänner du Schedulars <a href="#"> villkor för användning och försäljning.</a> Se vår <a href="#">sekretesspolicy</a>, vår <a href="#">policy för cookies</a> och vår <a href="#">policy för intressebaserade annonser.</a></p>
             </form>
 
             <div>
                 <div></div>
-                <p>Har Redan Konto?</p>
+                <p>Har du redan ett konto?</p>
                 <div></div>
             </div>
 
-            <a href="/login">Logga In På Ditt Konto Här</a>
+            <a href="/login">Logga in på ditt konto här</a>
 
         </article>
     </section>

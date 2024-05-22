@@ -78,7 +78,7 @@ def register():
             else:
 
                 hash = pbkdf2_sha256.hash(password)
-                token = f"{hash}Schedualr:)"
+                token = f"{hash}Schedular:)"
 
                 cursor.execute("""INSERT INTO users (firstname, lastname, email, password, profile_picture, token)
                 VALUES(%s,%s,%s,%s,%s,%s)""",(firstname,lastname,email,hash, 'profilbild.jpg', token))
