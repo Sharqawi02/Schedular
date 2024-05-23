@@ -27,6 +27,9 @@
         <a href="/"><img src="../../static/images/logo.png" alt="logo"></a>
         <h1>SCHEDULAR</h1>
         <aside>
+            <div id="dark-light">
+                <button id="mode-toggle" onclick="toggleDarkMode()">Ändra utseende</button>
+            </div>
             % if UserInfo:
             <a href="/profilepage"><img src="../static/images/profile_pictures/{{ UserInfo[5] }}" alt="profile"
                     class="profile"></a>

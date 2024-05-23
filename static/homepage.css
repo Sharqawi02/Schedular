@@ -1,6 +1,110 @@
 body { 
   max-width: 100%;
   margin: 0;
+  background-color: white;
+  color: black;
+}
+.dark-mode {
+  background-color: dimgray;
+  color: white;
+}
+
+.dark-mode main aside {
+  background-color: darkgray;
+  color: grey;
+}
+.dark-mode main aside label{
+  color: black;
+}
+
+.dark-mode  header{
+  background-color: darkgray;
+  color: white;
+}
+
+.dark-mode button#mode-toggle{
+  background-color: darkgray;
+}
+
+.dark-mode button#mode-toggle:hover{
+  background-color: grey;
+}
+
+.dark-mode #calendar{
+  background-color: dimgray;
+  color: white;
+}
+
+.dark-mode .fc-toolbar{
+  background-color: dimgray;
+  color: white;
+}
+
+.dark-mode .fc-toolbar h2{
+  background-color: dimgray;
+  color: white;
+}
+
+.dark-mode .fc-button-primary{
+  background-color: darkgray;
+  color: white;
+}
+
+.dark-mode .fc-daygrid-day-top{
+  background-color: darkgray;
+  color: white;
+}
+
+.dark-mode .fc-multimonth-title{
+  background-color: darkgray;
+  color: white;
+}
+
+.dark-mode .fc-scrollgrid-sync-inner{
+  background-color: darkgray;
+  color: white;
+}
+
+.dark-mode aside form {
+  background-color: darkgray;
+  color: white;
+}
+
+.dark-mode aside form input{
+  background-color: darkgray;
+  color: white;
+}
+
+.dark-mode aside form select{
+  background-color: darkgray;
+  color: white;
+}
+
+.dark-mode aside form textarea{
+  background-color: darkgray;
+  color: white;
+}
+
+.dark-mode .ConatinerMenu{
+  background-color: darkgray;
+  color: white;
+}
+button#mode-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #ADD8E6;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  color: black;
+}
+
+button#mode-toggle:hover{
+  background-color: #87CEEB;
 }
 
 .calendar {
