@@ -1,7 +1,55 @@
 body { 
     margin: 0;
-
+    background-color: white;
+    color: black;
 }
+.dark-mode {
+    background-color: dimgray;
+    color: white;
+}
+.dark-mode header{
+    background-color: darkgray;
+    color: white;
+}
+.dark-mode button#mode-toggle{
+    background-color: darkgray;
+}
+
+.dark-mode aside input{
+    background-color: darkgray;
+    color: white;
+}
+
+.dark-mode aside button{
+    background-color: darkgray;
+    color: white;
+}
+
+button#mode-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #ADD8E6;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    color: black;
+}
+
+button#mode-toggle:hover{
+    background-color: #87CEEB;
+}
+
+.dark-mode aside label{
+    color: black;
+}
+.dark-mode  aside h2{
+    color: black;
+}
+
 .settings {
     width: 90%;
     height: 600px;
